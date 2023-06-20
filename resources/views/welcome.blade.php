@@ -16,7 +16,15 @@
         </style>
     </head>
     <body class="antialiased">
+<<<<<<< HEAD
+<<<<<<< HEAD
         こんちゃｊｊｊ
+=======
+        test
+>>>>>>> e80615221444448e89e126ee6f06c72cb30a3634
+=======
+        こんちゃｊｊｊ
+>>>>>>> 0a7329a833ab869a7e8eb05d8afd3f67db1ec1d7
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
