@@ -28,9 +28,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-/* ログイン中のみアクセスできるルーティングのサンプル */
-Route::get('/users_only', function(){
-    return view('users_only');
-})->middleware('auth'); /* auth ミドルウェアが認証状態を判定してくれる */
-
 require __DIR__.'/auth.php';
