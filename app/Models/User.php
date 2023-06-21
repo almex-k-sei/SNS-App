@@ -42,4 +42,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /* ユーザーは１つのプロフィールを所有 */
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
+
+    /* ユーザーは複数のトークルームに所属 */
+    public function talkroom(){
+        return $this->belongsToMany(Talkroom::class);
+    }
+
+    /* ユーザーは複数のメッセージを所有 */
+    public function message(){
+        return $this->hasMany(Message::class);
+    }
+
+    /* friend機能 */
+    public function followers(){
+        return $this->belongsToMany(self::class, "friends", "user_id", "friend_id");
+    }
+    public function follows(){
+        return $this->belongsToMany(self::class, "friends", "friend_id", "user_id");
+    }
+
 }
