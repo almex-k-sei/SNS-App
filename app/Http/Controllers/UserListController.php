@@ -16,7 +16,7 @@ class UserListController extends Controller
         $profiles = Profile::where('user_id','=',$user_id)
         ->get();
         $user = User::find($user_id);
-        $friends = $user->followers;
+        $friends = $user->follows;
         // dd($friends);
         $keyword = "あ";
 
