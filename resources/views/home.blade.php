@@ -10,9 +10,6 @@
     <header>
         <!--ロゴ画像-->
         <img src="" alt="">
-        <!--自分のプロフィール画像-->
-        <img src="{{$profiles->filepath}}" alt="">
-
     <!--ログアウト-->
     {{Auth::user()->name}}
     <form action="{{route('logout')}}" method="post">
@@ -23,14 +20,16 @@
     <main>
         <!--自分のプロフィール -->
         <div>
-            <img src="!my_filepath!" alt="">
+            <!--自分のプロフィール画像-->
+            <img src="{{$profiles[0]->image}}" alt="">
+
             <table>
                 <tr>
                     <td>
                         名前
                     </td>
                     <td>
-                        !my_name!
+                    {{$profiles[0]->name}}
                     </td>
                 </tr>
                 <tr>
@@ -38,7 +37,7 @@
                         生年月日
                     </td>
                     <td>
-                        !my_birth!
+                    {{$profiles[0]->birth}}
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +45,7 @@
                         ひとこと
                     </td>
                     <td>
-                        !my_description!
+                    {{$profiles[0]->description}}
                     </td>
                 </tr>
             </table>
@@ -62,10 +61,10 @@
             </form>
             <!-- 友達一覧-->
             <div>
-                @foreach($all_friends as $friend)
+                @foreach($user->followers as $friend)
                 <details>
                     <summary>
-                        <div>{{$friend->filepath}}</div>
+                        <div>{{$friend->image}}</div>
                         <div>{{$friend->name}}</div>
                         <div>
                             <!-- トーク作成ボタン-->

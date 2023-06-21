@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,5 +33,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/users_only', function(){
     return view('users_only');
 })->middleware('auth'); /* auth ミドルウェアが認証状態を判定してくれる */
+
+//ホーム画面
+Route::get('/home', [UserListController::class, 'index'])->middleware('auth');
 
 require __DIR__.'/auth.php';
