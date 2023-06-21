@@ -57,4 +57,13 @@ class User extends Authenticatable
     public function message(){
         return $this->hasMany(Message::class);
     }
+
+    /* friend機能 */
+    public function followers(){
+        return $this->belongsToMany(self::class, "friends", "user_id", "friend_id");
+    }
+    public function follows(){
+        return $this->belongsToMany(self::class, "friends", "friend_id", "user_id");
+    }
+
 }
