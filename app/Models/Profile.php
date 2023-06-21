@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+
+    /* プロフィールは一人のユーザーに所属 */
     public function user(){
         return $this->belongsTo(User::class);
     }
