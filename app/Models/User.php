@@ -48,5 +48,8 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-
+    /* ユーザーは複数のトークルームに所属 */
+    public function talkroom(){
+        return $this->belongsToMany(Talkroom::class);
+    }
 }
