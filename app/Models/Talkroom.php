@@ -13,4 +13,9 @@ class Talkroom extends Model
     public function user(){
         return $this->belongsToMany(User::class);
     }
+
+    /* トークルームは複数のメッセージを所有 */
+    public function message(){
+        return $this->hasMany(Message::class);
+    }
 }
