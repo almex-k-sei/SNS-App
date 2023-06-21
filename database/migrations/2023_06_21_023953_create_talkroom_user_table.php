@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('talkroom_user', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('talkroom_id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('talkroom_id')->comment('トークルームの識別ID');
+            $table->bigInteger('user_id')->comment('ユーザーの識別ID');
             $table->timestamps();
         });
     }
