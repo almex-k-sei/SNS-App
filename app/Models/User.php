@@ -52,4 +52,9 @@ class User extends Authenticatable
     public function talkroom(){
         return $this->belongsToMany(Talkroom::class);
     }
+
+    /* ユーザーは複数のメッセージを所有 */
+    public function message(){
+        return $this->hasMany(Message::class);
+    }
 }
