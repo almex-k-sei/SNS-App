@@ -8,12 +8,21 @@
 </head>
 <body>
     <h1>{{$talkroom->name}}</h1>
+
     @foreach ($messages as $message)
         @if($my_id == $message->user_id)
-            </p>{{$message->user->name}}(自分):{{$message->content}}</p>
+            <p style='text-align: right;'>{{$message->user->name}}(自分):{{$message->content}}</p>
         @else
         </p>{{$message->user->name}}:{{$message->content}}</p>
         @endif
     @endforeach
+
+    <form action="" method="POST">
+        <input type="text" name="content">
+        <input type="hidden" name="user_id" value={{$my_id}}>
+        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+        <input type="submit" value="送信">
+        @csrf
+    </form>
 </body>
 </html>

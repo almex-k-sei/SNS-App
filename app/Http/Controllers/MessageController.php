@@ -17,4 +17,22 @@ class MessageController extends Controller
 
         return view('message', compact('my_id','talkroom', 'messages'));
     }
+    public function send(Request $request)
+    {
+        /* バリデーション */
+        $request->validate([
+            'content' => 'required|max:1024'
+        ]);
+
+        $message_table = new Message();
+        $message_table->content = $request->content;
+        $message_table->user_id = $request->user_id;
+        $message_table->talkroom_id = $request->talkroom_id;
+
+        /* データベースにレコードを追加する */
+        $message_table->save();
+
+        return redirect('/message');
+    }
+
 }

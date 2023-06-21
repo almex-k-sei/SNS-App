@@ -38,4 +38,7 @@ Route::get('/users_only', function(){
 Route::get('/message', [MessageController::class, 'index']
 )->middleware('auth');
 
+Route::post('/message', [MessageController::class, 'send']
+)->middleware('auth');
+
 require __DIR__.'/auth.php';
