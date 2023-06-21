@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,5 +34,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/users_only', function(){
     return view('users_only');
 })->middleware('auth'); /* auth ミドルウェアが認証状態を判定してくれる */
+
+Route::get('/message', [MessageController::class, 'index']
+)->middleware('auth');
+
+Route::post('/message', [MessageController::class, 'send']
+)->middleware('auth');
 
 require __DIR__.'/auth.php';
