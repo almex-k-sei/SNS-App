@@ -61,10 +61,10 @@
             </form>
             <!-- 友達一覧-->
             <div>
-                @foreach($user->followers as $friend)
+                @foreach($friends as $friend)
                 <details>
                     <summary>
-                        <div>{{$friend->image}}</div>
+                        <div><img src={{$friend->profile->image}}></div>
                         <div>{{$friend->name}}</div>
                         <div>
                             <!-- トーク作成ボタン-->
@@ -74,8 +74,8 @@
                             </form>
                         </div>
                     </summary>
-                {{$friend->birthday}}
-                {{$friend->description}}
+                {{$friend->profile->birth}}
+                {{$friend->profile->description}}
                 </details>
                 @endforeach
             </div>
