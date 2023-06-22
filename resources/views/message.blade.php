@@ -32,3 +32,10 @@
   </div>
 
   @include('footer')
+
+  <script>
+    // JavaScriptコードをここに追加する
+    window.onload = function() {
+        window.scrollTo(0, document.body.scrollHeight);
+    };
+</script>
