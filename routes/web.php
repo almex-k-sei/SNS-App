@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\MessageListController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,3 +34,5 @@ Route::get('/users_only', function(){
 })->middleware('auth'); /* auth ミドルウェアが認証状態を判定してくれる */
 
 require __DIR__.'/auth.php';
+
+Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
