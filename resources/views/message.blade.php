@@ -10,11 +10,17 @@
     <h1>{{$talkroom->name}}</h1>
 
     @foreach ($messages as $message)
-        @if($my_id == $message->user_id)
-            <p style='text-align: right;'>{{$message->user->name}}(自分):{{$message->content}}</p>
-        @else
-        </p>{{$message->user->name}}:{{$message->content}}</p>
-        @endif
+        <p>
+            @if($my_id == $message->user_id)
+                <div style='text-align: right;'>
+            @else
+                <div>
+            @endif
+            <img src="{{$message->user->profile->image}}" width="50px" height="50px">
+            {{$message->user->profile->name}}:{{$message->content}}
+
+            </div>
+        </p>
     @endforeach
 
     <form action="" method="POST">
