@@ -25,9 +25,22 @@
         </div>
         <div class="header_right">
             <a href="">
-                <i class="fas fa-sign-out-alt"></i>
             </a>
         </div>
+        <div class="header_left">
+            <!--ロゴ画像-->
+            <img src="" alt="">
+        </div>
+        <div class="header_right">
+            <!--ログアウト-->
+            {{Auth::user()->name}}
+            <form action="{{route('logout')}}" method="post">
+                <button type="submit">
+                <i class="fas fa-sign-out-alt"></i>
+                </button>
+            @csrf
+            </form>
+        
     </header>
 <!-- </body>
 </html> -->
