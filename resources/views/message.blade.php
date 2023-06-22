@@ -18,7 +18,8 @@
                             @elseif (explode('/',$message->filetype)[0] == "audio")
                                 <audio controls src="{{$message->filepath}}"  type="audio/mp3"></audio>
                             @elseif (explode('/',$message->filetype)[0] == "video")
-                                <video src="{{$message->filepath}}" type="video/mp4" width="200px" height="200px"></video>
+                                <video src="{{$message->filepath}}" type="{{$message->filetype}}" width="200px" height="200px"
+                                    autoplay muted loop>a</video>
                             @endif
                             <br>
                             <a href="{{$message->filepath}}" download>ダウンロード:[{{$message->filename}}]</a>
