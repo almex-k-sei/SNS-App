@@ -1,0 +1,44 @@
+.message_list_container {
+    width: 70%;
+    margin: 50px auto;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 25px;
+    border: 2px solid #9fa09e;
+}
+
+.list_title_container {
+    border-bottom: 3px solid #9fa09e;
+}
+
+.list_title_container > form {
+    padding-bottom: 30px;
+}
+
+.list_title {
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+}
+
+.list_contents_container {
+    padding: 30px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+    margin: 10px auto;
+    border: 2px solid #9fa09e;
+}
+
+button:hover {
+    background: #9fa09e;
+    transition: .4s;
+}
+
+button h2 {
+    margin-right: 20px;
+}

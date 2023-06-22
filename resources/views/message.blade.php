@@ -1,7 +1,7 @@
     @include('header')
 
 
-    <h1>{{$talkroom->name}}</h1>
+    <h1 class="talkroom_title">{{$talkroom->name}}</h1>
 
     <div class="container">
 
