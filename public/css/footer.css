@@ -1,5 +1,6 @@
 footer {
-    background: lightgreen;
+    background: #ffdc00;
+    border-top: 2px solid #a0d8ef;
 }
 
 .footer_list {

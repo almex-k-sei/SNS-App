@@ -29,5 +29,24 @@ class UserListController extends Controller
         return view('/home',compact('keyword','profiles','friends'));
 
     }
+    public function edit(Request $request){
+        $user_id = Auth::id();
+        $user = Profile::where('user_id','=',$user_id)->first();
+        if($request->input("name") !==null){
+        $user->name = $request->input("name");
+        }
+        if($request->input("description") !==null){
+        $user->description = $request->input("description");
+        }
+        if($request->input("birthday") !==null){
+        $user->birth = $request->input("birthday");
+        }
+        if($request->input("url") !==null){
+            $user->image = $request->input("url");
+        }
+        $user->save();
+        return redirect('/home');
+
+    }
 
 }

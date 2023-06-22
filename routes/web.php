@@ -40,6 +40,10 @@ Route::get('/users_only', function(){
 
 //ホーム画面
 Route::get('/home', [UserListController::class, 'index'])->middleware('auth');
+Route::post('/home',[UserListController::class, 'edit'])->middleware('auth');
+
+Route::get('/message', [MessageController::class, 'index']
+)->middleware('auth');
 
 /* トークルームIDが初回は */
 Route::get('/Message', [MessageController::class, 'index'])->middleware('auth');
@@ -48,5 +52,7 @@ Route::post('/Message', [MessageController::class, 'index'])->middleware('auth')
 Route::post('/Message/send', [MessageController::class, 'send'])->middleware('auth');
 
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
+Route::post('/message', [MessageController::class, 'send']
+)->middleware('auth');
 
 require __DIR__.'/auth.php';
