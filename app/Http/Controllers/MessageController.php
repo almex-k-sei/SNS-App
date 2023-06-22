@@ -11,12 +11,12 @@ class MessageController extends Controller
 {
     public function index(Request $request)
     {
-        // dd($request->old());
         /* トークルームIDをrequestで受け取る
+        !empty($request->old()) && $request->old('content') == NULLはメッセージ何も無しで送信されたとき
         sendのredirectで入ってきた場合は、request->oldという形で入ってくる */
         if ( null !== $request->old('id') ) {
             $id = $request->old('id');
-        }else if( $request->old('content') == NULL ) {
+        }else if( !empty($request->old()) && $request->old('content') == NULL ) {
             $id = $request->old('talkroom_id');
         }else{
             $id = $request->id;
