@@ -44,6 +44,7 @@
         <input type="submit" value="送る">
         @csrf
     </form>
+    <p>{{ $errors->first('content') }}</p>
 
   </div>
 
