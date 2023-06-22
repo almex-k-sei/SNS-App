@@ -1,6 +1,9 @@
 footer {
-    background: #ffdc00;
-    border-top: 2px solid #a0d8ef;
+    background-color: #b2ffb2;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer_list {

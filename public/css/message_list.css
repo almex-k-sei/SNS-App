@@ -5,6 +5,7 @@
     background-color: #fff;
     border-radius: 25px;
     border: 2px solid #9fa09e;
+    padding: 10px;
 }
 
 .list_title_container {
@@ -21,9 +22,39 @@
     padding: 30px;
 }
 
-.list_contents_container {
+.list_contents_container{
     padding: 30px;
-}
+    overflow-y: scroll;
+ }
+
+ .list_contents_container::-webkit-scrollbar{
+    width: 10px;
+ }
+
+ .list_contents_container::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 25px;
+ }
+
+ .list_contents_container::-webkit-scrollbar-thumb{
+    background-color: #FFF9B1;
+    border-radius: 25px;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 button {
     display: flex;
