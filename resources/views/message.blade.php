@@ -9,7 +9,21 @@
         <div class="message_container">
             @if($my_id == $message->user_id)
                 <div class="text_right_container text_container">
-                    <p>{{$message->content}}</p>
+                    <p>
+                        {{$message->content}}
+                        <br>
+                        @if(isset($message->filepath))
+                            @if(explode('/',$message->filetype)[0] == "image")
+                                <img src="{{$message->filepath}}" width="200px" height="200px">
+                            @elseif (explode('/',$message->filetype)[0] == "audio")
+                                <audio controls src="{{$message->filepath}}"  type="audio/mp3"></audio>
+                            @elseif (explode('/',$message->filetype)[0] == "video")
+                                <video src="{{$message->filepath}}" type="video/mp4" width="200px" height="200px"></video>
+                            @endif
+                            <br>
+                            <a href="{{$message->filepath}}" download>ダウンロード:[{{$message->filename}}]</a>
+                        @endif
+                    </p>
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
             @else
                 <div class="text_left_container text_container">

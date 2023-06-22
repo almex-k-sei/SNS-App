@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->string('file')->comment('ファイルの情報を格納')->after('content');
+            $table->string('filename')->nullable()->comment('ファイル名を格納')->after('content');
+            $table->string('filepath')->nullable()->comment('ファイルの情報を格納')->after('filename');
+            $table->string('filetype')->nullable()->comment('ファイル名を格納')->after('filepath');
             //
         });
     }
@@ -23,7 +25,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->dropColumn('file');
+            $table->dropColumn('filename');
+            $table->dropColumn('filepath');
+            $table->dropColumn('filetype');
         });
     }
 };
