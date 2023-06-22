@@ -9,7 +9,8 @@
     あるものとして記述する。 --}}
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/message_main.css">
     <title>サービス名</title>
 </head>
 <body>

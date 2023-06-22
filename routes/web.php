@@ -4,6 +4,7 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserListController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MessageListController;
 
 
 /*
@@ -36,6 +37,7 @@ Route::get('/users_only', function(){
     return view('users_only');
 })->middleware('auth'); /* auth ミドルウェアが認証状態を判定してくれる */
 
+
 //ホーム画面
 Route::get('/home', [UserListController::class, 'index'])->middleware('auth');
 Route::post('/home',[UserListController::class, 'edit'])->middleware('auth');
@@ -43,6 +45,13 @@ Route::post('/home',[UserListController::class, 'edit'])->middleware('auth');
 Route::get('/message', [MessageController::class, 'index']
 )->middleware('auth');
 
+/* トークルームIDが初回は */
+Route::get('/Message', [MessageController::class, 'index'])->middleware('auth');
+Route::post('/Message', [MessageController::class, 'index'])->middleware('auth');
+
+Route::post('/Message/send', [MessageController::class, 'send'])->middleware('auth');
+
+Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
 Route::post('/message', [MessageController::class, 'send']
 )->middleware('auth');
 
