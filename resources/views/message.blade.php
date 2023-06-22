@@ -21,7 +21,7 @@
         </div>
     @endforeach
 
-    <form class="send_message" action="/Message/send" method="POST">
+    <form class="send_message" action="/Message/send" method="POST" enctype="multipart/form-data">
         <input type="text" name="content">
         <input type="hidden" name="user_id" value={{$my_id}}>
         <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
