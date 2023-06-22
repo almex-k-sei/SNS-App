@@ -1,0 +1,45 @@
+body {
+    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+    background-repeat: no-repeat;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: lightgreen;
+}
+
+.service_title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+a {
+    display: inline-block;
+}
+
+i.fa-sign-out-alt {
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 5px;
+    color: #333;
+}
+
+
