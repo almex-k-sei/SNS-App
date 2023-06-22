@@ -22,17 +22,12 @@ h1 {
     border: 2px solid #130CB7;
     border-radius: 25px; */
     padding: 50px;
+    height: auto;
 }
 
-/* .container span {
-    background-color: #fff;
-    display: inline-block;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 10px;
-    width: 400px;
-    display: block;
-} */
+.message_container {
+    height: auto;
+}
 
 
 .container p {
@@ -43,17 +38,30 @@ h1 {
     margin: 10px;
 }
 
-.text_container {
+.text_container p {
     position: relative;
-    margin: 2em 0 2em 40px;
+    margin: 20px;
     padding: 15px;
     background: #fff0c6;
     border-radius: 30px;
+    display: inline-block;
 }
 
-.text_right_container p {
-    background-color: #FFF9B1;
+/* .text_left_container */
+.text_left_container {
+    text-align: left;
 }
+.text_left_container p:before {
+    content: "";
+    position: absolute;
+    left: -38px;
+    width: 13px;
+    height: 12px;
+    bottom: 0;
+    background: #fff0c6;
+    border-radius: 50%;
+}
+
 
 .text_left_container p {
     background-color: lightgreen;
@@ -67,10 +75,26 @@ h1 {
     border-radius: 50%;
 }
 
-.text_left_container {
-    text-align: left;
+
+/* .text_right_container */
+.text_right_container {
+    text-align: right;
 }
 
+.text_right_container p {
+    background-color: #FFF9B1;
+}
+
+.text_right_container p:before {
+    content: "";
+    position: absolute;
+    right: -24px;
+    width: 20px;
+    height: 18px;
+    bottom: 3px;
+    background: #fff0c6;
+    border-radius: 50%;
+}
 
 
 form.send_message {
