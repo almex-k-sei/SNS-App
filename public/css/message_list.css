@@ -1,10 +1,11 @@
 .message_list_container {
     width: 70%;
-    margin: 50px auto;
+    margin: 140px auto 50px;
     text-align: center;
     background-color: #fff;
     border-radius: 25px;
     border: 2px solid #9fa09e;
+    padding: 10px;
 }
 
 .list_title_container {
@@ -21,17 +22,36 @@
     padding: 30px;
 }
 
-.list_contents_container {
+.list_contents_container{
     padding: 30px;
-}
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+    height: 300px;
+ }
+
+ .list_contents_container::-webkit-scrollbar{
+    width: 10px;
+ }
+
+ .list_contents_container::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 25px;
+ }
+
+ .list_contents_container::-webkit-scrollbar-thumb{
+    background-color: #b2ffb2;
+    border-radius: 25px;
+ }
+
 
 button {
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
     width: 80%;
     margin: 10px auto;
     border: 2px solid #9fa09e;
+    padding: 10px;
 }
 
 button:hover {
@@ -40,7 +60,11 @@ button:hover {
 }
 
 
-/*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！*/
-/* button h2 {
+ button h2 {
     margin-right: 20px;
-} */
+    width: 200px;
+}
+
+button p {
+    width: 60%;
+}

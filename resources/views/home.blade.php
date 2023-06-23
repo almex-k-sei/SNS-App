@@ -32,36 +32,42 @@
                 </details>
                 <input type="submit" id="submit"value="編集">
             </form>
-        
+
         </div>
 
         <!--友達のプロフィール -->
         <div class="friends_profile">
             <!--検索-->
-            <form action="" method="GET">
-             @csrf
-                <input type="text" name="keyword" value="{{$keyword}}">
-                <input type="submit" value="検索">
-            </form>
+            <div class="search_friends">
+                <form action="" method="GET">
+                 @csrf
+                    <input type="text" name="keyword" value="{{$keyword}}">
+                    <input type="submit" value="検索">
+                </form>
+            </div>
             <!-- 友達一覧-->
-            <div>
+            <div class="friends_list">
                 @foreach($friends as $friend)
                 <details>
                     <summary>
                         <div><img src={{$friend->profile->image}} id="image"></div>
-                        <div id="name">{{$friend->name}}</div>
+                        <div id="name">{{$friend->profile->name}}</div>
                         <div id="talk">
                             <!-- トーク作成ボタン-->
-                            <form action="" method="post">
+                            <form action="/MessageList/add" method="post">
+                                <button class="create_talk" type="submit">
+                                    <i class="far fa-comments"></i>
+                                </button>
+                                <input type="hidden" name="user_id" value="{{$user_id}}">
+                                <input type="hidden" name="friend_id" value="{{$friend->id}}">
                                 @csrf
-                                <button type="submit">
-                                <i class="fas fa-plus"></i>
-                                </button> 
                             </form>
                         </div>
                     </summary>
-                生年月日:{{$friend->profile->birth}}
-                ひとこと:{{$friend->profile->description}}
+                    <div class="friends_list_detail">
+                        <p>生年月日:{{$friend->profile->birth}}</p>
+                        <p>ひとこと:{{$friend->profile->description}}</p>
+                    </div>
                 </details>
                 @endforeach
             </div>
