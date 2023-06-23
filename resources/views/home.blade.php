@@ -65,8 +65,8 @@
                         </div>
                     </summary>
                     <div class="friends_list_detail">
-                        <p>生年月日:{{$friend->profile->birth}}</p>
-                        <p>ひとこと:{{$friend->profile->description}}</p>
+                        <p>{{$friend->profile->birth}}</p>
+                        <p>{{$friend->profile->description}}</p>
                     </div>
                 </details>
                 @endforeach

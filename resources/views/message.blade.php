@@ -50,6 +50,7 @@
                     {{$message->user->profile->name}}
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
                     <p>{{$message->content}}</p>
+                    {{$message->updated_at}}
             @endif
             </div>
         </div>
