@@ -12,7 +12,7 @@
             <input type="submit" value="検索">
         </form>
         <!-- モーダルウィンドウのトリガーボタン -->
-        <button class="modalBtn">追加</button>
+        <button class="modalBtn addBtn">追加</button>
 
         <!-- モーダルウィンドウのコンテンツ -->
         <div class="modal">
@@ -51,6 +51,10 @@
 @include('footer')
 
 <style>
+.addBtn {
+    width: 50px;
+}
+
 /* モーダルウィンドウ */
 .modal {
     display: none; /* 最初は非表示にする */
@@ -66,6 +70,7 @@
 
 /* モーダルウィンドウのコンテンツ */
 .modal-content {
+    position: relative; /* 追加 */
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
@@ -75,6 +80,9 @@
 
 /* 閉じるボタン */
 .close {
+    position: absolute; /* 追加 */
+    top: 0; /* 追加 */
+    right: 0; /* 追加 */
     color: #aaa;
     float: right;
     font-size: 28px;
