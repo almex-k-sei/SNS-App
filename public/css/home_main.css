@@ -16,9 +16,9 @@ body{
 }
 
 .my_profile #image{
-    width:50%;
+    width:300px;
+    height:300px;
     border-radius: 50%;
-    background-color: white;
 }
 .my_editable_profile{
     text-align: center;
