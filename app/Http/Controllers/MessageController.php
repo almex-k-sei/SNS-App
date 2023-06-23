@@ -35,9 +35,17 @@ class MessageController extends Controller
     public function send(Request $request)
     {
         /* バリデーション */
-        // $request->validate([
-        //     'content' => 'required|min:1|max:1024'
-        // ]);
+        $request->validate(
+            [
+            'content' => 'required_without:file|max:1024',
+            'file' => 'required_without:content'
+            ],
+            [
+                'content.required_without' => 'メッセージを入力またはファイルを選択してください。',
+                'file.required_without' => 'メッセージを入力またはファイルを選択してください',
+                'content.max' => '文字数が多すぎます'
+            ]
+        );
 
         /* formで送信された内容をメッセージテーブルのレコードとして作成 */
         $message_table = new Message();
