@@ -24,7 +24,7 @@
                                 <audio controls src="{{$message->filepath}}"  type="{{$message->filetype}}"></audio>
                             @elseif (explode('/',$message->filetype)[0] == "video")
                                 <video src="{{$message->filepath}}" type="{{$message->filetype}}" width="200px" height="200px"
-                                    autoplay muted loop>a</video>
+                                    autoplay muted loop></video>
                             @endif
                             <br>
                             <a href="{{$message->filepath}}" download="{{$message->filename}}">ダウンロード</a>
