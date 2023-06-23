@@ -22,7 +22,8 @@
             @if (Route::has('login'))
                 <div id="login">
                     @auth
-                        <a href="{{ url('/dashboard') }}">Dashboard</a>
+                        <p>こんにちは、{{Auth::user()->name}}さん</p>
+                        <a href="{{ url('/home') }}">ホームへ</a>
                     @else
                         <a href="{{ route('login') }}" >ログイン</a>
                 </div>

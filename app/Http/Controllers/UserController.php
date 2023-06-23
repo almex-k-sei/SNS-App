@@ -19,7 +19,7 @@ class UserController extends Controller
         if($request->image !== null){
             $new_profile->image = $request->image;
         }elseif($request->image == null){
-            $new_profile->image = "https://www.google.com/url?sa=i&url=https%3A%2F%2Ffrigater.com%2Fnews%2F5954&psig=AOvVaw1Ms-qnln10lu78k8aWqOzE&ust=1687586792176000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNico-7c2P8CFQAAAAAdAAAAABAD";
+            $new_profile->image = "https://frigater.com/wp-content/uploads/2019/09/190924_b_%E3%82%B5%E3%83%A0%E3%83%8D%E3%82%A4%E3%83%AB.png";
         }
         if($request->name !== null){
             $new_profile->birth = $request->birth;
