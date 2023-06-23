@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupListController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserListController;
@@ -54,5 +55,7 @@ Route::post('/Message/send', [MessageController::class, 'send'])->middleware('au
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
 Route::post('/message', [MessageController::class, 'send']
 )->middleware('auth');
+
+Route::get('/GroupList', [GroupListController::class, 'index'])->middleware('auth');
 
 require __DIR__.'/auth.php';
