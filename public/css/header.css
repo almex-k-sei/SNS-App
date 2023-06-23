@@ -6,9 +6,10 @@ html {
 
 body {
     /* background-color: #FFDEE9; */
-    background-image: linear-gradient(45deg, #FFDEE9 0%, #B5FFFC 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #FFDEE9;
+    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
+    background-repeat: repeat;
+    background-size: contain;
     font-family: 'Rubik', sans-serif;
     margin: 0;
     line-height: 2rem;
@@ -35,15 +36,16 @@ p {
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 20px;
     background-color: #b2ffb2;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 100px;
     z-index: 100;
+    padding: 0 20px;
 }
 
 .service_title{

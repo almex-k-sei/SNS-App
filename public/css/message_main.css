@@ -6,6 +6,11 @@ h1.talkroom_title {
     padding: 10px;
     margin: 0;
     background-color: #fff;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .container {
@@ -84,9 +89,10 @@ h1.talkroom_title {
 }
 
 .send_message_container {
-    background-color: #fff;
+    background-color: transparent;
     position: fixed;
     bottom: 80px;
+    left: 0;
     width: 100%;
     padding: 10px;
     text-align: center;

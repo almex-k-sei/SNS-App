@@ -1,7 +1,7 @@
 main{
     display:flex;
     justify-content: space-around;
-    margin: 30px 20px;
+    margin: 140px 20px 30px;
 }
 body{
         background-color: white;
