@@ -35,9 +35,9 @@ class MessageController extends Controller
     public function send(Request $request)
     {
         /* バリデーション */
-        $request->validate([
-            'content' => 'required|min:1|max:1024'
-        ]);
+        // $request->validate([
+        //     'content' => 'required|min:1|max:1024'
+        // ]);
 
         /* formで送信された内容をメッセージテーブルのレコードとして作成 */
         $message_table = new Message();

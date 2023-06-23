@@ -10,10 +10,14 @@
             @if($my_id == $message->user_id)
                 <div class="text_right_container text_container">
                     <p>
-                        {{$message->content}}
-                        <br>
+                        {{-- メッセージが格納されているか判別 --}}
+                        @if(isset($message->content))
+                            {{$message->content}}
+                            <br>
+                        @endif
+                        {{-- ファイルデータが格納されているか判別 --}}
                         @if(isset($message->filepath))
-                        {{-- ファイルの形式を判別する　--}}
+                            {{-- ファイルの形式を判別する　--}}
                             @if(explode('/',$message->filetype)[0] == "image")
                                 <img src="{{$message->filepath}}" width="200px" height="200px">
                             @elseif (explode('/',$message->filetype)[0] == "audio")
