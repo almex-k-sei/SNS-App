@@ -1,21 +1,25 @@
-main{
-    display:flex;}
-    body{
+ main{
+    display:flex;
+    justify-content: center;
+    box-sizing: border-box;
+} 
+ body{
         background-color: white;
-    }
+    } 
 /*自分のプロフィールについて*/
-.my_profile{
+ .my_profile{
     margin-left: 50px;
 }
 .my_profile #image{
     width:500px;
     height:500px;
     border-radius: 50%;
-    background-color: white;;
+    background-color: white;
 }
 .my_editable_profile{
     margin-left: 100px;
     text-align: center;
+    margin-bottom: 10px;
 }
 .my_editable_profile input{
     width: 300px;
@@ -24,22 +28,37 @@ main{
 .my_editable_profile #name{
     font-size: xx-large;
     text-align: center;
+    background-color: transparent;
     
 }
 .my_editable_profile #birthday{
     text-align: center;
+    background-color: transparent;
     
 }
 .my_editable_profile #description{
     text-align: center;
+    background-color: transparent;
     
 }
+.my_editable_profile #url{
+    text-align: center;
+    background-color: transparent;
+}
+.my_editable_profile summary{
+    margin-left: 50px;
 
+
+}
+.my_editable_profile #submit{
+    width:auto;
+    margin-right:100px;
+}
 ::placeholder{
     color:black;
-}
-/*友達のプロフィールについて*/
-.friends_profile{
+} 
+/* 友達のプロフィールについて*/
+ .friends_profile{
     margin-left: 300px;
 }
 .friends_profile form{
@@ -52,10 +71,11 @@ main{
     background-color: white;;
 }
 .friends_profile #name{
-    font-size: x-large;
+    font-size: xx-large;
     width:100px;
     margin:30px;
-    margin-top: 100px;;
+    margin-top: 100px;
+    margin-left: 100px;
 
 }
 .friends_profile #talk{
@@ -67,12 +87,40 @@ main{
 summary{
     display: flex;
 
-}
+} 
 
 /*form要素の部品のダサさを消す*/
-input{
+ input{
     border:none;
 }
 button{
     border:none;
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+} 
+
+
+/*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！
+ .my_profile #image{
+    width:500px;
+    height:500px;
 }
+.friends_profile #image{
+    width:200px;
+    height:200px;
+}
+
+main{
+    display:flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+button{
+    width:30px;
+}
+
+.my_profile{
+    margin-right:100px; 
+}*/

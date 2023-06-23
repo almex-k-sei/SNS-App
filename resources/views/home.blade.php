@@ -28,9 +28,9 @@
                 </table>
                 <details>
                     <summary>プロフィール画像を編集</summary>
-                    URL<input type="url" name="url">
+                    URL<input type="url"  id="url" name="url">
                 </details>
-                <input type="submit" class="submit"value="編集">
+                <input type="submit" id="submit"value="編集">
             </form>
         
         </div>
