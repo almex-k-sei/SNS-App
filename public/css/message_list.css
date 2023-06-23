@@ -25,6 +25,8 @@
 .list_contents_container{
     padding: 30px;
     overflow-y: scroll;
+    text-overflow: ellipsis;
+    height: 300px;
  }
 
  .list_contents_container::-webkit-scrollbar{
@@ -37,32 +39,19 @@
  }
 
  .list_contents_container::-webkit-scrollbar-thumb{
-    background-color: #FFF9B1;
+    background-color: #b2ffb2;
     border-radius: 25px;
  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 button {
     display: flex;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
     width: 80%;
     margin: 10px auto;
     border: 2px solid #9fa09e;
+    padding: 10px;
 }
 
 button:hover {
@@ -70,6 +59,21 @@ button:hover {
     transition: .4s;
 }
 
+button.logout {
+    border: none;
+    background: transparent;
+}
+
+button.logout:hover {
+    opacity: .4;
+}
+
+
 button h2 {
     margin-right: 20px;
+    width: 200px;
+}
+
+button p {
+    width: 60%;
 }

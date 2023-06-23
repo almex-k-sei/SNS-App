@@ -19,16 +19,18 @@
             @endif
             </div>
         </div>
-    @endforeach
+        @endforeach
 
-    <form class="send_message" action="/Message/send" method="POST">
-        <input type="text" name="content">
-        <input type="hidden" name="user_id" value={{$my_id}}>
-        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
-        <input type="submit" value="送る">
-        @csrf
-    </form>
+    </div>
 
-  </div>
+    <div class="send_message_container">
+        <form class="send_message" action="/Message/send" method="POST">
+            <input type="text" name="content">
+            <input type="hidden" name="user_id" value={{$my_id}}>
+            <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
+            <input type="submit" value="送る">
+            @csrf
+        </form>
+    </div>
 
   @include('footer')

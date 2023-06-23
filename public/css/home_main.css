@@ -1,15 +1,17 @@
 main{
-    display:flex;}
-    body{
+    display:flex;
+}
+body{
         background-color: white;
     }
 /*自分のプロフィールについて*/
 .my_profile{
     margin-left: 50px;
+    width: 50%;
+    height: 100%;
 }
 .my_profile #image{
-    width:500px;
-    height:500px;
+    width:50%;
     border-radius: 50%;
     background-color: white;;
 }
@@ -24,15 +26,15 @@ main{
 .my_editable_profile #name{
     font-size: xx-large;
     text-align: center;
-    
+
 }
 .my_editable_profile #birthday{
     text-align: center;
-    
+
 }
 .my_editable_profile #description{
     text-align: center;
-    
+
 }
 
 ::placeholder{
@@ -40,7 +42,7 @@ main{
 }
 /*友達のプロフィールについて*/
 .friends_profile{
-    margin-left: 300px;
+    width: 50%;
 }
 .friends_profile form{
     margin-bottom: 10px;
@@ -66,7 +68,7 @@ main{
 
 summary{
     display: flex;
-
+    justify-content: center;
 }
 
 /*form要素の部品のダサさを消す*/

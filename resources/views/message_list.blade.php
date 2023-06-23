@@ -3,7 +3,7 @@
     <div class="message_list_container">
 
         <div class="list_title_container">
-            <h1 class="list_title">メッセージ一覧</h1>
+            <h1 class="list_title">トークルーム一覧</h1>
             {{-- 検索キーワードの送信 --}}
             <form action="/MessageList" method="GET">
                 <label>

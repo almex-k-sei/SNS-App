@@ -34,12 +34,12 @@
             <!--ログアウト-->
             {{Auth::user()->name}}
             <form action="{{route('logout')}}" method="post">
-                <button type="submit">
+                <button class="logout" type="submit">
                 <i class="fas fa-sign-out-alt"></i>
                 </button>
             @csrf
             </form>
-        
+
     </header>
 <!-- </body>
 </html> -->
