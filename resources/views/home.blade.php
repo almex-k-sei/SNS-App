@@ -51,7 +51,7 @@
                 <details>
                     <summary>
                         <div><img src={{$friend->profile->image}} id="image"></div>
-                        <div id="name">{{$friend->name}}</div>
+                        <div id="name">{{$friend->profile->name}}</div>
                         <div id="talk">
                             <!-- トーク作成ボタン-->
                             <form action="/MessageList/add" method="post">

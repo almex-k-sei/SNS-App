@@ -2,6 +2,9 @@
 
 
     <h1 class="talkroom_title">
+        <div class="back">
+            <a href="/MessageList">戻る</a>
+        </div>
         @if ($talkroom->name == "")
             @foreach ($talkroom->user as $user)
                 @if ($user->id != $my_id)
@@ -40,6 +43,7 @@
                             <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
                         @endif
                     </p>
+                    {{$message->updated_at}}
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
             @else
                 <div class="text_left_container text_container">

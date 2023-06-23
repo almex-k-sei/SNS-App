@@ -13,6 +13,11 @@ h1.talkroom_title {
     z-index: 100;
 }
 
+.back {
+    float: left;
+    margin-left: 20px;
+}
+
 .container {
     padding: 50px;
     height: auto;
@@ -55,7 +60,6 @@ h1.talkroom_title {
     border-radius: 50%;
 }
 
-
 .text_left_container p:before {
     content: "";
     position: absolute;
@@ -67,7 +71,6 @@ h1.talkroom_title {
     border-radius: 50%;
 }
 
-
 /* .text_right_container */
 .text_right_container {
     display: flex;
@@ -75,7 +78,7 @@ h1.talkroom_title {
 }
 
 .text_right_container p {
-    background-color: #FFF9B1;
+    background-color: #fff9b1;
 }
 
 .text_right_container p:after {
@@ -123,7 +126,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    opacity: .6;
+    opacity: 0.6;
 }
 
 input[type="file"] {
