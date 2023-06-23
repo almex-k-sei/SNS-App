@@ -24,6 +24,13 @@ class GroupListController extends Controller
                 array_push($groups, $talkroom);
             }
         }
+
+        $keyword = $request->input('keyword');
+        /* 検索キーワードが入力されている場合、表示するデータを絞り込む */
+        if (Str::length($keyword) > 0) {
+            $groups = $groups[0]->where('name', 'LIKE', "%$keyword%")->get();
+        }
+
         return view('group_list', compact('groups'));
     }
 }
