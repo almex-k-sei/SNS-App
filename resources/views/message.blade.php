@@ -37,7 +37,7 @@
                                     autoplay muted loop></video>
                             @endif
                             <br>
-                            <a href="{{$message->filepath}}" download="{{$message->filename}}">ダウンロード</a>
+                            <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
                         @endif
                     </p>
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
@@ -49,8 +49,9 @@
             @endif
             </div>
         </div>
-    @endforeach
+        @endforeach
 
+    <div class="send_message_container">
     <form class="send_message" action="/Message/send" method="POST" enctype="multipart/form-data">
         <input type="text" name="content">
         <input type="hidden" name="user_id" value={{$my_id}}>
@@ -59,9 +60,10 @@
         <input type="submit" value="送る">
         @csrf
     </form>
+    {{-- エラーメッセージ --}}
     <p>{{ $errors->first('content') }}</p>
+    </div>
 
-  </div>
 
   @include('footer')
 
