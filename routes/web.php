@@ -51,5 +51,6 @@ Route::post('/Message/send', [MessageController::class, 'send'])->middleware('au
 
 /* メッセージリスト画面 */
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
+Route::post('/MessageList/add', [MessageListController::class, 'add_talkroom'])->middleware('auth');
 
 require __DIR__.'/auth.php';

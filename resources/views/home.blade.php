@@ -54,11 +54,13 @@
                         <div id="name">{{$friend->name}}</div>
                         <div id="talk">
                             <!-- トーク作成ボタン-->
-                            <form action="" method="post">
-                                @csrf
+                            <form action="/MessageList/add" method="post">
                                 <button class="create_talk" type="submit">
                                     <i class="far fa-comments"></i>
                                 </button>
+                                <input type="hidden" name="user_id" value="{{$user_id}}">
+                                <input type="hidden" name="friend_id" value="{{$friend->id}}">
+                                @csrf
                             </form>
                         </div>
                     </summary>

@@ -26,7 +26,7 @@ class UserListController extends Controller
                 // ->orWhere('birth','LIKE',"%$keyword%")->orwhere('description','LIKE',"%$keyword%")->get();
         }
 
-        return view('home',compact('keyword','profiles','friends'));
+        return view('home',compact('keyword', 'profiles', 'friends', 'user_id'));
 
     }
     public function edit(Request $request){
