@@ -43,6 +43,7 @@
                             <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
                         @endif
                     </p>
+                    {{$message->updated_at}}
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
             @else
                 <div class="text_left_container text_container">

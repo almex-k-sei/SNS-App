@@ -34,8 +34,10 @@
                             @if ($talkroom->message->last() !== NULL)
                                 @if($talkroom->message->last()->content == NULL)
                                     <p>最後のメッセージ：コンテンツが送信されました</p>
+                                    <p>{{$talkroom->message->last()->updated_at}}</p>
                                 @else
-                                    <p>最後のメッセージ：{{$talkroom->message->last()->content}}</p>
+                                    <p>最後のメッセージ（{{$talkroom->message->last()->updated_at}}）<br>
+                                        {{$talkroom->message->last()->content}}</p>
                                 @endif
                             @else
                                 <p>New Talkroom!</p>
