@@ -17,6 +17,7 @@ h1.talkroom_title {
     padding: 50px;
     height: auto;
     margin-bottom: 80px;
+    margin-top: 140px;
 }
 
 .message_container {
@@ -112,14 +113,19 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    padding: 10px;
+    padding: 5px 10px;
     margin-left: 10px;
     background-color: #b2ffb2;
     border: none;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 80px;
+
 }
 
 input[type="submit"]:hover {
     opacity: .6;
+}
+
+input[type="file"] {
+
 }

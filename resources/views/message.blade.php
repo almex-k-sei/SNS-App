@@ -56,7 +56,7 @@
         <input type="text" name="content">
         <input type="hidden" name="user_id" value={{$my_id}}>
         <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
-        <input type="file" name="file" class="">
+        <input type="file" name="file" class="upload_file">
         <input type="submit" value="送る">
         @csrf
     </form>
