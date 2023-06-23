@@ -2,6 +2,9 @@
 
 
     <h1 class="talkroom_title">
+        <div class="back">
+            <a href="/MessageList">戻る</a>
+        </div>
         @if ($talkroom->name == "")
             @foreach ($talkroom->user as $user)
                 @if ($user->id != $my_id)
