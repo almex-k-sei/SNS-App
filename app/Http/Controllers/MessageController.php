@@ -30,7 +30,10 @@ class MessageController extends Controller
         $talkroom = Talkroom::find($id);
         $messages = Message::where('talkroom_id', '=', $id)->orderBy('created_at')->get();
 
-        return view('message', compact('my_id', 'talkroom', 'messages'));
+        /* viewファイルで日時表示に使うフラグ */
+        $previous_ymd = 0;
+
+        return view('message', compact('my_id', 'talkroom', 'messages', 'previous_ymd'));
     }
     public function send(Request $request)
     {
