@@ -12,12 +12,23 @@
             <input type="submit" value="検索">
         </form>
         <!-- モーダルウィンドウのトリガーボタン -->
-        <button class="modalBtn addBtn">追加</button>
+        <button class="modalBtn addBtn">グループを追加</button>
 
         <!-- モーダルウィンドウのコンテンツ -->
         <div class="modal">
             <div class="modal-content">
-                <!-- コンテンツをここに追加します -->
+                <form action="/GroupList" method="POST">
+                    <p><label>
+                        グループ名
+                        <input type="text" name="name">
+                    </label></p>
+                    <p><label>
+                        画像
+                        <input type="file" name="file">
+                    </label></p>
+                    <p><input type="submit" value="追加"></p>
+                    <p>{{ $errors->first('name') }}</p>
+                </form>
                 <span class="close">&times;</span>
             </div>
         </div>
@@ -52,7 +63,7 @@
 
 <style>
 .addBtn {
-    width: 50px;
+    width: 130px;
 }
 
 /* モーダルウィンドウ */
@@ -70,7 +81,7 @@
 
 /* モーダルウィンドウのコンテンツ */
 .modal-content {
-    position: relative; /* 追加 */
+    position: relative;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
@@ -80,9 +91,9 @@
 
 /* 閉じるボタン */
 .close {
-    position: absolute; /* 追加 */
-    top: 0; /* 追加 */
-    right: 0; /* 追加 */
+    position: absolute;
+    top: 0;
+    right: 0;
     color: #aaa;
     float: right;
     font-size: 28px;
