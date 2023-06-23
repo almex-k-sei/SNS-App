@@ -48,9 +48,9 @@ class MessageController extends Controller
         $message_table->save();
 
         /* 現在会話しているトークルームのIDを保持してリダイレクトで送る */
-        $id = $request->talkroom_id;
+        $talkroom_id = $request->talkroom_id;
 
-        return redirect('/Message')->withInput(['id' => $id]);
+        return redirect('/Message')->withInput(['id' => $talkroom_id]);
     }
 
 }
