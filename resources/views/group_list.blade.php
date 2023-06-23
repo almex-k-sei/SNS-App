@@ -17,131 +17,151 @@
         <!-- モーダルウィンドウのコンテンツ -->
         <div class="modal">
             <div class="modal-content">
-                <form action="/GroupList" method="POST">
+                <form action="/GroupList/add" method="POST" enctype="multipart/form-data">
+                    <!-- モーダルウィンドウの中身 -->
                     <p><label>
-                        グループ名
-                        <input type="text" name="name">
-                    </label></p>
+                            グループ名
+                            <input type="text" name="name">
+                        </label></p>
                     <p><label>
-                        画像
-                        <input type="file" name="file">
-                    </label></p>
+                            画像
+                            <input type="file" name="image">
+                        </label></p>
+                    <p><label>
+                            メンバー
+                            <select name="member[]" multiple>
+                                @foreach ($all_users as $user)
+                                    <option value="{{ $user->id }}"
+                                        @if(Auth::id() == $user->id )
+                                            selected
+                                        @endif
+                                        >
+                                        {{$user->profile->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </label></p>
                     <p><input type="submit" value="追加"></p>
-                    <p>{{ $errors->first('name') }}</p>
+                    @csrf
                 </form>
                 <span class="close">&times;</span>
             </div>
         </div>
+        {{-- バリデーションエラー --}}
+        <p>{{ $errors->first('name') }}</p>
+        <p>{{ $errors->first('member[]') }}</p>
 
 
 
-    <div class="list_contents_container">
-        <div>
-            {{-- トークルーム名とそのトークルームの最後のメッセージを表示 --}}
-            @foreach ($groups as $group)
-                <button class="modalBtn">
-                    <img src="{{ $group->image }}" height="100" width="100">
-                    <h2>{{ $group->name }}</h2>
-                </button>
-                <!-- モーダルウィンドウのコンテンツ -->
-                <div class="modal">
-                    <div class="modal-content">
-                        <!-- コンテンツをここに追加します -->
-                        @foreach ($group->user as $user)
-                            <p>{{$user->name}}</p>
-                        @endforeach
-                        <span class="close">&times;</span>
+        <div class="list_contents_container">
+            <div>
+                {{-- トークルーム名とそのトークルームの最後のメッセージを表示 --}}
+                @foreach ($groups as $group)
+                    <button class="modalBtn">
+                        <img src="{{ $group->image }}" height="100" width="100">
+                        <h2>{{ $group->name }}</h2>
+                    </button>
+                    <!-- モーダルウィンドウのコンテンツ -->
+                    <div class="modal">
+                        <div class="modal-content">
+                            <!-- コンテンツをここに追加します -->
+                            <h2>メンバー</h2>
+                            @foreach ($group->user as $user)
+                                <p>{{ $user->name }}</p>
+                            @endforeach
+                            <span class="close">&times;</span>
+                        </div>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
+
     </div>
 
-</div>
+    @include('footer')
 
-@include('footer')
-
-<style>
-.addBtn {
-    width: 130px;
-}
-
-/* モーダルウィンドウ */
-.modal {
-    display: none; /* 最初は非表示にする */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* 背景を半透明にする */
-}
-
-/* モーダルウィンドウのコンテンツ */
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* 閉じるボタン */
-.close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-</style>
-
-<script>
-'use strict';
-// モーダルウィンドウのトリガーボタンを取得
-var modalBtns = document.getElementsByClassName("modalBtn");
-
-// モーダルウィンドウの要素を取得
-var modals = document.getElementsByClassName("modal");
-
-// 閉じるボタンを取得
-var closeBtns = document.getElementsByClassName("close");
-
-// トリガーボタンがクリックされた時の処理
-for (var i = 0; i < modalBtns.length; i++) {
-    modalBtns[i].onclick = function() {
-        var modal = this.nextElementSibling;
-        modal.style.display = "block"; // 対応するモーダルを表示する
-    };
-}
-
-// 閉じるボタンがクリックされた時の処理
-for (var i = 0; i < closeBtns.length; i++) {
-    closeBtns[i].onclick = function() {
-        var modal = this.parentNode.parentNode;
-        modal.style.display = "none"; // 対応するモーダルを非表示にする
-    };
-}
-
-// モーダルウィンドウの外側がクリックされた時の処理
-window.onclick = function(event) {
-    for (var i = 0; i < modals.length; i++) {
-        if (event.target == modals[i]) {
-            modals[i].style.display = "none"; // 対応するモーダルを非表示にする
+    <style>
+        .addBtn {
+            width: 130px;
         }
-    }
-};
 
-</script>
+        /* モーダルウィンドウ */
+        .modal {
+            display: none;
+            /* 最初は非表示にする */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* 背景を半透明にする */
+        }
+
+        /* モーダルウィンドウのコンテンツ */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* 閉じるボタン */
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        'use strict';
+        // モーダルウィンドウのトリガーボタンを取得
+        var modalBtns = document.getElementsByClassName("modalBtn");
+
+        // モーダルウィンドウの要素を取得
+        var modals = document.getElementsByClassName("modal");
+
+        // 閉じるボタンを取得
+        var closeBtns = document.getElementsByClassName("close");
+
+        // トリガーボタンがクリックされた時の処理
+        for (var i = 0; i < modalBtns.length; i++) {
+            modalBtns[i].onclick = function() {
+                var modal = this.nextElementSibling;
+                modal.style.display = "block"; // 対応するモーダルを表示する
+            };
+        }
+
+        // 閉じるボタンがクリックされた時の処理
+        for (var i = 0; i < closeBtns.length; i++) {
+            closeBtns[i].onclick = function() {
+                var modal = this.parentNode.parentNode;
+                modal.style.display = "none"; // 対応するモーダルを非表示にする
+            };
+        }
+
+        // モーダルウィンドウの外側がクリックされた時の処理
+        window.onclick = function(event) {
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none"; // 対応するモーダルを非表示にする
+                }
+            }
+        };
+    </script>

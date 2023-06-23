@@ -58,4 +58,6 @@ Route::post('/message', [MessageController::class, 'send']
 
 Route::get('/GroupList', [GroupListController::class, 'index'])->middleware('auth');
 
+Route::post('/GroupList/add', [GroupListController::class, 'add'])->middleware('auth');
+
 require __DIR__.'/auth.php';
