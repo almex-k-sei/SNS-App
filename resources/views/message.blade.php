@@ -1,7 +1,17 @@
     @include('header')
 
 
-    <h1 class="talkroom_title">{{$talkroom->name}}</h1>
+    <h1 class="talkroom_title">
+        @if ($talkroom->name == "")
+            @foreach ($talkroom->user as $user)
+                @if ($user->id != $my_id)
+                    {{$user->name}}　
+                @endif
+            @endforeach
+        @else
+            {{$talkroom->name}}
+        @endif
+    </h1>
 
     <div class="container">
 

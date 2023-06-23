@@ -32,7 +32,7 @@
                 </details>
                 <input type="submit" class="submit"value="編集">
             </form>
-        
+
         </div>
 
         <!--友達のプロフィール -->
@@ -52,11 +52,13 @@
                         <div id="name">{{$friend->name}}</div>
                         <div id="talk">
                             <!-- トーク作成ボタン-->
-                            <form action="" method="post">
-                                @csrf
+                            <form action="/MessageList/add" method="post">
                                 <button type="submit">
                                 <i class="fas fa-plus"></i>
-                                </button> 
+                                </button>
+                                <input type="hidden" name="user_id" value="{{$user_id}}">
+                                <input type="hidden" name="friend_id" value="{{$friend->id}}">
+                                @csrf
                             </form>
                         </div>
                     </summary>
