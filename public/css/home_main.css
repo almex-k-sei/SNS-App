@@ -1,33 +1,51 @@
 main{
     display:flex;
+    justify-content: space-around;
+    margin: 30px 20px;
 }
 body{
         background-color: white;
     }
 /*自分のプロフィールについて*/
 .my_profile{
-    margin-left: 50px;
-    width: 50%;
-    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
+
 .my_profile #image{
     width:50%;
     border-radius: 50%;
-    background-color: white;;
+    background-color: white;
 }
 .my_editable_profile{
-    margin-left: 100px;
     text-align: center;
 }
 .my_editable_profile input{
+    background: transparent;
     width: 300px;
-    height: 30px;
+    padding: 10px;
+}
+
+.my_editable_profile input.submit{
+    background: #b2ffb2;
+    margin: 10px;
+}
+
+.my_editable_profile input:focus{
+    background: #fff;
+}
+.my_editable_profile input[type="url"] {
+    background: #fff;
+    margin-left: 5px;
 }
 .my_editable_profile #name{
     font-size: xx-large;
     text-align: center;
-
 }
+
 .my_editable_profile #birthday{
     text-align: center;
 
@@ -41,40 +59,90 @@ body{
     color:black;
 }
 /*友達のプロフィールについて*/
-.friends_profile{
-    width: 50%;
+.friends_list {
+    padding: 30px;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+    height: 300px;
 }
-.friends_profile form{
+
+.friends_list details {
+    border: 2px solid #9fa09e;
+    border-radius: 25px;
     margin-bottom: 10px;
+    padding: 10px;
 }
+
+.friends_list details img {
+    margin-top: 10px;
+}
+
+.search_friends {
+    border-bottom: 2px solid #9fa09e;
+    text-align: center;
+}
+
+.search_friends input[type="text"] {
+    border: 1px solid #9fa09e;
+}
+
+.search_friends input[type="text"]:focus {
+    outline: 3px solid #b2ffb2;
+}
+
+.fa-comments {
+    font-size: 30px;
+}
+
+
+.friends_profile {
+    width: 50%;
+    height: auto;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.friends_profile > div {
+    padding: 20px;
+}
+
+.fa-comment-medical {
+    font-size: 30px;
+}
+
 .friends_profile #image{
-    width:200px;
-    height:200px;
+    width:100%;
+    max-width: 50px;
     border-radius: 50%;
     background-color: white;;
 }
 .friends_profile #name{
     font-size: x-large;
     width:100px;
-    margin:30px;
-    margin-top: 100px;;
-
+    margin-left: 30px;
 }
+
 .friends_profile #talk{
     width:100px;
-    margin:30px;
-    margin-top: 100px;
+    margin-left: 30px;
 }
 
 summary{
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 /*form要素の部品のダサさを消す*/
 input{
     border:none;
 }
+
 button{
     border:none;
+}
+
+button.create_talk {
+    background: transparent;
 }

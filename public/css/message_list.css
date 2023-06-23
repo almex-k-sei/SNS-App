@@ -59,16 +59,6 @@ button:hover {
     transition: .4s;
 }
 
-button.logout {
-    border: none;
-    background: transparent;
-}
-
-button.logout:hover {
-    opacity: .4;
-}
-
-
 button h2 {
     margin-right: 20px;
     width: 200px;

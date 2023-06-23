@@ -22,14 +22,14 @@
         <div class="header_left">
             <p class="service_title">サービス名</p>
         </div>
-        <div class="header_right">
+        {{-- <div class="header_right">
             <a href="">
             </a>
         </div>
         <div class="header_left">
             <!--ロゴ画像-->
             <img src="" alt="">
-        </div>
+        </div> --}}
         <div class="header_right">
             <!--ログアウト-->
             {{Auth::user()->name}}

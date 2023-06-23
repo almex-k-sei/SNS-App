@@ -27,7 +27,7 @@
                                     autoplay muted loop></video>
                             @endif
                             <br>
-                            <a href="{{$message->filepath}}" download="{{$message->filename}}">ダウンロード</a>
+                            <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
                         @endif
                     </p>
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
