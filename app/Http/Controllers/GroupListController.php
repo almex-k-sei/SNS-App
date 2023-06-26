@@ -8,6 +8,7 @@ use Illuminate\Console\View\Components\Task;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class GroupListController extends Controller
 
@@ -44,29 +45,32 @@ class GroupListController extends Controller
         $request->validate(
             [
             'name' => 'required|max:20',
-            'member[]' => 'required|max:1000',
+            'image' => 'image',
+            'members' => 'required|min:3|max:1000',
             ],
             [
                 'name.required' => 'グループ名を入力してください',
                 'name.max' => '文字数が多すぎます',
-                'member[].required' => 'メンバーを入力してください',
-                'member[].max' => '人数が多すぎます'
+                'image.image' => '画像ファイルを指定してください',
+                'members.required' => 'メンバーを入力してください',
+                'members.min' => '最低でも3人以上選択してください',
+                'members.max' => '人数が多すぎます'
             ]
         );
 
         /* formで送信された内容をメッセージテーブルのレコードとして作成 */
-        $group_table = new Talkroom();
+        $talkrooms_table = new Talkroom();
 
-        $group_table->name = $request->name;
+        $talkrooms_table->name = $request->name;
 
         if (isset($request->image)) {
-            $group_table->image = $request->image->store('groupdata', 'public');
+            $talkrooms_table->image = $request->image->store('gruopdata', 'public');
         }
         /* データベースにレコードを追加する */
 
-        dd($request->member);
+        $talkrooms_table->save();
 
-        $group_table->save();
+        $talkrooms_table->user()->attach($request->members);
 
         return redirect('/GroupList');
     }

@@ -29,7 +29,7 @@
                         </label></p>
                     <p><label>
                             メンバー
-                            <select name="member[]" multiple>
+                            <select name="members[]" multiple>
                                 @foreach ($all_users as $user)
                                     <option value="{{ $user->id }}"
                                         @if(Auth::id() == $user->id )
@@ -47,18 +47,20 @@
                 <span class="close">&times;</span>
             </div>
         </div>
+
         {{-- バリデーションエラー --}}
         <p>{{ $errors->first('name') }}</p>
-        <p>{{ $errors->first('member[]') }}</p>
+        <p>{{ $errors->first('image') }}</p>
+        <p>{{ $errors->first('members') }}</p>
 
 
 
         <div class="list_contents_container">
             <div>
-                {{-- トークルーム名とそのトークルームの最後のメッセージを表示 --}}
+                {{-- グループ一覧の表示 --}}
                 @foreach ($groups as $group)
                     <button class="modalBtn">
-                        <img src="{{ $group->image }}" height="100" width="100">
+                        <img src="{{$group->image}}" width="200px" height="200px">
                         <h2>{{ $group->name }}</h2>
                     </button>
                     <!-- モーダルウィンドウのコンテンツ -->
@@ -69,6 +71,11 @@
                             @foreach ($group->user as $user)
                                 <p>{{ $user->name }}</p>
                             @endforeach
+                            <form action="/Message" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="{{$group->id}}">
+                                <input type="submit" value="トークへ移動">
+                                @csrf
+                            </form>
                             <span class="close">&times;</span>
                         </div>
                     </div>
@@ -80,54 +87,6 @@
 
     @include('footer')
 
-    <style>
-        .addBtn {
-            width: 130px;
-        }
-
-        /* モーダルウィンドウ */
-        .modal {
-            display: none;
-            /* 最初は非表示にする */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.5);
-            /* 背景を半透明にする */
-        }
-
-        /* モーダルウィンドウのコンテンツ */
-        .modal-content {
-            position: relative;
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        /* 閉じるボタン */
-        .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
 
     <script>
         'use strict';

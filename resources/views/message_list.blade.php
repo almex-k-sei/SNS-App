@@ -21,7 +21,11 @@
                 <form action="/Message" method="POST">
                     <button>
                         <h2>{{$talkroom->name}}</h2>
-                        <p>最後のメッセージ：{{$talkroom->message->last()->content}}</p>
+                        <p>最後のメッセージ：
+                            @if(isset($talkroom->message->last()->content))
+                                {{$talkroom->message->last()->content}}
+                            @endif
+                        </p>
                         <input type="hidden" name="id" value={{$talkroom->id}}>
                     </button>
                     @csrf
