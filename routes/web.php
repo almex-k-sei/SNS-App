@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GroupListController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserListController;
@@ -52,5 +53,9 @@ Route::post('/Message/send', [MessageController::class, 'send'])->middleware('au
 /* メッセージリスト画面 */
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
 Route::post('/MessageList/add', [MessageListController::class, 'add_talkroom'])->middleware('auth');
+
+Route::get('/GroupList', [GroupListController::class, 'index'])->middleware('auth');
+
+Route::post('/GroupList/add', [GroupListController::class, 'add'])->middleware('auth');
 
 require __DIR__.'/auth.php';

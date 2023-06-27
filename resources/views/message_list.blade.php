@@ -24,7 +24,7 @@
                             <h2>
                                 @foreach ($talkroom->user as $user)
                                     @if ($user->id != $user_id)
-                                        {{$user->name}}　
+                                        {{$user->name}}
                                     @endif
                                 @endforeach
                             </h2>
