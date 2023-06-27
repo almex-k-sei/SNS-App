@@ -1,3 +1,5 @@
+<!--旧ダッシュボード/ログインや新規登録のタブが表示されてそれぞれのボタン押す遷移する-->
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -7,8 +9,6 @@
         <title>Laravel</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
         <!-- Styles -->
         <style>
@@ -17,21 +17,27 @@
         {{-- cssファイルの読み込み --}}
         <link rel="stylesheet" href="css/welcome.css">
     </head>
+    <!--ログイン-->
     <body class="antialiased">
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <div class="welcome_container" {{--class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10"--}}>
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+            <div class="welcome_container" {{--class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10"--}}>
+                <img src="" alt="ロゴ">
+                <div>
+                    @if (Route::has('login'))
+                        <div {{--id="login"--}}>
+                            @auth
+                                <p>こんにちは、{{Auth::user()->name}}さん</p>
+                                <a href="{{ url('/Home') }}">ホームへ</a>
+                            @else
+                                <a href="{{ route('login') }}" >ログイン</a>
+                        </div>
+                        <div>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">新規登録</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
 
             {{-- <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
@@ -138,5 +144,28 @@
                 </div>
             </div> --}}
         </div>
+
+        {{-- <style>
+            div{
+
+                font-size: 50px;
+                width: 300px;
+                height: auto;
+                margin:auto;
+
+            }
+            #login{
+                margin-top:400px;
+            }
+            img{
+                margin:auto;
+                width:100px;
+                height:100px;
+                margin-top:100px;
+            }
+            body{
+                background-color:lightgreen;
+            }
+        </style> --}}
     </body>
 </html>

@@ -59,7 +59,8 @@ button:hover {
     transition: .4s;
 }
 
-button h2 {
+
+ button h2 {
     margin-right: 20px;
     width: 200px;
 }

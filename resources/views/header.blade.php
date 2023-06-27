@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/home_main.css">
     <link rel="stylesheet" href="css/message_main.css">
     <link rel="stylesheet" href="css/message_list.css">
+    <link rel="stylesheet" href="/css/home_main.css">
     <title>サービス名</title>
 </head>
 <body>

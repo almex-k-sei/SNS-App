@@ -9,7 +9,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-
+use App\Http\Controllers\UserListController;
+use App\Models\Profile;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -26,10 +27,16 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
+        
+        //プロフィールがなかったら＝新規登録だったら
+        $user_id = Auth::id();
+        $profile = Profile::where("id","=",$user_id);
+        if($profile == null){
         return redirect()->intended(RouteServiceProvider::HOME);
+        }else{//プロフィールが存在するとき
+            return redirect("/Home");
+        }
     }
 
     /**

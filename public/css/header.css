@@ -62,6 +62,9 @@ i.fa-sign-out-alt {
     margin-top: 5px;
     color: #333;
 }
+button{
+background-color: transparent;
+}
 
 i {
     display: inline-block;

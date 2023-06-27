@@ -3,6 +3,7 @@
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserListController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageListController;
 
@@ -32,12 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-/* ログイン中のみアクセスできるルーティングのサンプル */
-Route::get('/users_only', function(){
-    return view('users_only');
-})->middleware('auth'); /* auth ミドルウェアが認証状態を判定してくれる */
-
-
 //ホーム画面
 Route::get('/Home', [UserListController::class, 'index'])->middleware('auth');
 Route::post('/Home',[UserListController::class, 'edit'])->middleware('auth');
@@ -52,5 +47,8 @@ Route::post('/Message/send', [MessageController::class, 'send'])->middleware('au
 /* メッセージリスト画面 */
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
 Route::post('/MessageList/add', [MessageListController::class, 'add_talkroom'])->middleware('auth');
+
+//新規登録時のusersテーブルとprofilesテーブルの結び付け
+Route::post('dashboard',[UserController::class,'create'])->middleware('auth');
 
 require __DIR__.'/auth.php';

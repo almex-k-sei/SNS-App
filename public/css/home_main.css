@@ -19,10 +19,10 @@ body{
     width: 100%;
     max-width: 300px;
     border-radius: 50%;
-    background-color: white;
 }
 .my_editable_profile{
     text-align: center;
+    margin-bottom: 10px;
 }
 .my_editable_profile input{
     background: transparent;
@@ -45,6 +45,7 @@ body{
 .my_editable_profile #name{
     font-size: xx-large;
     text-align: center;
+    background-color: transparent;
 }
 
 .my_editable_profile #birthday{
@@ -57,6 +58,13 @@ body{
     padding: 10px;
     background: #fff;
     border-radius: 30px;
+}
+.my_editable_profile #url{
+    text-align: center;
+    background-color: transparent;
+}
+.my_editable_profile summary{
+    margin-left: 50px;
 }
 
 .description_container::before{
@@ -145,7 +153,7 @@ input[type="text"]#description {
     background-color: white;;
 }
 .friends_profile #name{
-    font-size: x-large;
+    font-size: xx-large;
     width:100px;
     margin-left: 30px;
     width: 120px;
@@ -163,14 +171,83 @@ summary{
 }
 
 /*form要素の部品のダサさを消す*/
-input{
+ input{
     border:none;
 }
 
 button{
     border:none;
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+}
+
+
+/*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！
+ .my_profile #image{
+    width:500px;
+    height:500px;
+}
+.friends_profile #image{
+    width:200px;
+    height:200px;
+}
+
+main{
+    display:flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+button{
+    width:30px;
 }
 
 button.create_talk {
     background: transparent;
+}*/
+/*友達追加ポップアップ*/
+.open {
+cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+}
+#pop-up {
+display: none; /* label でコントロールするので input は非表示に */
+}
+.overlay {
+display: none; /* input にチェックが入るまでは非表示に */
+}
+#pop-up:checked + .overlay {
+display: block;
+z-index: 9999;
+background-color: #00000070;
+position: fixed;
+width: 100%;
+height: 100vh;
+top: 0;
+left: 0;
+}
+.window {
+width: 90vw;
+max-width: 380px;
+height: 240px;
+background-color: #ffffff;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.text {
+font-size: 18px;
+margin: 0;
+}
+.close {
+cursor:pointer;
+position: absolute;
+top: 4px;
+right: 4px;
+font-size: 20px;
 }
