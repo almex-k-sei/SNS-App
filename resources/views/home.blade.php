@@ -22,7 +22,9 @@
                     </tr>
                     <tr>
                         <td>
-                        <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
+                            <div class="description_container">
+                                <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
+                            </div>
                         </td>
                     </tr>
                 </table>

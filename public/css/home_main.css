@@ -51,18 +51,40 @@ body{
     text-align: center;
 }
 
-.my_editable_profile #description{
-    text-align: center;
-    background-color: #fff;
+.description_container {
+    position: relative;
+    margin: 2em 0 2em 40px;
     padding: 10px;
-    border-radius: 10px;
-    /* position: relative;
-    padding: 20px;
-    background-color: #b2ffb2;
-    border-radius: 10px;
-    box-shadow: 6px 6px 0px 0px #99cc33;/*影*/
-    margin-bottom: 2em;
+    background: #fff;
+    border-radius: 30px;
 }
+
+.description_container::before{
+    content: "";
+    position: absolute;
+    left: -5px;
+    width: 13px;
+    height: 12px;
+    top: -35px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.description_container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 18px;
+    top: -20px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+input[type="text"]#description {
+    border: none;
+}
+
 
 ::placeholder{
     color:black;
