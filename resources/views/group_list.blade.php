@@ -75,14 +75,21 @@
                                 @csrf
                             </form>
                             <h2>メンバー</h2>
-                            @foreach ($group->user as $user)
-                                <p>{{ $user->name }}</p>
+                            @foreach ($group->user as $member)
+                                <p>{{ $member->name }}</p>
                             @endforeach
                             <form action="/Message" method="POST">
                                 <input type="hidden" name="id" value="{{$group->id}}">
                                 <input type="submit" value="トークへ移動">
                                 @csrf
                             </form>
+                            @if(Auth::id() == $group->administrator_id)
+                                <form action="/GroupList/delete" method="POST">
+                                    <input type="hidden" name="group_id" value="{{$group->id}}">
+                                    <input type="submit" value="削除">
+                                    @csrf
+                                </form>
+                            @endif
                             <span class="close">&times;</span>
                         </div>
                     </div>

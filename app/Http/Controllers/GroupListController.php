@@ -85,5 +85,15 @@ class GroupListController extends Controller
 
         return redirect('/GroupList');
     }
+    // グループ削除機能
+    public function delete(Request $request)
+    {
+
+        $talkrooms_table = Talkroom::find( $request->group_id );
+
+        $talkrooms_table->delete();
+
+        return redirect('/GroupList');
+    }
 
 }
