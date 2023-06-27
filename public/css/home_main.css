@@ -218,15 +218,27 @@ button{
 button.create_talk {
     background: transparent;
 }*/
-/*友達追加ポップアップ*/
-.open {
-cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+
+.addBtn {
+    width: 130px;
 }
-#pop-up {
-display: none; /* label でコントロールするので input は非表示に */
+/* モーダルウィンドウ */
+.modal {
+    display: none;
+    /* 最初は非表示にする */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 背景を半透明にする */
 }
+/* <<<<<<< HEAD
 .overlay {
-display: none; /* input にチェックが入るまでは非表示に */
+display: none;
 }
 #pop-up:checked + .overlay {
 display: block;
@@ -267,4 +279,34 @@ position: absolute;
 top: 10px;
 right: 20px;
 font-size: 20px;
+=======
+
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }
+
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #aaa;
+    float: right; */
+    /* font-size: 28px;
+    font-weight: bold;
+>>>>>>> origin/main
+} */
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
