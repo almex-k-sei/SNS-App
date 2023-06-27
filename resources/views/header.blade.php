@@ -11,9 +11,9 @@
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     {{-- サイトアクセス時にresourceフォルダの中にあるブレードファイルをルートやcontrollerで
     読みに行かせる場合もlinkのパスはpublic内あるものとして記述する。 --}}
-    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="/css/home_main.css">
     <link rel="stylesheet" href="css/message_main.css">
     <link rel="stylesheet" href="css/message_list.css">
     <link rel="stylesheet" href="css/group_list.css">
@@ -24,19 +24,19 @@
         <div class="header_left">
             <p class="service_title">サービス名</p>
         </div>
-        <div class="header_right">
+        {{-- <div class="header_right">
             <a href="">
             </a>
         </div>
         <div class="header_left">
             <!--ロゴ画像-->
             <img src="" alt="">
-        </div>
+        </div> --}}
         <div class="header_right">
             <!--ログアウト-->
             {{Auth::user()->name}}
             <form action="{{route('logout')}}" method="post">
-                <button type="submit">
+                <button class="logout" type="submit">
                 <i class="fas fa-sign-out-alt"></i>
                 </button>
             @csrf

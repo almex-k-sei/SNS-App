@@ -1,9 +1,3 @@
-/* body {
-    margin: 0;
-    line-height: 2rem;
-    font-size: 18px;
-} */
-
 h1.talkroom_title {
     font-size: 24px;
     text-align: center;
@@ -12,21 +6,33 @@ h1.talkroom_title {
     padding: 10px;
     margin: 0;
     background-color: #fff;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.back {
+    float: left;
+    margin-left: 20px;
 }
 
 .container {
-    /* box-sizing: border-box;
-    background-color: #fff;
-    width: 70%;
-    margin: 50px auto;
-    border: 2px solid #130CB7;
-    border-radius: 25px; */
     padding: 50px;
+    padding-bottom: 120px;
     height: auto;
+    margin-bottom: 80px;
+    margin-top: 140px;
 }
 
 .message_container {
     margin: 20px 10px;
+}
+
+.message_container img {
+    width: 100px;
+    height: 100px;
 }
 
 .text_container p {
@@ -40,7 +46,8 @@ h1.talkroom_title {
 
 /* .text_left_container */
 .text_left_container {
-    text-align: left;
+    display: flex;
+    justify-content: left;
 }
 
 .text_left_container p:before {
@@ -54,27 +61,38 @@ h1.talkroom_title {
     border-radius: 50%;
 }
 
-
 .text_left_container p:before {
-    background-color: lightgreen;
     content: "";
     position: absolute;
     left: -10px;
     width: 13px;
     height: 12px;
     top: 0;
-    background: #fff0c6;
+    background: #a0d8ef;
     border-radius: 50%;
 }
-
 
 /* .text_right_container */
 .text_right_container {
-    text-align: right;
+    display: flex;
+    justify-content: right;
+}
+
+.time_bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.time_bottom.right {
+    align-items: end;
+}
+
+.time_bottom.left {
+    align-items: start;
 }
 
 .text_right_container p {
-    background-color: #FFF9B1;
+    background-color: #fff9b1;
 }
 
 .text_right_container p:after {
@@ -88,24 +106,40 @@ h1.talkroom_title {
     border-radius: 50%;
 }
 
-
-form.send_message {
+.send_message_container {
+    background-color: transparent;
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    padding: 10px;
     text-align: center;
 }
 
+form.send_message {
+    margin: 0 auto;
+}
+
 input[type="text"] {
-    width: 300px;
+    width: 50%;
+    max-width: 350px;
     padding: 5px;
+    border: 1px solid #9fa09e;
+}
+
+input[type="text"]:focus {
+    outline: 3px solid #b2ffb2;
 }
 
 input[type="submit"] {
-    padding: 5px;
-    background-color: #ffdc00;
+    padding: 5px 10px;
+    margin-left: 10px;
+    background-color: #b2ffb2;
     border: none;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 80px;
 }
 
 input[type="submit"]:hover {
-    opacity: .6;
+    opacity: 0.6;
 }

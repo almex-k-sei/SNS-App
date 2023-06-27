@@ -45,7 +45,7 @@ class UserListController extends Controller
             $user->image = $request->input("url");
         }
         $user->save();
-        return redirect('/Home');
+        return redirect('/home');
 
     }
 
