@@ -1,7 +1,6 @@
 
 <!--    ログイン後一番最初に飛ぶホーム画面。画面設定3または4のイメージ-->
     @include('header')
-    <link rel="stylesheet" href="/css/home_main.css">
     <main>
         <!--自分のプロフィール -->
         <div class="my_profile">
@@ -45,6 +44,19 @@
                     <input type="submit" value="検索">
                 </form>
             </div>
+            <label class="open" for="pop-up">友達追加</label>
+                <input type="checkbox" id="pop-up">
+                <div class="overlay">
+	                <div class="window">
+		                <label class="close" for="pop-up">×</label>
+		                    <div class="add_friend">
+                                <form action="" method="get">
+                                    <input type="text" name="friend_email">
+                                    <input type="submit" value="検索">
+                                </form>
+                            </div>
+	                </div>
+                </div>
             <!-- 友達一覧-->
             <div class="friends_list">
                 @foreach($friends as $friend)

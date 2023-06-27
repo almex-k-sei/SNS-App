@@ -23,7 +23,7 @@
                 <div id="login">
                     @auth
                         <p>こんにちは、{{Auth::user()->name}}さん</p>
-                        <a href="{{ url('/home') }}">ホームへ</a>
+                        <a href="{{ url('/Home') }}">ホームへ</a>
                     @else
                         <a href="{{ route('login') }}" >ログイン</a>
                 </div>

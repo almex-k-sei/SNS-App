@@ -35,7 +35,7 @@ class AuthenticatedSessionController extends Controller
         if($profile == null){
         return redirect()->intended(RouteServiceProvider::HOME);
         }else{//プロフィールが存在するとき
-            return redirect("/home");
+            return redirect("/Home");
         }
     }
 
