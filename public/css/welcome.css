@@ -20,10 +20,41 @@ a {
     transform: translate(-50%,-50%);
     background-color: #fff;
     width: 50%;
-    padding: 30px 0;
+    padding: 30px;
     font-size: 24px;
 }
 
 .welcome_container a:hover {
     color: #b2ffb2;
+}
+
+.welcome_button_container {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto 30px;
+}
+
+.welcome_button_container > div {
+    display: inline-block;
+    margin: 0 30px;
+    background-color: #b2ffb2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border-bottom: 2px solid #333;
+    position: relative;
+    bottom: 0;
+}
+
+.welcome_button_container > div:hover {
+    opacity: .4;
+}
+
+.welcome_button_container > div a:hover {
+    opacity: .4;
+    color: #333;
+}
+
+.welcome_button_container > div:active {
+    border: 0;
+    bottom: -2px;
 }

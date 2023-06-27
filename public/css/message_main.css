@@ -121,7 +121,7 @@ form.send_message {
 }
 
 input[type="text"] {
-    width: 50%;
+    width: 100%;
     max-width: 350px;
     padding: 5px;
     border: 1px solid #9fa09e;
@@ -132,7 +132,7 @@ input[type="text"]:focus {
 }
 
 input[type="submit"] {
-    padding: 5px 10px;
+    padding: 10px 20px;
     margin-left: 10px;
     background-color: #b2ffb2;
     border: none;
