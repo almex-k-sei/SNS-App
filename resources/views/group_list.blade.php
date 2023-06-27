@@ -75,18 +75,36 @@
                                 @csrf
                             </form>
                             <h2>メンバー</h2>
+                            {{-- メンバーを一覧表示 --}}
                             @foreach ($group->user as $member)
                                 <p>{{ $member->name }}</p>
                             @endforeach
+                            {{-- トークへ移動ボタン --}}
                             <form action="/Message" method="POST">
                                 <input type="hidden" name="id" value="{{$group->id}}">
                                 <input type="submit" value="トークへ移動">
                                 @csrf
                             </form>
+
+                            {{-- グループの作成者のみが表示されるボタン --}}
                             @if(Auth::id() == $group->administrator_id)
+                                {{-- メンバーの編集 --}}
+                                <form action="/GroupList/edit" method="POST">
+                                    <input type="hidden" name="group_id" value="{{$group->id}}">
+                                    <input type="submit" value="グループの編集">
+                                    @csrf
+                                </form>
+                                {{-- グループの削除 --}}
                                 <form action="/GroupList/delete" method="POST">
                                     <input type="hidden" name="group_id" value="{{$group->id}}">
-                                    <input type="submit" value="削除">
+                                    <input type="submit" value="グループの削除">
+                                    @csrf
+                                </form>
+                            @else
+                                {{-- メンバーを追加ボタン --}}
+                                <form action="/GroupList/add_member" method="POST">
+                                    <input type="hidden" name="id" value="{{$group->id}}">
+                                    <input type="submit" value="メンバーの追加">
                                     @csrf
                                 </form>
                             @endif
