@@ -32,11 +32,18 @@
                                 <h2>{{$talkroom->name}}</h2>
                             @endif
                             @if ($talkroom->message->last() !== NULL)
+                                <?php
+                                    /* メッセージの送信日時を取得 */
+                                    $time = $talkroom->message->last()->created_at;
+                                    $timestamp = strtotime($time);
+                                    $mdhm = date("m/d H:i", $timestamp);
+                                    $hm = date("H:i", $timestamp);
+                                ?>
                                 @if($talkroom->message->last()->content == NULL)
-                                    <p>最後のメッセージ：コンテンツが送信されました</p>
-                                    <p>{{$talkroom->message->last()->updated_at}}</p>
+                                    <p>{{$mdhm}}<br>
+                                        コンテンツが送信されました</p>
                                 @else
-                                    <p>最後のメッセージ（{{$talkroom->message->last()->updated_at}}）<br>
+                                    <p>{{$mdhm}}<br>
                                         {{$talkroom->message->last()->content}}</p>
                                 @endif
                             @else
