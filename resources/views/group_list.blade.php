@@ -30,13 +30,13 @@
                     <p><label>
                             メンバー
                             <select name="members[]" multiple>
-                                @foreach ($all_users as $user)
-                                    <option value="{{ $user->id }}"
-                                        @if(Auth::id() == $user->id )
+                                @foreach ($all_friends as $friend)
+                                    <option value="{{ $friend->id }}"
+                                        @if(Auth::id() == $friend->id )
                                             selected
                                         @endif
                                         >
-                                        {{$user->profile->name}}
+                                        {{$friend->profile->name}}
                                     </option>
                                 @endforeach
                             </select>

@@ -18,8 +18,9 @@ class GroupListController extends Controller
     public function index(Request $request)
     {
         /* ログインしているユーザーが所属しているトークルームの一覧を取得 */
-        $all_users = User::all();
         $user_id = Auth::id();
+        $user = User::find($user_id);
+        $all_friends = $user->follows;
         $user = User::where('id', $user_id)->first();
         $talkrooms = $user->talkroom;
         $groups = [];
@@ -35,7 +36,7 @@ class GroupListController extends Controller
             $groups = $groups[0]->where('name', 'LIKE', "%$keyword%")->get();
         }
 
-        return view('group_list', compact('groups','all_users'));
+        return view('group_list', compact('groups','all_friends'));
     }
 
     public function add(Request $request)
