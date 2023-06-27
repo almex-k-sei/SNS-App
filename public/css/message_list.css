@@ -54,7 +54,7 @@
     padding: 10px;
 }
 
-button:hover {
+.message_list_container button:hover {
     background: #9fa09e;
     transition: .4s;
 }

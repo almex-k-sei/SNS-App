@@ -60,9 +60,10 @@ body{
 }
 
 .description_container {
+    display: inline-block;
     position: relative;
-    margin: 2em 0 2em 40px;
-    padding: 10px;
+    margin: 50px auto 0;
+    /* padding: 15px; */
     background: #fff;
     border-radius: 30px;
 }
@@ -70,17 +71,15 @@ body{
     text-align: center;
     /* background-color: transparent; */
 }
-.my_editable_profile summary{
-    /* margin-left: 50px; */
-}
+
 
 .description_container::before{
     content: "";
     position: absolute;
-    left: -5px;
-    width: 13px;
-    height: 12px;
-    top: -35px;
+    left: 100px;
+    width: 10px;
+    height: 10px;
+    top: -40px;
     background: #fff;
     border-radius: 50%;
 }
@@ -88,28 +87,31 @@ body{
 .description_container::after {
     content: "";
     position: absolute;
-    left: 0;
+    left: 100px;
     width: 20px;
-    height: 18px;
-    top: -20px;
+    height: 20px;
+    top: -25px;
     background: #fff;
     border-radius: 50%;
 }
 
 input[type="text"]#description {
     border: none;
+    border-radius: 25px;
+    text-align: center;
 }
 
 
 ::placeholder{
     color:black;
 }
+
 /*友達のプロフィールについて*/
 .friends_list {
     padding: 30px;
     overflow-y: scroll;
     text-overflow: ellipsis;
-    height: 100%;
+    height: 400px;
 }
 
 .friends_list details {
@@ -123,12 +125,9 @@ input[type="text"]#description {
     margin-top: 10px;
 }
 
-.search_friends {
-    text-align: center;
-}
-
 .search_friends input[type="text"] {
     border: 1px solid #9fa09e;
+    width: 50%;
 }
 
 .fa-comments {
@@ -146,7 +145,7 @@ input[type="text"]#description {
 
 .friends_header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     border-bottom: 2px solid #9fa09e;
 }
@@ -237,8 +236,52 @@ button.create_talk {
     background-color: rgba(0, 0, 0, 0.5);
     /* 背景を半透明にする */
 }
+/* <<<<<<< HEAD
+.overlay {
+display: none;
+}
+#pop-up:checked + .overlay {
+display: block;
+z-index: 9999;
+background-color: #00000070;
+position: fixed;
+width: 100%;
+height: 100vh;
+top: 0;
+left: 0;
+}
+.window {
+width: 90vw;
+max-width: 380px;
+height: 240px;
+background-color: #ffffff;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
 
-/* モーダルウィンドウのコンテンツ */
+.window input[type="text"] {
+    margin-bottom: 10px;
+}
+
+.window input[type="submit"] {
+
+}
+
+.close {
+cursor:pointer;
+position: absolute;
+top: 10px;
+right: 20px;
+font-size: 20px;
+=======
+
+
 .modal-content {
     position: relative;
     background-color: #fefefe;
@@ -248,16 +291,17 @@ button.create_talk {
     width: 80%;
 }
 
-/* 閉じるボタン */
+
 .close {
     position: absolute;
     top: 0;
     right: 0;
     color: #aaa;
-    float: right;
-    font-size: 28px;
+    float: right; */
+    /* font-size: 28px;
     font-weight: bold;
-}
+>>>>>>> origin/main
+} */
 
 .close:hover,
 .close:focus {

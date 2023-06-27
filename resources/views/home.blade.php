@@ -15,15 +15,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td >
-                        <input type="text" id="birthday"name="birthday" placeholder="{{$profiles[0]->birth}}">
+                        <td>
+                            <div class="description_container">
+                               <input type="text"  id="description" name="description"  placeholder="{{$profiles[0]->description}}">
+                            </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <div class="description_container">
-                                <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
-                            </div>
+                        <td >
+                        <input type="text" id="birthday"name="birthday" placeholder="{{$profiles[0]->birth}}">
                         </td>
                     </tr>
                 </table>
@@ -47,8 +47,8 @@
                         <input type="submit" value="検索">
                     </form>
                 </div>
-                <!-- <div class="add_friends">
-                    <label class="open" for="pop-up">友達追加</label>
+                <div class="add_friends">
+                    <label class="open" for="pop-up"><i class="fas fa-user-plus"></i></label>
                         <input type="checkbox" id="pop-up">
                         <div class="overlay">
                             <div class="window">
