@@ -83,6 +83,10 @@ class GroupListController extends Controller
 
         $talkrooms_table->user()->detach($request->user_id);
 
+        if($talkrooms_table->user() == null){
+            $talkrooms_table->delete();
+        }
+
         return redirect('/GroupList');
     }
     // グループ削除機能
