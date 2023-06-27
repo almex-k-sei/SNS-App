@@ -47,7 +47,7 @@
                         <input type="submit" value="検索">
                     </form>
                 </div>
-                <div class="add_friends">
+                <!-- <div class="add_friends">
                     <label class="open" for="pop-up">友達追加</label>
                         <input type="checkbox" id="pop-up">
                         <div class="overlay">
@@ -60,9 +60,14 @@
                                         </form>
                                     </div>
                             </div>
-                        </div>
-                </div>
-        </div>
+                        </div> -->
+            </div>
+            <!--友達を追加するボタン　-->
+                <form action="search_friend">
+                    <input type="submit" value="友達を追加">
+                </form>
+
+
             <!-- 友達一覧-->
             <div class="friends_list">
                 @foreach($friends as $friend)
