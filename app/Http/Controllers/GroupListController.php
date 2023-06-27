@@ -21,21 +21,16 @@ class GroupListController extends Controller
         $user_id = Auth::id();
         $user = User::find($user_id);
         $all_friends = $user->follows;
-        $user = User::where('id', $user_id)->first();
-        $talkrooms = $user->talkroom;
-        $groups = [];
-        foreach ($talkrooms as $talkroom) {
-            if (count($talkroom->user) > 1) {
-                array_push($groups, $talkroom);
-            }
-        }
+        $groupsQuery = $user->talkroom()->where('type', '=', 'group');
+
 
         $keyword = $request->input('keyword');
         /* 検索キーワードが入力されている場合、表示するデータを絞り込む */
         if (Str::length($keyword) > 0) {
-            $groups = $groups[0]->where('name', 'LIKE', "%$keyword%")->get();
+            $groupsQuery->where('name', 'LIKE', "%$keyword%");
         }
-
+        $groups = $groupsQuery->get();
+        // dd($groups);
         return view('group_list', compact('groups','all_friends'));
     }
 
@@ -45,16 +40,16 @@ class GroupListController extends Controller
 
         $request->validate(
             [
-            'name' => 'required|max:20',
+            'name' => 'required|max:30',
             'image' => 'image',
-            'members' => 'required|min:3|max:1000',
+            'members' => 'required|min:1|max:1000',
             ],
             [
                 'name.required' => 'グループ名を入力してください',
-                'name.max' => '文字数が多すぎます',
+                'name.max' => 'グループ名の文字数が多すぎます',
                 'image.image' => '画像ファイルを指定してください',
                 'members.required' => 'メンバーを入力してください',
-                'members.min' => '最低でも3人以上選択してください',
+                'members.min' => '最低でも1人は選択してください',
                 'members.max' => '人数が多すぎます'
             ]
         );
@@ -68,19 +63,25 @@ class GroupListController extends Controller
             $talkrooms_table->image = $request->image->store('gruopdata', 'public');
         }
         /* データベースにレコードを追加する */
+        $talkrooms_table->type = 'group';
+
+        $talkrooms_table->administrator_id = Auth::id();
 
         $talkrooms_table->save();
+
+        $talkrooms_table->user()->attach(Auth::id());
 
         $talkrooms_table->user()->attach($request->members);
 
         return redirect('/GroupList');
     }
+    // グループ退会機能
     public function quit(Request $request)
     {
 
-        $group_table = Talkroom::find( $request->group_id );
+        $talkrooms_table = Talkroom::find( $request->group_id );
 
-        $group_table->user()->detach($request->user_id);
+        $talkrooms_table->user()->detach($request->user_id);
 
         return redirect('/GroupList');
     }
