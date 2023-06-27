@@ -70,9 +70,10 @@ body{
     text-align: center;
     /* background-color: transparent; */
 }
-.my_editable_profile summary{
-    /* margin-left: 50px; */
-}
+
+/* .my_editable_profile summary{
+    margin-left: 50px;
+} */
 
 .description_container::before{
     content: "";
