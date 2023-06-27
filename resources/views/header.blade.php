@@ -13,6 +13,7 @@
     読みに行かせる場合もlinkのパスはpublic内あるものとして記述する。 --}}
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="/css/home_main.css">
     <link rel="stylesheet" href="css/message_main.css">
     <link rel="stylesheet" href="css/message_list.css">
     <link rel="stylesheet" href="css/group_list.css">

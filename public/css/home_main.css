@@ -16,17 +16,22 @@ body{
 }
 
 .my_profile #image{
-    width:50%;
+    width: 100%;
+    max-width: 300px;
     border-radius: 50%;
-    background-color: white;
 }
 .my_editable_profile{
     text-align: center;
+    margin-bottom: 10px;
 }
 .my_editable_profile input{
-    background: transparent;
     width: 300px;
     padding: 10px;
+}
+
+.my_editable_profile input[type="submit"] {
+    background-color: #b2ffb2;
+    margin-top: 20px;
 }
 
 .my_editable_profile input.submit{
@@ -41,19 +46,60 @@ body{
     background: #fff;
     margin-left: 5px;
 }
+.my_editable_profile input[type="text"] {
+    border: none;
+}
 .my_editable_profile #name{
     font-size: xx-large;
     text-align: center;
+    background-color: transparent;
 }
 
 .my_editable_profile #birthday{
     text-align: center;
-
 }
-.my_editable_profile #description{
+
+.description_container {
+    position: relative;
+    margin: 2em 0 2em 40px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 30px;
+}
+.my_editable_profile #url{
     text-align: center;
-
+    /* background-color: transparent; */
 }
+.my_editable_profile summary{
+    /* margin-left: 50px; */
+}
+
+.description_container::before{
+    content: "";
+    position: absolute;
+    left: -5px;
+    width: 13px;
+    height: 12px;
+    top: -35px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.description_container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 18px;
+    top: -20px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+input[type="text"]#description {
+    border: none;
+}
+
 
 ::placeholder{
     color:black;
@@ -63,7 +109,7 @@ body{
     padding: 30px;
     overflow-y: scroll;
     text-overflow: ellipsis;
-    height: 300px;
+    height: 100%;
 }
 
 .friends_list details {
@@ -78,16 +124,11 @@ body{
 }
 
 .search_friends {
-    border-bottom: 2px solid #9fa09e;
     text-align: center;
 }
 
 .search_friends input[type="text"] {
     border: 1px solid #9fa09e;
-}
-
-.search_friends input[type="text"]:focus {
-    outline: 3px solid #b2ffb2;
 }
 
 .fa-comments {
@@ -101,6 +142,13 @@ body{
     max-width: 600px;
     background-color: #fff;
     border-radius: 25px;
+}
+
+.friends_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #9fa09e;
 }
 
 .friends_profile > div {
@@ -118,9 +166,10 @@ body{
     background-color: white;;
 }
 .friends_profile #name{
-    font-size: x-large;
+    /* font-size: xx-large; */
     width:100px;
     margin-left: 30px;
+    width: 120px;
 }
 
 .friends_profile #talk{
@@ -130,19 +179,88 @@ body{
 
 summary{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 /*form要素の部品のダサさを消す*/
-input{
+ input{
     border:none;
 }
 
-button{
+/* button{
     border:none;
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+} */
+
+
+/*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！
+ .my_profile #image{
+    width:500px;
+    height:500px;
+}
+.friends_profile #image{
+    width:200px;
+    height:200px;
+}
+
+main{
+    display:flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+button{
+    width:30px;
 }
 
 button.create_talk {
     background: transparent;
+}*/
+/*友達追加ポップアップ*/
+.open {
+cursor:pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
+}
+#pop-up {
+display: none; /* label でコントロールするので input は非表示に */
+}
+.overlay {
+display: none; /* input にチェックが入るまでは非表示に */
+}
+#pop-up:checked + .overlay {
+display: block;
+z-index: 9999;
+background-color: #00000070;
+position: fixed;
+width: 100%;
+height: 100vh;
+top: 0;
+left: 0;
+}
+.window {
+width: 90vw;
+max-width: 380px;
+height: 240px;
+background-color: #ffffff;
+border-radius: 6px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+.text {
+font-size: 18px;
+margin: 0;
+}
+.close {
+cursor:pointer;
+position: absolute;
+top: 4px;
+right: 4px;
+font-size: 20px;
 }

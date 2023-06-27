@@ -20,6 +20,7 @@ h1.talkroom_title {
 
 .container {
     padding: 50px;
+    padding-bottom: 120px;
     height: auto;
     margin-bottom: 80px;
     margin-top: 140px;
@@ -77,6 +78,19 @@ h1.talkroom_title {
     justify-content: right;
 }
 
+.time_bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.time_bottom.right {
+    align-items: end;
+}
+
+.time_bottom.left {
+    align-items: start;
+}
+
 .text_right_container p {
     background-color: #fff9b1;
 }
@@ -103,9 +117,6 @@ h1.talkroom_title {
 }
 
 form.send_message {
-    /* text-align: center;
-    position: fixed;
-    bottom: 80px; */
     margin: 0 auto;
 }
 
@@ -113,15 +124,20 @@ input[type="text"] {
     width: 50%;
     max-width: 350px;
     padding: 5px;
+    border: 1px solid #9fa09e;
+}
+
+input[type="text"]:focus {
+    outline: 3px solid #b2ffb2;
 }
 
 input[type="submit"] {
-    padding: 10px;
+    padding: 5px 10px;
     margin-left: 10px;
     background-color: #b2ffb2;
     border: none;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 80px;
 }
 
 input[type="submit"]:hover {

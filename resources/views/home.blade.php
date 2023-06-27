@@ -1,7 +1,6 @@
 
 <!--    ログイン後一番最初に飛ぶホーム画面。画面設定3または4のイメージ-->
     @include('header')
-    <link rel="stylesheet" href="/css/home_main.css">
     <main>
         <!--自分のプロフィール -->
         <div class="my_profile">
@@ -22,29 +21,48 @@
                     </tr>
                     <tr>
                         <td>
-                        <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
+                            <div class="description_container">
+                                <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
+                            </div>
                         </td>
                     </tr>
                 </table>
                 <details>
                     <summary>プロフィール画像を編集</summary>
-                    URL<input type="url" name="url">
+                    URL<input type="url"  id="url" name="url">
                 </details>
-                <input type="submit" class="submit"value="編集">
+                <input type="submit" id="submit"value="編集">
             </form>
 
         </div>
 
         <!--友達のプロフィール -->
         <div class="friends_profile">
-            <!--検索-->
-            <div class="search_friends">
-                <form action="" method="GET">
-                 @csrf
-                    <input type="text" name="keyword" value="{{$keyword}}">
-                    <input type="submit" value="検索">
-                </form>
-            </div>
+            <div class="friends_header">
+                <!--検索-->
+                <div class="search_friends">
+                    <form action="" method="GET">
+                     @csrf
+                        <input type="text" name="keyword" value="{{$keyword}}">
+                        <input type="submit" value="検索">
+                    </form>
+                </div>
+                <div class="add_friends">
+                    <label class="open" for="pop-up">友達追加</label>
+                        <input type="checkbox" id="pop-up">
+                        <div class="overlay">
+                            <div class="window">
+                                <label class="close" for="pop-up">×</label>
+                                    <div class="add_friend">
+                                        <form action="" method="get">
+                                            <input type="text" name="friend_email">
+                                            <input type="submit" value="検索">
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
             <!-- 友達一覧-->
             <div class="friends_list">
                 @foreach($friends as $friend)
@@ -65,8 +83,8 @@
                         </div>
                     </summary>
                     <div class="friends_list_detail">
-                        <p>生年月日:{{$friend->profile->birth}}</p>
-                        <p>ひとこと:{{$friend->profile->description}}</p>
+                        <p>{{$friend->profile->birth}}</p>
+                        <p>{{$friend->profile->description}}</p>
                     </div>
                 </details>
                 @endforeach
