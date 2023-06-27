@@ -1,9 +1,8 @@
     @include('header')
 
-
     <h1 class="talkroom_title">
         <div class="back">
-            <a href="/MessageList">戻る</a>
+            <a href="/MessageList"><i class="fas fa-backward"></i></a>
         </div>
         @if ($talkroom->name == "")
             @foreach ($talkroom->user as $user)
@@ -18,38 +17,60 @@
 
     <div class="container">
 
+
     @foreach ($messages as $message)
+        <?php
+            /* メッセージの送信日時を取得 */
+            $time = $message->created_at;
+            $timestamp = strtotime($time);
+            $ymd = date("Y/m/d", $timestamp);
+            $hm = date("H:i", $timestamp);
+        ?>
+        @if ($previous_ymd == 0)
+            {{$ymd}}
+            <?php $previous_ymd = $ymd ?>
+        @elseif ($previous_ymd != $ymd)
+            {{$ymd}}
+            <?php $previous_ymd = $ymd ?>
+        @endif
         <div class="message_container">
             @if($my_id == $message->user_id)
                 <div class="text_right_container text_container">
-                    <p>
-                        {{-- メッセージが格納されているか判別 --}}
-                        @if(isset($message->content))
-                            {{$message->content}}
-                            <br>
-                        @endif
-                        {{-- ファイルデータが格納されているか判別 --}}
-                        @if(isset($message->filepath))
-                            {{-- ファイルの形式を判別する　--}}
-                            @if(explode('/',$message->filetype)[0] == "image")
-                                <img src="{{$message->filepath}}" width="200px" height="200px">
-                            @elseif (explode('/',$message->filetype)[0] == "audio")
-                                <audio controls src="{{$message->filepath}}"  type="{{$message->filetype}}"></audio>
-                            @elseif (explode('/',$message->filetype)[0] == "video")
-                                <video src="{{$message->filepath}}" type="{{$message->filetype}}" width="200px" height="200px"
-                                    autoplay muted loop></video>
+                    <div class="time_bottom right">
+                        <p>
+                            {{-- メッセージが格納されているか判別 --}}
+                            @if(isset($message->content))
+                                {{$message->content}}
+                                <br>
                             @endif
-                            <br>
-                            <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
-                        @endif
-                    </p>
-                    {{$message->updated_at}}
+                            {{-- ファイルデータが格納されているか判別 --}}
+                            @if(isset($message->filepath))
+                                {{-- ファイルの形式を判別する　--}}
+                                @if(explode('/',$message->filetype)[0] == "image")
+                                    <img src="{{$message->filepath}}" width="200px" height="200px">
+                                @elseif (explode('/',$message->filetype)[0] == "audio")
+                                    <audio controls src="{{$message->filepath}}"  type="{{$message->filetype}}"></audio>
+                                @elseif (explode('/',$message->filetype)[0] == "video")
+                                    <video src="{{$message->filepath}}" type="{{$message->filetype}}" width="200px" height="200px"
+                                        autoplay muted loop></video>
+                                @endif
+                                <br>
+                                <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
+                            @endif
+                        </p>
+                        {{-- 送信時間 --}}
+                        {{$hm}}
+                    </div>
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
             @else
                 <div class="text_left_container text_container">
                     {{$message->user->profile->name}}
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
-                    <p>{{$message->content}}</p>
+                    <div class="time_bottom left">
+                        <p>{{$message->content}}</p>
+                        {{-- 送信時間 --}}
+                        {{$hm}}
+                    </div>
             @endif
             </div>
         </div>
@@ -72,8 +93,16 @@
   @include('footer')
 
   <script>
-    // JavaScriptコードをここに追加する
     window.onload = function() {
-        window.scrollTo(0, document.body.scrollHeight);
+        // ページの高さを取得
+        var pageHeight = document.body.scrollHeight;
+
+        // ビューポートの高さを取得
+        var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        // ページの高さがビューポートの高さよりも大きい場合にのみスクロール
+        if (pageHeight > viewportHeight) {
+            window.scrollTo(0, pageHeight);
+        }
     };
 </script>

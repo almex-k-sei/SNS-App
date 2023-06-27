@@ -5,7 +5,7 @@ main{
 }
 body{
         background-color: white;
-    } 
+    }
 /*自分のプロフィールについて*/
 .my_profile{
     width: 40%;
@@ -16,8 +16,8 @@ body{
 }
 
 .my_profile #image{
-    width:300px;
-    height:300px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 50%;
 }
 .my_editable_profile{
@@ -25,9 +25,13 @@ body{
     margin-bottom: 10px;
 }
 .my_editable_profile input{
-    background: transparent;
     width: 300px;
     padding: 10px;
+}
+
+.my_editable_profile input[type="submit"] {
+    background-color: #b2ffb2;
+    margin-top: 20px;
 }
 
 .my_editable_profile input.submit{
@@ -42,6 +46,9 @@ body{
     background: #fff;
     margin-left: 5px;
 }
+.my_editable_profile input[type="text"] {
+    border: none;
+}
 .my_editable_profile #name{
     font-size: xx-large;
     text-align: center;
@@ -50,27 +57,50 @@ body{
 
 .my_editable_profile #birthday{
     text-align: center;
-    background-color: transparent;
-
 }
-.my_editable_profile #description{
-    text-align: center;
-    background-color: transparent;
 
+.description_container {
+    position: relative;
+    margin: 2em 0 2em 40px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 30px;
 }
 .my_editable_profile #url{
     text-align: center;
-    background-color: transparent;
+    /* background-color: transparent; */
 }
 .my_editable_profile summary{
-    margin-left: 50px;
+    /* margin-left: 50px; */
+}
+
+.description_container::before{
+    content: "";
+    position: absolute;
+    left: -5px;
+    width: 13px;
+    height: 12px;
+    top: -35px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.description_container::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 18px;
+    top: -20px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+input[type="text"]#description {
+    border: none;
+}
 
 
-}
-.my_editable_profile #submit{
-    width:auto;
-    margin-right:100px;
-}
 ::placeholder{
     color:black;
 }
@@ -79,7 +109,7 @@ body{
     padding: 30px;
     overflow-y: scroll;
     text-overflow: ellipsis;
-    height: 300px;
+    height: 100%;
 }
 
 .friends_list details {
@@ -94,16 +124,11 @@ body{
 }
 
 .search_friends {
-    border-bottom: 2px solid #9fa09e;
     text-align: center;
 }
 
 .search_friends input[type="text"] {
     border: 1px solid #9fa09e;
-}
-
-.search_friends input[type="text"]:focus {
-    outline: 3px solid #b2ffb2;
 }
 
 .fa-comments {
@@ -117,6 +142,13 @@ body{
     max-width: 600px;
     background-color: #fff;
     border-radius: 25px;
+}
+
+.friends_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #9fa09e;
 }
 
 .friends_profile > div {
@@ -134,9 +166,10 @@ body{
     background-color: white;;
 }
 .friends_profile #name{
-    font-size: xx-large;
+    /* font-size: xx-large; */
     width:100px;
     margin-left: 30px;
+    width: 120px;
 }
 
 .friends_profile #talk{
@@ -146,7 +179,8 @@ body{
 
 summary{
     display: flex;
-
+    justify-content: space-around;
+    align-items: center;
 }
 
 /*form要素の部品のダサさを消す*/
@@ -154,12 +188,12 @@ summary{
     border:none;
 }
 
-button{
+/* button{
     border:none;
     width:30px;
     height:30px;
     border-radius: 50%;
-} 
+} */
 
 
 /*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！

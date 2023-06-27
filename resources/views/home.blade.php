@@ -21,7 +21,9 @@
                     </tr>
                     <tr>
                         <td>
-                        <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
+                            <div class="description_container">
+                                <input type="text"  id="description"name="description"  placeholder="{{$profiles[0]->description}}">
+                            </div>
                         </td>
                     </tr>
                 </table>
@@ -36,36 +38,31 @@
 
         <!--友達のプロフィール -->
         <div class="friends_profile">
-            <!--検索-->
-            <div class="search_friends">
-                <form action="" method="GET">
-                 @csrf
-                    <input type="text" name="keyword" value="{{$keyword}}">
-                    <input type="submit" value="検索">
-                </form>
-            </div>
-        <!--友達追加機能-->
-            <label class="open" for="pop-up">友達追加</label>
-                <input type="checkbox" id="pop-up">
-                <div class="overlay">
-	                <div class="window">
-		                <label class="close" for="pop-up">×</label>
-		                    <div class="add_friend">
-                                <form action="" method="get">
-                                    <input type="text" name="friend_email">
-                                    <input type="submit" value="検索" name="search_friend">
-                                    @csrf
-                                </form>
-                                <form action="" method="post">
-                                    <img src={{$results->image}} alt="">
-                                    <div id="name">{{$results->name}}</div>
-                                    <input type="submit" name="add_friend" formaction="add_friend">
-                                </form>
-                            </div>
-	                </div>
+            <div class="friends_header">
+                <!--検索-->
+                <div class="search_friends">
+                    <form action="" method="GET">
+                     @csrf
+                        <input type="text" name="keyword" value="{{$keyword}}">
+                        <input type="submit" value="検索">
+                    </form>
                 </div>
-
-        
+                <div class="add_friends">
+                    <label class="open" for="pop-up">友達追加</label>
+                        <input type="checkbox" id="pop-up">
+                        <div class="overlay">
+                            <div class="window">
+                                <label class="close" for="pop-up">×</label>
+                                    <div class="add_friend">
+                                        <form action="" method="get">
+                                            <input type="text" name="friend_email">
+                                            <input type="submit" value="検索">
+                                        </form>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+        </div>
             <!-- 友達一覧-->
             <div class="friends_list">
                 @foreach($friends as $friend)
@@ -86,8 +83,8 @@
                         </div>
                     </summary>
                     <div class="friends_list_detail">
-                        <p>生年月日:{{$friend->profile->birth}}</p>
-                        <p>ひとこと:{{$friend->profile->description}}</p>
+                        <p>{{$friend->profile->birth}}</p>
+                        <p>{{$friend->profile->description}}</p>
                     </div>
                 </details>
                 @endforeach

@@ -44,7 +44,7 @@
  }
 
 
-button {
+.message_list_container button {
     display: flex;
     align-items: center;
     justify-content: center;
