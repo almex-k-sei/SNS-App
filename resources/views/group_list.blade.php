@@ -67,11 +67,18 @@
                     <div class="modal">
                         <div class="modal-content">
                             <!-- コンテンツをここに追加します -->
+
+                            <form action="/GroupList/quit" method="POST">
+                                <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                                <input type="hidden" name="group_id" value="{{$group->id}}">
+                                <input type="submit" value="退会">
+                                @csrf
+                            </form>
                             <h2>メンバー</h2>
                             @foreach ($group->user as $user)
                                 <p>{{ $user->name }}</p>
                             @endforeach
-                            <form action="/Message" method="POST" enctype="multipart/form-data">
+                            <form action="/Message" method="POST">
                                 <input type="hidden" name="id" value="{{$group->id}}">
                                 <input type="submit" value="トークへ移動">
                                 @csrf

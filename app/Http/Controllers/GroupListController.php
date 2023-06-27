@@ -75,4 +75,14 @@ class GroupListController extends Controller
 
         return redirect('/GroupList');
     }
+    public function quit(Request $request)
+    {
+
+        $group_table = Talkroom::find( $request->group_id );
+
+        $group_table->user()->detach($request->user_id);
+
+        return redirect('/GroupList');
+    }
+
 }
