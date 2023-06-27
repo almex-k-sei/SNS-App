@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('talkrooms', function (Blueprint $table) {
             $table->string('image')->nullable()->comment('トークルームの画像')->after('name');
+            $table->string('type')->nullable()->comment('トークかグループかどうか')->after('image');
+            $table->bigInteger('administrator_id')->nullable()->comment('管理者のid')->after('type');
         });
     }
 
@@ -23,6 +25,8 @@ return new class extends Migration
     {
         Schema::table('talkrooms', function (Blueprint $table) {
             $table->dropColumn('image');
+            $table->dropColumn('type');
+            $table->dropColumn('administrator_id');
         });
     }
 };

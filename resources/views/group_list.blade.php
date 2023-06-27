@@ -30,13 +30,13 @@
                     <p><label>
                             メンバー
                             <select name="members[]" multiple>
-                                @foreach ($all_users as $user)
-                                    <option value="{{ $user->id }}"
-                                        @if(Auth::id() == $user->id )
+                                @foreach ($all_friends as $friend)
+                                    <option value="{{ $friend->id }}"
+                                        @if(Auth::id() == $friend->id )
                                             selected
                                         @endif
                                         >
-                                        {{$user->profile->name}}
+                                        {{$friend->profile->name}}
                                     </option>
                                 @endforeach
                             </select>
@@ -67,15 +67,47 @@
                     <div class="modal">
                         <div class="modal-content">
                             <!-- コンテンツをここに追加します -->
+
+                            <form action="/GroupList/quit" method="POST">
+                                <input type="hidden" name="user_id" value="{{Auth::id()}}">
+                                <input type="hidden" name="group_id" value="{{$group->id}}">
+                                <input type="submit" value="退会">
+                                @csrf
+                            </form>
                             <h2>メンバー</h2>
-                            @foreach ($group->user as $user)
-                                <p>{{ $user->name }}</p>
+                            {{-- メンバーを一覧表示 --}}
+                            @foreach ($group->user as $member)
+                                <p>{{ $member->name }}</p>
                             @endforeach
-                            <form action="/Message" method="POST" enctype="multipart/form-data">
+                            {{-- トークへ移動ボタン --}}
+                            <form action="/Message" method="POST">
                                 <input type="hidden" name="id" value="{{$group->id}}">
                                 <input type="submit" value="トークへ移動">
                                 @csrf
                             </form>
+
+                            {{-- グループの作成者のみが表示されるボタン --}}
+                            @if(Auth::id() == $group->administrator_id)
+                                {{-- メンバーの編集 --}}
+                                <form action="/GroupList/edit" method="POST">
+                                    <input type="hidden" name="group_id" value="{{$group->id}}">
+                                    <input type="submit" value="グループの編集">
+                                    @csrf
+                                </form>
+                                {{-- グループの削除 --}}
+                                <form action="/GroupList/delete" method="POST">
+                                    <input type="hidden" name="group_id" value="{{$group->id}}">
+                                    <input type="submit" value="グループの削除">
+                                    @csrf
+                                </form>
+                            @else
+                                {{-- メンバーを追加ボタン --}}
+                                <form action="/GroupList/add_member" method="POST">
+                                    <input type="hidden" name="id" value="{{$group->id}}">
+                                    <input type="submit" value="メンバーの追加">
+                                    @csrf
+                                </form>
+                            @endif
                             <span class="close">&times;</span>
                         </div>
                     </div>

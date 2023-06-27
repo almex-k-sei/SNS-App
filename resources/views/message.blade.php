@@ -93,8 +93,16 @@
   @include('footer')
 
   <script>
-    // JavaScriptコードをここに追加する
     window.onload = function() {
-        window.scrollTo(0, document.body.scrollHeight);
+        // ページの高さを取得
+        var pageHeight = document.body.scrollHeight;
+
+        // ビューポートの高さを取得
+        var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        // ページの高さがビューポートの高さよりも大きい場合にのみスクロール
+        if (pageHeight > viewportHeight) {
+            window.scrollTo(0, pageHeight);
+        }
     };
 </script>

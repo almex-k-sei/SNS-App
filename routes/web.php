@@ -55,4 +55,8 @@ Route::get('/GroupList', [GroupListController::class, 'index'])->middleware('aut
 
 Route::post('/GroupList/add', [GroupListController::class, 'add'])->middleware('auth');
 
+Route::post('/GroupList/quit', [GroupListController::class, 'quit'])->middleware('auth');
+
+Route::post('/GroupList/delete', [GroupListController::class, 'delete'])->middleware('auth');
+
 require __DIR__.'/auth.php';
