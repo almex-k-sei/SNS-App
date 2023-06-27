@@ -45,6 +45,11 @@ class UserController extends Controller
                 $friends = $user->follows()->where('name','LIKE',"%$keyword%")->get();
                 // ->orWhere('birth','LIKE',"%$keyword%")->orwhere('description','LIKE',"%$keyword%")->get();
         }
+        if($request->input('friend_email')==null){
+        $results=Profile::where('user_id','=',$user_id)
+        ->get();
+        }
+        return view('/home',compact('keyword','profiles','friends',"results"));
 
         return view('/home',compact('keyword','profiles','friends'));
 
