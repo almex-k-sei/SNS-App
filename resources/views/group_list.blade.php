@@ -232,3 +232,4 @@
         .hidden {
             display: none;
         }
+    </style>
