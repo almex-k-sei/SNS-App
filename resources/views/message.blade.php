@@ -23,7 +23,7 @@
             /* メッセージの送信日時を取得 */
             $time = $message->created_at;
             $timestamp = strtotime($time);
-            $ymd = date("Y-m-d", $timestamp);
+            $ymd = date("Y/m/d", $timestamp);
             $hm = date("H:i", $timestamp);
         ?>
         @if ($previous_ymd == 0)
