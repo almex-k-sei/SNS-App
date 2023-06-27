@@ -45,28 +45,13 @@ class UserController extends Controller
                 $friends = $user->follows()->where('name','LIKE',"%$keyword%")->get();
                 // ->orWhere('birth','LIKE',"%$keyword%")->orwhere('description','LIKE',"%$keyword%")->get();
         }
+        if($request->input('friend_email')==null){
+        $results=Profile::where('user_id','=',$user_id)
+        ->get();
+        }
+        return view('/home',compact('keyword','profiles','friends',"results"));
 
-        return view('/Home',compact('keyword','profiles','friends'));
-
-        return view('/Home');
+        return view('/home');
     }
-
-    //友達検索→追加処理
-    public function search_friend(Request $request){
-            
-          //フレンド検索機能
-          $users= User::all();
-          $friend_email = $request->input('friend_email');
-          if($friend_email !== null ){
-                $friend = $users->where('email','=',"%$friend_email%")
-                ->first();
-           }
-            return view('Home',compact('friend_email', 'profiles', 'friends', 'user_id'));
-            
-
-
-    }
-
 
 }
-    

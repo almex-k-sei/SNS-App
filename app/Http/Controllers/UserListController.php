@@ -25,8 +25,26 @@ class UserListController extends Controller
                 $friends = $user->follows()->where('name','LIKE',"%$keyword%")->get();
                 // ->orWhere('birth','LIKE',"%$keyword%")->orwhere('description','LIKE',"%$keyword%")->get();
         }
+        //友達追加の初期値
+            $results =(object)"";
+            $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
+            $results->name = "友達を追加しましょう!";
 
-        return view('home',compact('keyword', 'profiles', 'friends', 'user_id'));
+          //友達候補検索機能
+          if(isset($_GET['search_friend'])){
+                $users= User::all();
+                if($request->input('friend_email') !== null ){
+                    $friend_email = $request->input('friend_email');
+                    $user = $users->where('email','=',"%$friend_email%")
+                    ->first();
+                }
+                    if($user !== null){
+                    $user_id = $user->id;
+                    $results = Profile::where('id','=',"$user_id")->first();
+                }
+          }
+
+        return view('home',compact('keyword', 'profiles', 'friends', 'user_id','results'));
 
     }
     public function edit(Request $request){

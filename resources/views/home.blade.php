@@ -29,7 +29,7 @@
                     <summary>プロフィール画像を編集</summary>
                     URL<input type="url"  id="url" name="url">
                 </details>
-                <input type="submit" id="submit"value="編集">
+                <input type="submit" id="submit"value="編集" formaction="index">
             </form>
 
         </div>
@@ -44,6 +44,7 @@
                     <input type="submit" value="検索">
                 </form>
             </div>
+        <!--友達追加機能-->
             <label class="open" for="pop-up">友達追加</label>
                 <input type="checkbox" id="pop-up">
                 <div class="overlay">
@@ -52,11 +53,19 @@
 		                    <div class="add_friend">
                                 <form action="" method="get">
                                     <input type="text" name="friend_email">
-                                    <input type="submit" value="検索">
+                                    <input type="submit" value="検索" name="search_friend">
+                                    @csrf
+                                </form>
+                                <form action="" method="post">
+                                    <img src={{$results->image}} alt="">
+                                    <div id="name">{{$results->name}}</div>
+                                    <input type="submit" name="add_friend" formaction="add_friend">
                                 </form>
                             </div>
 	                </div>
                 </div>
+
+        
             <!-- 友達一覧-->
             <div class="friends_list">
                 @foreach($friends as $friend)
@@ -86,3 +95,9 @@
         </div>
     </main>
     @include('footer')
+<style>
+    img{
+        width:100px;
+        height:100px;
+    }
+</style>
