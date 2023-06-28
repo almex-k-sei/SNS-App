@@ -154,7 +154,8 @@ return [
     */
 
     'attributes' => [
-        'content' => "メッセージ"
+        'content' => "メッセージ",
+        'memo' => "メモ"
     ],
 
 ];

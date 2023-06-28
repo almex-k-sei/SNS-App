@@ -18,6 +18,15 @@ h1.talkroom_title {
     margin-left: 20px;
 }
 
+.memo {
+    float: right;
+    margin-right: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
 .container {
     padding: 50px;
     padding-bottom: 120px;
