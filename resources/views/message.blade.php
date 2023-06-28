@@ -45,20 +45,22 @@
 
 
     @foreach ($messages as $message)
-        <?php
-            /* メッセージの送信日時を取得 */
-            $time = $message->created_at;
-            $timestamp = strtotime($time);
-            $ymd = date("Y/m/d", $timestamp);
-            $hm = date("H:i", $timestamp);
-        ?>
-        @if ($previous_ymd == 0)
-            {{$ymd}}
-            <?php $previous_ymd = $ymd ?>
-        @elseif ($previous_ymd != $ymd)
-            {{$ymd}}
-            <?php $previous_ymd = $ymd ?>
-        @endif
+        <p class="datetime">
+            <?php
+                /* メッセージの送信日時を取得 */
+                $time = $message->created_at;
+                $timestamp = strtotime($time);
+                $ymd = date("Y/m/d", $timestamp);
+                $hm = date("H:i", $timestamp);
+            ?>
+            @if ($previous_ymd == 0)
+                {{$ymd}}
+                <?php $previous_ymd = $ymd ?>
+            @elseif ($previous_ymd != $ymd)
+                {{$ymd}}
+                <?php $previous_ymd = $ymd ?>
+            @endif
+        </p>
         <div class="message_container">
             @if($my_id == $message->user_id)
                 <div class="text_right_container text_container">

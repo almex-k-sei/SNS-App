@@ -34,35 +34,47 @@ class UserListController extends Controller
                 $results =(object)"";
                 $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
                 $results->name = "友達を追加しましょう!";
-                $user_id = "0";
-        return view('search_friend',compact('results',"user_id"));
+                $friend_id = "0";
+        return view('search_friend',compact('results',"friend_id"));
     }
 
     public function search_friend(Request $request){
-                  //友達候補検索機能
-                    $users= User::all();
-                    $friend_email = $request->input('friend_email');
-                    $user = $users->where('email','=',"$friend_email")
+         //友達候補検索機能
+         //usersテーブルから全情報を抜き出し、email と合致するfriend候補を出す
+        $users= User::all();
+        $friend_email = $request->input('friend_email');
+        $friend = $users->where('email','=',"$friend_email")
                     ->first();
-                    
-                    if($user !== null){
-                        $user_id = $user->id;
-                        $results = Profile::where("user_id",'=',"$user_id")->first();
-                    }else{
-                        $results =(object)"";
-                        $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
-                        $results->name = "見つかりませんでした";
-                    }
-              
-              return view('search_friend',compact('results','user_id'));
+        $user_id = Auth::id();
+        $user = User::find($user_id);
+        $results=(object)"";
+        if($friend !== null){//合致する人がいたら
+            $friend_id = $friend->id;
+            foreach($user->follows as $value){
+              //friendsテーブルのuser_id == Auth::id()　且つ　friendsテーブルのfriend_id == $friend_idのとき　→友達である
+                if($value->pivot->friend_id == $friend_id ){
+                    $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
+                    $results->name = "すでに友達です";
                 }
+            }
+            if($results == ""){
+                $results = Profile::where("user_id","=","$friend_id")->first();
+            }
+         }else{
+            $results =(object)"";
+            $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
+            $results->name = "見つかりませんでした";
+            $friend_id = "0";
+        }
+        return view('search_friend',compact('results','friend_id'));
+    }
 
     public function add_friend(Request $request){
         $id = Auth::id();
         $user = User::where("id","=","$id")->first();
-        $friend_id = $request->input("user_id");
+        $friend_id = $request->input("friend_id");
         $user->follows()->attach($friend_id);
-        return redirect('/Home');
+        return redirect('Home');
        }
 
     
@@ -83,7 +95,7 @@ class UserListController extends Controller
             $user->image = $request->input("url");
         }
         $user->save();
-        return redirect('/home');
+        return redirect('Home');
 
     }
 
