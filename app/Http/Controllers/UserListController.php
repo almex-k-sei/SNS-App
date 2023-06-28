@@ -57,7 +57,7 @@ class UserListController extends Controller
                     $results->name = "すでに友達です";
                 }
             }
-            if($results == ""){
+            if($results == (object)""){
                 $results = Profile::where("user_id","=","$friend_id")->first();
             }
          }else{
