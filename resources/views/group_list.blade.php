@@ -89,7 +89,7 @@
                             {{-- メンバー編集ボタンを押すと表示される内容 --}}
                             <div class='edit_after hidden'>
                                 <h2>グループの編集</h2>
-                                <form action="" method="POST" enctype="multipart/form-data">
+                                <form action="/GroupList/edit" method="POST" enctype="multipart/form-data">
                                     <!-- モーダルウィンドウの中身 -->
                                     <p><label>
                                             グループ名
@@ -135,7 +135,7 @@
                             {{-- メンバー追加ボタンを押すと表示される内容 --}}
                             <div class='add_after hidden'>
                                 <h2>メンバー追加</h2>
-                                <form action="" method="POST">
+                                <form action="/GroupList/add_member" method="POST">
                                     <p>
                                         @foreach ($all_friends as $friend)
                                             @unless ($group->user->contains('id', $friend->id))
@@ -149,7 +149,6 @@
                                             @endunless
                                         @endforeach
                                     </p>
-                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <p><input type="submit" value="追加"></p>
                                     @csrf
