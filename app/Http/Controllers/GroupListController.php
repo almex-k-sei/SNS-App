@@ -61,6 +61,8 @@ class GroupListController extends Controller
 
         if (isset($request->image)) {
             $talkrooms_table->image = $request->image->store('groupdata', 'public');
+        }else{
+            $talkrooms_table->image = "https://icon-pit.com/wp-content/uploads/2018/10/question_mark_icon_1034.png";
         }
         /* データベースにレコードを追加する */
         $talkrooms_table->type = 'group';

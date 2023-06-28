@@ -32,7 +32,7 @@ class UserListController extends Controller
     public function search_index(){
                 //友達追加の初期値
                 $results =(object)"";
-                $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
+                $results->image = "https://icon-pit.com/wp-content/uploads/2018/10/question_mark_icon_1034.png";
                 $results->name = "友達を追加しましょう!";
                 $friend_id = "0";
         return view('search_friend',compact('results',"friend_id"));
@@ -53,7 +53,7 @@ class UserListController extends Controller
             foreach($user->follows as $value){
               //friendsテーブルのuser_id == Auth::id()　且つ　friendsテーブルのfriend_id == $friend_idのとき　→友達である
                 if($value->pivot->friend_id == $friend_id ){
-                    $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
+                    $results->image = "https://icon-pit.com/wp-content/uploads/2018/10/question_mark_icon_1034.png";
                     $results->name = "すでに友達です";
                 }
             }
@@ -62,7 +62,7 @@ class UserListController extends Controller
             }
          }else{
             $results =(object)"";
-            $results->image = "https://beiz.jp/images_T/white/white_00081.jpg";
+            $results->image = "https://icon-pit.com/wp-content/uploads/2018/10/question_mark_icon_1034.png";
             $results->name = "見つかりませんでした";
             $friend_id = "0";
         }
