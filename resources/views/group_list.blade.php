@@ -185,41 +185,6 @@
 
     @include('footer')
 
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .selectbox-wrapper {
-            position: relative;
-            width: 200px;
-            margin: 0 auto;
-            /* 中央に配置するための設定 */
-        }
-
-        .selectbox-wrapper select[multiple] {
-            width: 100%;
-            height: 200px;
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f7f7f7;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            overflow-y: auto;
-        }
-
-        .selectbox-wrapper select[multiple] option {
-            padding: 5px;
-        }
-
-        .selectbox-wrapper select[multiple] option:checked {
-            background-color: #337ab7;
-            color: #fff;
-        }
-    </style>
-
     <script>
         'use strict';
         // モーダルウィンドウのトリガーボタンを取得
