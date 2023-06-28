@@ -116,6 +116,7 @@
                                                 </p>
                                             @endforeach
                                         </label></p>
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <p><input type="submit" value="更新"></p>
                                     @csrf
                                 </form>

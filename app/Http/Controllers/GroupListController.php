@@ -49,7 +49,7 @@ class GroupListController extends Controller
                 'name.required' => 'グループ名を入力してください',
                 'name.max' => 'グループ名の文字数が多すぎます',
                 'image.image' => '画像ファイルを指定してください',
-                'members.required' => 'メンバーを入力してください',
+                'members.required' => '最低でも1人は選択してください',
                 'members.min' => '最低でも1人は選択してください',
                 'members.max' => '人数が多すぎます'
             ]
@@ -90,7 +90,7 @@ class GroupListController extends Controller
 
         return redirect('/GroupList');
     }
-    // グループ削除機能
+    // グループ削除機能(管理者)
     public function delete(Request $request)
     {
 
@@ -101,6 +101,7 @@ class GroupListController extends Controller
         return redirect('/GroupList');
     }
 
+    // グループ編集機能(管理者)
     public function edit(Request $request)
     {
         /* バリデーション */
@@ -109,42 +110,34 @@ class GroupListController extends Controller
             [
             'name' => 'required|max:30',
             'image' => 'image',
-            'members' => 'required|min:1|max:1000',
+            'members' => 'max:1000',
             ],
             [
                 'name.required' => 'グループ名を入力してください',
                 'name.max' => 'グループ名の文字数が多すぎます',
                 'image.image' => '画像ファイルを指定してください',
-                'members.required' => 'メンバーを入力してください',
-                'members.min' => '最低でも1人は選択してください',
                 'members.max' => '人数が多すぎます'
             ]
         );
 
-        /* formで送信された内容をメッセージテーブルのレコードとして作成 */
-        $talkrooms_table = new Talkroom();
+        $talkrooms_table = Talkroom::find($request->group_id);
 
         $talkrooms_table->name = $request->name;
 
         if (isset($request->image)) {
             $talkrooms_table->image = $request->image->store('groupdata', 'public');
         }
-        /* データベースにレコードを追加する */
-        $talkrooms_table->type = 'group';
 
-        $talkrooms_table->administrator_id = Auth::id();
+        $talkrooms_table->user()->sync($request->members);
 
-        $talkrooms_table->save();
-
-        //自分を追加
         $talkrooms_table->user()->attach(Auth::id());
 
-        //友達を追加
-        $talkrooms_table->user()->attach($request->members);
+        $talkrooms_table->save();
 
         return redirect('/GroupList');
     }
 
+    //メンバー追加(全員)
     public function add_member(Request $request)
     {
         /* バリデーション */

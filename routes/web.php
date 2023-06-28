@@ -70,6 +70,7 @@ Route::post('/GroupList/quit', [GroupListController::class, 'quit'])->middleware
 
 Route::post('/GroupList/delete', [GroupListController::class, 'delete'])->middleware('auth');
 
+Route::post('/GroupList/edit', [GroupListController::class, 'edit'])->middleware('auth');
 
 Route::post('/GroupList/add_member', [GroupListController::class, 'add_member'])->middleware('auth');
 
