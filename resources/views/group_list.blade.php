@@ -80,7 +80,7 @@
                                 @endforeach
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
-                                    <input type="hidden" name="id" value="{{ $group->id }}">
+                                    <input type="hidden" name="talkroom_id" value="{{ $group->id }}">
                                     <input type="submit" value="トークへ移動">
                                     @csrf
                                 </form>
