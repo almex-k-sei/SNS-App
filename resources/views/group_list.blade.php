@@ -56,6 +56,13 @@
             <div>
                 {{-- グループ一覧の表示 --}}
                 @foreach ($groups as $group)
+                    {{-- @foreach ($group->user->profile as $member)
+                        <p>
+
+                            {{ dd($member) }}
+
+                        </p>
+                    @endforeach --}}
                     <button class="modalBtn">
                         <img src="{{ $group->image }}" width="200px" height="200px">
                         <h2>{{ $group->name }}</h2>
@@ -74,7 +81,11 @@
                                 </form>
                                 <h2>メンバー</h2>
                                 @foreach ($group->user as $member)
-                                    <p>{{ $member->name }}</p>
+                                    <p>
+                                        {{-- @if ($member->plofile != null) --}}
+                                        {{-- {{ dd($member) }} --}}
+                                        {{-- @endif --}}
+                                    </p>
                                 @endforeach
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
@@ -86,20 +97,30 @@
 
                             {{-- メンバー編集ボタンを押すと表示される内容 --}}
                             <div class='edit_after hidden'>
-                                <h2>メンバー編集</h2>
-                                <form action="" method="POST">
-                                    <select name="" multiple>
-                                        @foreach ($group->user as $member)
-                                            <option value="{{ $member->id }}"
-                                                @if (Auth::id() == $member->id) selected @endif>
-                                                {{ $member->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <br>
-                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                    <input type="submit" value="変更">
+                                <h2>グループの編集</h2>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    <!-- モーダルウィンドウの中身 -->
+                                    <p><label>
+                                            グループ名
+                                            <input type="text" name="name" value="{{ $group->name }}">
+                                        </label></p>
+                                    <p><label>
+                                            現在の画像
+                                            <p><img src="{{ $group->image }}" width="100px" height="100px"></p>
+                                            <p>画像<input type="file" name="image"></p>
+                                        </label></p>
+                                    <p><label>
+                                            メンバー
+                                            <select name="members[]" multiple>
+                                                @foreach ($all_friends as $friend)
+                                                    <option value="{{ $friend->id }}"
+                                                        @if (Auth::id() == $friend->id) selected @endif>
+                                                        {{ $friend->profile->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </label></p>
+                                    <p><input type="submit" value="更新"></p>
                                     @csrf
                                 </form>
                             </div>
@@ -119,19 +140,19 @@
                             <div class='add_after hidden'>
                                 <h2>メンバー追加</h2>
                                 <form action="" method="POST">
-                                    <select name="" multiple>
-                                        @foreach ($all_friends as $friend)
-                                            <option value="{{ $friend->id }}"
-                                                @if (Auth::id() == $friend->id) selected @endif>
-                                                {{ $friend->profile->name }}
-                                            </option>
-                                        @endforeach
-
-                                    </select>
-                                    <br>
+                                    <p>
+                                        <select name="" multiple>
+                                            @foreach ($all_friends as $friend)
+                                                <option value="{{ $friend->id }}"
+                                                    @if (Auth::id() == $friend->id) selected @endif>
+                                                    {{ $friend->profile->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </p>
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                    <input type="submit" value="追加">
+                                    <p><input type="submit" value="追加"></p>
                                     @csrf
                                 </form>
                             </div>
@@ -141,7 +162,7 @@
                             @if (Auth::id() == $group->administrator_id)
                                 {{-- メンバーの編集ボタン --}}
                                 <div class='edit_before_button'>
-                                    <button onclick="EditMember()">メンバーの編集</button>
+                                    <button onclick="EditMember()">グループの編集</button>
                                 </div>
 
                                 {{-- グループの削除ボタン --}}

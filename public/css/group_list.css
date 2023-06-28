@@ -30,8 +30,8 @@
 /* 閉じるボタン */
 .close {
     position: absolute;
-    /* top: 0;
-    right: 0; */
+    top: 0;
+    right: 0;
     color: #aaa;
     float: right;
     font-size: 28px;
