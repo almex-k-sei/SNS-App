@@ -7,15 +7,15 @@
         @if ($talkroom->name == "")
             @foreach ($talkroom->user as $user)
                 @if ($user->id != $my_id)
-                    {{$user->name}}　
+                <i class="fas fa-user"></i> {{$user->profile->name}}
                 @endif
             @endforeach
         @else
-            {{$talkroom->name}}
+            <i class="fas fa-users"></i> {{$talkroom->name}}
         @endif
         <div class="memo">
             <details>
-                <summary>M</summary>
+                <summary><i class="far fa-sticky-note"></i></summary>
                 @if ($memo == NULL)
                     <form action="Message/add_memo" method="POST">
                         <textarea name="content" cols="30" rows="10"></textarea>
