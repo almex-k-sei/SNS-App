@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Talkroom;
+use Illuminate\Support\Facades\DB;
 
 
 class MessageListController extends Controller
@@ -14,21 +15,13 @@ class MessageListController extends Controller
     /* メッセージの一覧（トークルーム一覧）画面を表示する */
     public function index(Request $request)
     {
-        /* ログインしているユーザーが所属しているトークルームの一覧を取得 */
+        /* ログインしているユーザーが所属しているトークルームの一覧を取得（最後のメッセージ順に並び替え） */
         $user_id = Auth::id();
-        $user = User::where('id', $user_id)->first();
-        // $talkrooms = $user->talkroom()->orderBy('updated_at')->get();
-
-        $talkrooms = Talkroom::whereHas('user', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })
-        ->with(['message' => function ($query) {
-            $query->orderBy('created_at', 'desc')->get();
-        }])
-        ->orderBy('created_at', 'desc')
-        ->get();
-
-        // dd($talkrooms);
+        $talkrooms = Talkroom::leftJoin('messages', 'talkrooms.id', '=', 'messages.talkroom_id')
+                    ->select('talkrooms.*', DB::raw('COALESCE(MAX(messages.created_at), talkrooms.created_at) AS sort_date'))
+                    ->groupBy('talkrooms.id')
+                    ->orderBy('sort_date', 'desc')
+                    ->get();
 
         /* キーワードを取得 */
         $keyword = $request->input('keyword');
