@@ -57,7 +57,7 @@ class UserListController extends Controller
                     $results->name = "すでに友達です";
                 }
             }
-            if($results == ""){
+            if($results == (object)""){
                 $results = Profile::where("user_id","=","$friend_id")->first();
             }
          }else{
@@ -77,8 +77,8 @@ class UserListController extends Controller
         return redirect('Home');
        }
 
-    
-    
+
+
     public function edit(Request $request){
         $user_id = Auth::id();
         $user = Profile::where('user_id','=',$user_id)->first();

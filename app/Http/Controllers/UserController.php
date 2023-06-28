@@ -21,7 +21,7 @@ class UserController extends Controller
         }elseif($request->image == null){
             $new_profile->image = "https://frigater.com/wp-content/uploads/2019/09/190924_b_%E3%82%B5%E3%83%A0%E3%83%8D%E3%82%A4%E3%83%AB.png";
         }
-        if($request->name !== null){
+        if($request->birth !== null){
             $new_profile->birth = $request->birth;
         }elseif($request->birth == null){
             $new_profile->birth = "非公開";

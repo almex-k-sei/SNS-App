@@ -112,7 +112,9 @@ input[type="text"]#description {
     padding: 30px;
     overflow-y: scroll;
     text-overflow: ellipsis;
-    height: 400px;
+    height: 450px;
+    background-color: #fff;
+    border-radius: 0 0 25px 25px;
 }
 
 .friends_list details {
@@ -139,7 +141,7 @@ input[type="text"]#description {
 .friends_profile {
     width: 50%;
     max-width: 600px;
-    background-color: #fff;
+    /* background-color: #fff; */
     border-radius: 25px;
 }
 
@@ -148,6 +150,8 @@ input[type="text"]#description {
     justify-content: space-around;
     align-items: center;
     border-bottom: 2px solid #9fa09e;
+    background-color: #fff;
+    border-radius: 25px 25px 0 0;
 }
 
 .friends_profile > div {
