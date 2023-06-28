@@ -19,7 +19,7 @@
     {{$results->name}} 
     @csrf
     <input type="submit" name="add_friend" value="追加">
-    <input type="hidden" name="user_id" value="{{$user_id}}">
+    <input type="hidden" name="user_id" value="{{$friend_id}}">
 </form>
 </body>
 </html>
