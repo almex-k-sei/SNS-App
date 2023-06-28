@@ -34,12 +34,20 @@ class MessageController extends Controller
         /* viewファイルで日時表示に使うフラグ */
         $previous_ymd = 0;
 
+        /* メモの取得 */
         $memo = Memo::where('user_id', $my_id)
                 ->where('talkroom_id', $talkroom_id)
                 ->orderBy('created_at')
                 ->first();
 
-        return view('message', compact('my_id', 'talkroom', 'messages', 'previous_ymd', 'memo'));
+        /* 受信モードのON・OFF */
+        if($request->refresh_flag !== NULL){
+            $refresh_flag = $request->refresh_flag;
+        }else{
+            $refresh_flag = "OFF";
+        }
+
+        return view('message', compact('my_id', 'talkroom', 'messages', 'previous_ymd', 'memo', 'refresh_flag', 'talkroom_id'));
     }
     public function send(Request $request)
     {
