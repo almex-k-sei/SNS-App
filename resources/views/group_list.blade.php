@@ -84,7 +84,7 @@
                                 </form>
                             </div>
 
-                            {{-- メンバーを編集ボタンを押すと表示される内容 --}}
+                            {{-- メンバー編集ボタンを押すと表示される内容 --}}
                             <div class='edit_after hidden'>
                                 <h2>メンバー編集</h2>
                                 <form action="" method="POST">
@@ -104,7 +104,7 @@
                                 </form>
                             </div>
 
-                            {{-- グループを削除タンを押すと表示される内容 --}}
+                            {{-- グループ削除ボタンを押すと表示される内容 --}}
                             <div class='delete_after hidden'>
                                 <h2>本当に削除しますか？</h2>
                                 <form action="/GroupList/delete" method="POST">
@@ -115,7 +115,7 @@
                                 </form>
                             </div>
 
-                            {{-- メンバーを追加ボタンを押すと表示される内容 --}}
+                            {{-- メンバー追加ボタンを押すと表示される内容 --}}
                             <div class='add_after hidden'>
                                 <h2>メンバー追加</h2>
                                 <form action="" method="POST">
