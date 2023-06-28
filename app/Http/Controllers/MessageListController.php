@@ -17,7 +17,18 @@ class MessageListController extends Controller
         /* ログインしているユーザーが所属しているトークルームの一覧を取得 */
         $user_id = Auth::id();
         $user = User::where('id', $user_id)->first();
-        $talkrooms = $user->talkroom;
+        // $talkrooms = $user->talkroom()->orderBy('updated_at')->get();
+
+        $talkrooms = Talkroom::whereHas('user', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })
+        ->with(['message' => function ($query) {
+            $query->orderBy('created_at', 'desc')->get();
+        }])
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        // dd($talkrooms);
 
         /* キーワードを取得 */
         $keyword = $request->input('keyword');
