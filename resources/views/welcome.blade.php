@@ -24,7 +24,7 @@
                 <img src="" alt="ロゴ">
                 <div class="welcome_button_container">
                     @if (Route::has('login'))
-                        <div {{--id="login"--}}>
+                        <div>
                             @auth
                                 <p>こんにちは、{{Auth::user()->name}}さん</p>
                                 <a href="{{ url('/Home') }}">ホームへ</a>
