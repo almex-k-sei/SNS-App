@@ -25,7 +25,7 @@ class UserListController extends Controller
                 $friends = $user->follows()->where('name','LIKE',"%$keyword%")->get();
                 // ->orWhere('birth','LIKE',"%$keyword%")->orwhere('description','LIKE',"%$keyword%")->get();
         }
-        return view('home',compact('keyword', 'profiles', 'friends', 'user_id'));
+        return view('home',compact('keyword', 'profiles', 'friends', 'user_id','user'));
 
     }
 
@@ -77,8 +77,8 @@ class UserListController extends Controller
         return redirect('Home');
        }
 
-    
-    
+
+
     public function edit(Request $request){
         $user_id = Auth::id();
         $user = Profile::where('user_id','=',$user_id)->first();

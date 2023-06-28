@@ -36,12 +36,20 @@
 
         </div>
         <!--友達に追加されたときの通知機能および追加ボタン-->
-        <div class="notification">
-            <p>{{$}}に友達追加されました</p>
-            <form action="" method="post">
-                <input type="submit" value="追加">
-            </form>
-        </div>
+
+        @foreach( $user->followers as $follower)
+            @foreach( $user->follows as $follow)
+                @if($follower->id != $follow->id)
+                    <div class="notification">
+                        <p>{{$follower->id}}に友達追加されました</p>
+                        <form action="" method="post">
+                            <input type="submit" value="追加">
+                        </form>
+                    </div>
+                @endif
+            @endforeach
+        @endforeach
+
 
         <!--友達のプロフィール -->
         <div class="friends_profile">
