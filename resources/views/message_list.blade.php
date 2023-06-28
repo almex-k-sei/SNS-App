@@ -49,7 +49,7 @@
                             @else
                                 <p>New Talkroom!</p>
                             @endif
-                            <input type="hidden" name="id" value={{$talkroom->id}}>
+                            <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
                         </button>
                         @csrf
                     </form>

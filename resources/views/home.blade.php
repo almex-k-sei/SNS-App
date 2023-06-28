@@ -31,7 +31,7 @@
                     <summary>プロフィール画像を編集</summary>
                     URL<input type="url"  id="url" name="url">
                 </details>
-                <input type="submit" id="submit"value="編集" formaction="index">
+                <input type="submit" id="submit"value="編集">
             </form>
 
         </div>
