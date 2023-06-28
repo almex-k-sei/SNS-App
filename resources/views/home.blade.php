@@ -40,9 +40,11 @@
     @foreach ($user->followers as $follower)
         @unless ($user->follows->contains('id', $follower->id))
             <div class="notification">
-                <p>{{ $follower->name }}に友達追加されました</p>
-                <form action="" method="post">
-                    <input type="submit" value="追加">
+                <p>{{$follower->profile->name }}に友達追加されました</p>
+                <form action="/accept_request" method="post">
+                    <input type="hidden" name="id" value="{{$follower->id}}">
+                    <input type="submit" name="submit" value="追加">
+                    @csrf
                 </form>
             </div>
         @endunless
