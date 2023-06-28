@@ -1,6 +1,12 @@
+.group_list_header {
+    border-bottom: 2px solid #9fa09e;
+}
+
 .addBtn {
     width: 130px;
 }
+
+
 
 /* モーダルウィンドウ */
 .modal {
@@ -25,13 +31,18 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    text-align: left;
+}
+
+.modal-content p {
+    margin-bottom: 40px;
 }
 
 /* 閉じるボタン */
 .close {
     position: absolute;
-    /* top: 0;
-    right: 0; */
+    top: 0;
+    right: 0;
     color: #aaa;
     float: right;
     font-size: 28px;

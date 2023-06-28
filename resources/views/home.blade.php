@@ -22,8 +22,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td >
-                        <input type="text" id="birthday"name="birthday" placeholder="{{$profiles[0]->birth}}">
+                        <td>
+                            <p>
+                                誕生日<input type="text" id="birthday"name="birthday" placeholder="{{$profiles[0]->birth}}">
+                            </p>
                         </td>
                     </tr>
                 </table>
