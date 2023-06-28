@@ -56,13 +56,6 @@
             <div>
                 {{-- グループ一覧の表示 --}}
                 @foreach ($groups as $group)
-                    {{-- @foreach ($group->user->profile as $member)
-                        <p>
-
-                            {{ dd($member) }}
-
-                        </p>
-                    @endforeach --}}
                     <button class="modalBtn">
                         <img src="{{ $group->image }}" width="200px" height="200px">
                         <h2>{{ $group->name }}</h2>
@@ -82,9 +75,9 @@
                                 <h2>メンバー</h2>
                                 @foreach ($group->user as $member)
                                     <p>
-                                        {{-- @if ($member->plofile != null) --}}
-                                        {{-- {{ dd($member) }} --}}
-                                        {{-- @endif --}}
+
+                                        {{ $member->profile->name }}
+
                                     </p>
                                 @endforeach
                                 {{-- トークへ移動ボタン --}}
