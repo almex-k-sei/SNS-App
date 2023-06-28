@@ -22,6 +22,7 @@ class GroupListController extends Controller
         $user = User::find($user_id);
         $all_friends = $user->follows;
         $groupsQuery = $user->talkroom()->where('type', '=', 'group');
+        $group_members = [];
 
 
         $keyword = $request->input('keyword');
@@ -31,7 +32,7 @@ class GroupListController extends Controller
         }
         $groups = $groupsQuery->get();
         // dd($groups);
-        return view('group_list', compact('groups','all_friends'));
+        return view('group_list', compact('groups','all_friends','group_members'));
     }
 
     public function add(Request $request)

@@ -1,7 +1,9 @@
 @include('header')
+
 <div class="message_list_container">
 
     <div class="list_title_container">
+
         <h1 class="list_title">グループ一覧</h1>
         {{-- 検索キーワードの送信 --}}
         <form action="/GroupList" method="GET">
@@ -29,14 +31,14 @@
                         </label></p>
                     <p><label>
                             メンバー
-                            <select name="members[]" multiple>
-                                @foreach ($all_friends as $friend)
-                                    <option value="{{ $friend->id }}"
-                                        @if (Auth::id() == $friend->id) selected @endif>
+                            @foreach ($all_friends as $friend)
+                                <p>
+                                    <label for="friend_{{ $friend->id }}">
+                                        <input type="checkbox" name="members[]" value="{{ $friend->id }}">
                                         {{ $friend->profile->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                                    </label>
+                                </p>
+                            @endforeach
                         </label></p>
                     <p><input type="submit" value="追加"></p>
                     @csrf
@@ -74,11 +76,7 @@
                                 </form>
                                 <h2>メンバー</h2>
                                 @foreach ($group->user as $member)
-                                    <p>
-
-                                        {{ $member->profile->name }}
-
-                                    </p>
+                                    <p>{{ $member->profile->name }}</p>
                                 @endforeach
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
@@ -104,14 +102,19 @@
                                         </label></p>
                                     <p><label>
                                             メンバー
-                                            <select name="members[]" multiple>
-                                                @foreach ($all_friends as $friend)
-                                                    <option value="{{ $friend->id }}"
-                                                        @if (Auth::id() == $friend->id) selected @endif>
+                                            @foreach ($all_friends as $friend)
+                                                <p>
+                                                    <label for="friend_{{ $friend->id }}">
+                                                        <input type="checkbox" name="members[]"
+                                                            value="{{ $friend->id }}"
+                                                            @foreach ($group->user as $member)
+                                                            @if ($member->id == $friend->id)
+                                                            checked
+                                                            @endif @endforeach>
                                                         {{ $friend->profile->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
+                                                    </label>
+                                                </p>
+                                            @endforeach
                                         </label></p>
                                     <p><input type="submit" value="更新"></p>
                                     @csrf
@@ -134,14 +137,28 @@
                                 <h2>メンバー追加</h2>
                                 <form action="" method="POST">
                                     <p>
-                                        <select name="" multiple>
-                                            @foreach ($all_friends as $friend)
-                                                <option value="{{ $friend->id }}"
-                                                    @if (Auth::id() == $friend->id) selected @endif>
+                                        @foreach ($all_friends as $friend)
+                                        @php
+                                            $isMember = false;
+                                        @endphp
+                                        @foreach ($group->user as $member)
+                                            @if($member->id == $friend->id)
+                                                @php
+                                                    $isMember = true;
+                                                @endphp
+                                                @break
+                                            @endif
+                                        @endforeach
+
+                                        @if(!$isMember)
+                                            <p>
+                                                <label for="friend_{{ $friend->id }}">
+                                                    <input type="checkbox" name="members[]" value="{{ $friend->id }}">
                                                     {{ $friend->profile->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                                </label>
+                                            </p>
+                                        @endif
+                                    @endforeach
                                     </p>
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -179,6 +196,40 @@
 
     @include('footer')
 
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .selectbox-wrapper {
+            position: relative;
+            width: 200px;
+            margin: 0 auto;
+            /* 中央に配置するための設定 */
+        }
+
+        .selectbox-wrapper select[multiple] {
+            width: 100%;
+            height: 200px;
+            font-size: 16px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f7f7f7;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            overflow-y: auto;
+        }
+
+        .selectbox-wrapper select[multiple] option {
+            padding: 5px;
+        }
+
+        .selectbox-wrapper select[multiple] option:checked {
+            background-color: #337ab7;
+            color: #fff;
+        }
+    </style>
 
     <script>
         'use strict';
@@ -356,8 +407,3 @@
             }
         }
     </script>
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
