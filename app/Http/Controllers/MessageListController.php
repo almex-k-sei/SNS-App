@@ -47,7 +47,7 @@ class MessageListController extends Controller
         $user = User::where('id', $request->user_id)->first();
         $talkroom_id = 0;
         foreach ($user->talkroom as $talkroom){
-            if($talkroom->user->contains('id', $request->friend_id)){
+            if($talkroom->user->contains('id', $request->friend_id) && $talkroom->type !== 'group'){
                 $talkroom_id = $talkroom->id;
                 break;
             }
@@ -70,7 +70,6 @@ class MessageListController extends Controller
             $talkroom_id = $talkroom_table->id;
         }
 
-
-        return redirect('/Message')->withInput(['id' => $talkroom_id]);
+        return redirect('/Message')->withInput(['talkroom_id' => $talkroom_id]);
     }
 }
