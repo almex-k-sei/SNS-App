@@ -48,58 +48,59 @@
                     </form>
                 </div>
                 <div class="add_friends">
-                    <label class="open" for="pop-up"><i class="fas fa-user-plus"></i></label>
-                        <input type="checkbox" id="pop-up">
-                        <div class="overlay">
-                            <div class="window">
-                                <label class="close" for="pop-up">×</label>
-                                    <div class="add_friend">
-                                        <form action="" method="get">
-                                            <input type="text" name="friend_email">
-                                            <input type="submit" value="検索">
-                                        </form>
-                                    </div>
+                {{-- <label class="open" for="pop-up"><i class="fas fa-user-plus"></i></label>
+                    <input type="checkbox" id="pop-up"> --}}
+                    {{-- <div class="overlay">
+                        <div class="window">
+                            <label class="close" for="pop-up">×</label>
+                            <div class="add_friend">
+                                <form action="" method="get">
+                                    <input type="text" name="friend_email">
+                                    <input type="submit" value="検索">
+                                </form>
                             </div>
-                        </div> -->
-            </div>
-            <!--友達を追加するボタン　-->
-                <form action="search_friend">
-                    <input type="submit" value="友達を追加">
-                </form>
-
-
-            <!-- 友達一覧-->
-            <div class="friends_list">
-                @foreach($friends as $friend)
-                <details>
-                    <summary>
-                        <div><img src={{$friend->profile->image}} id="image"></div>
-                        <div id="name">{{$friend->profile->name}}</div>
-                        <div id="talk">
-                            <!-- トーク作成ボタン-->
-                            <form action="/MessageList/add" method="post">
-                                <button class="create_talk" type="submit">
-                                    <i class="far fa-comments"></i>
-                                </button>
-                                <input type="hidden" name="user_id" value="{{$user_id}}">
-                                <input type="hidden" name="friend_id" value="{{$friend->id}}">
-                                @csrf
-                            </form>
                         </div>
-                    </summary>
-                    <div class="friends_list_detail">
-                        <p>{{$friend->profile->birth}}</p>
-                        <p>{{$friend->profile->description}}</p>
+                    </div> --}}
+                <form action="search_friend">
+                    <input type="submit" value="友達追加">
+                    {{-- <i class="fas fa-user-plus"></i> --}}
+                </form>
+            </div><!--friends_header-->
+            <!--友達を追加するボタン　-->
+
+
+        </div>
+        <!-- 友達一覧-->
+        <div class="friends_list">
+            @foreach($friends as $friend)
+            <details>
+                <summary>
+                    <div><img src={{$friend->profile->image}} id="image"></div>
+                    <div id="name">{{$friend->profile->name}}</div>
+                    <div id="talk">
+                        <!-- トーク作成ボタン-->
+                        <form action="/MessageList/add" method="post">
+                            <button class="create_talk" type="submit">
+                                <i class="far fa-comments"></i>
+                            </button>
+                            <input type="hidden" name="user_id" value="{{$user_id}}">
+                            <input type="hidden" name="friend_id" value="{{$friend->id}}">
+                            @csrf
+                        </form>
                     </div>
-                </details>
-                @endforeach
-            </div>
+                </summary>
+                <div class="friends_list_detail">
+                    <p>{{$friend->profile->birth}}</p>
+                    <p>{{$friend->profile->description}}</p>
+                </div>
+            </details>
+            @endforeach
         </div>
     </main>
     @include('footer')
-<style>
+{{-- <style>
     img{
         width:100px;
         height:100px;
     }
-</style>
+</style> --}}

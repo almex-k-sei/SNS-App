@@ -29,10 +29,10 @@ h1.talkroom_title {
 
 .container {
     padding: 50px;
-    padding-bottom: 120px;
+    padding-bottom: 200px;
     height: auto;
     margin-bottom: 80px;
-    margin-top: 140px;
+    margin-top: 200px;
 }
 
 .message_container {
@@ -42,6 +42,10 @@ h1.talkroom_title {
 .message_container img {
     width: 100px;
     height: 100px;
+}
+
+p.datetime {
+    text-align: center;
 }
 
 .text_container p {

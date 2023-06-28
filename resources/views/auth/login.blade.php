@@ -8,6 +8,8 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
+            <h2>ログイン</h2>
+
             <!-- Email Address -->
             <div>
                 {{-- <x-input-label for="email" :value="__('メールアドレス')" /> --}}
