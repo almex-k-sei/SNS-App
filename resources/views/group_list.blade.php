@@ -64,8 +64,8 @@
                     <div class="modal">
                         <div class="modal-content">
                             <!-- コンテンツをここに追加します -->
-                            {{-- メンバーを一覧表示 --}}
-                            <div id="main_before">
+                            {{-- メンバーを一覧表示（最初に表示されます） --}}
+                            <div class="main_before">
                                 <form action="/GroupList/quit" method="POST">
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -84,59 +84,73 @@
                                 </form>
                             </div>
 
-                            {{-- グループの作成者のみが表示されるボタン --}}
-                            @if (Auth::id() == $group->administrator_id)
-                                <div id='edit_after' class="hidden">
-                                    <h2>メンバー編集</h2>
-                                    <form action="" method="POST">
-                                        <select name="" multiple>
-                                            @foreach ($group->user as $member)
-                                                <option value="{{ $member->id }}"
-                                                    @if (Auth::id() == $member->id) selected @endif>
-                                                    {{ $member->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <br>
-                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                        <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                        <input type="submit" value="変更">
-                                        @csrf
-                                    </form>
-                                </div>
-                                {{-- メンバーの編集 --}}
-                                <div id='edit_before_button'>
-                                    <button onclick="EditMember()">編集</button>
-                                </div>
-
-                                {{-- グループの削除 --}}
-                                <form action="/GroupList/delete" method="POST">
+                            {{-- メンバーを編集ボタンを押すと表示される内容 --}}
+                            <div class='edit_after hidden'>
+                                <h2>メンバー編集</h2>
+                                <form action="" method="POST">
+                                    <select name="" multiple>
+                                        @foreach ($group->user as $member)
+                                            <option value="{{ $member->id }}"
+                                                @if (Auth::id() == $member->id) selected @endif>
+                                                {{ $member->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    <br>
+                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                    <input type="submit" value="グループの削除">
+                                    <input type="submit" value="変更">
                                     @csrf
                                 </form>
-                            @else
-                                <div id='add_after' class="hidden">
-                                    <h2>メンバー追加</h2>
-                                    <form action="" method="POST">
-                                        <select name="" multiple>
-                                            @foreach ($all_friends as $friend)
-                                                <option value="{{ $friend->id }}"
-                                                    @if (Auth::id() == $friend->id) selected @endif>
-                                                    {{ $friend->profile->name }}
-                                                </option>
-                                            @endforeach
+                            </div>
 
-                                        </select>
-                                        <br>
-                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                        <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                        <input type="submit" value="追加">
-                                        @csrf
-                                    </form>
+                            {{-- グループを削除タンを押すと表示される内容 --}}
+                            <div class='delete_after hidden'>
+                                <h2>本当に削除しますか？</h2>
+                                <form action="/GroupList/delete" method="POST">
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                    <input type="submit" value="はい">
+                                    <input type="button" onclick="NoDelete()" value="いいえ">
+                                    @csrf
+                                </form>
+                            </div>
+
+                            {{-- メンバーを追加ボタンを押すと表示される内容 --}}
+                            <div class='add_after hidden'>
+                                <h2>メンバー追加</h2>
+                                <form action="" method="POST">
+                                    <select name="" multiple>
+                                        @foreach ($all_friends as $friend)
+                                            <option value="{{ $friend->id }}"
+                                                @if (Auth::id() == $friend->id) selected @endif>
+                                                {{ $friend->profile->name }}
+                                            </option>
+                                        @endforeach
+
+                                    </select>
+                                    <br>
+                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                    <input type="submit" value="追加">
+                                    @csrf
+                                </form>
+                            </div>
+
+
+                            {{-- グループの作成者かそうでないかを判断 --}}
+                            @if (Auth::id() == $group->administrator_id)
+                                {{-- メンバーの編集ボタン --}}
+                                <div class='edit_before_button'>
+                                    <button onclick="EditMember()">メンバーの編集</button>
                                 </div>
+
+                                {{-- グループの削除ボタン --}}
+                                <div class='delete_before_button'>
+                                    <button onclick="DeleteMember()">グループの削除</button>
+                                </div>
+                            @else
                                 {{-- メンバーを追加ボタン --}}
-                                <div id='add_before_button'>
+                                <div class='add_before_button'>
                                     <button onclick="AddMember()">メンバーを追加</button>
                                 </div>
                             @endif
@@ -163,6 +177,14 @@
         // 閉じるボタンを取得
         var closeBtns = document.getElementsByClassName("close");
 
+        var divA = document.getElementsByClassName("main_before");
+        var divB = document.getElementsByClassName("add_before_button");
+        var divC = document.getElementsByClassName("add_after");
+        var divD = document.getElementsByClassName("edit_before_button");
+        var divE = document.getElementsByClassName("edit_after");
+        var divF = document.getElementsByClassName("delete_before_button");
+        var divG = document.getElementsByClassName("delete_after");
+
         // トリガーボタンがクリックされた時の処理
         for (var i = 0; i < modalBtns.length; i++) {
             modalBtns[i].onclick = function() {
@@ -171,61 +193,153 @@
             };
         }
 
+
         // 閉じるボタンがクリックされた時の処理
         for (var i = 0; i < closeBtns.length; i++) {
-            var divA = document.getElementById("main_before");
-            var divB = document.getElementById("add_before_button");
-            var divC = document.getElementById("add_after");
-            var divD = document.getElementById("edit_before_button");
-            var divE = document.getElementById("edit_after");
+
             closeBtns[i].onclick = function() {
                 var modal = this.parentNode.parentNode;
                 modal.style.display = "none"; // 対応するモーダルを非表示にする
-                divA.style.display = "block";
-                divB.style.display = "block";
-                divC.style.display = "none";
-                divD.style.display = "block";
-                divE.style.display = "none";
+                for (var i = 0; i < divA.length; i++) {
+                    divA[i].style.display = "block";
+                }
+
+                for (var j = 0; j < divB.length; j++) {
+                    divB[j].style.display = "block";
+                }
+
+                for (var k = 0; k < divC.length; k++) {
+                    divC[k].style.display = "none";
+                }
+                for (var j = 0; j < divD.length; j++) {
+                    divD[j].style.display = "block";
+                }
+
+                for (var k = 0; k < divE.length; k++) {
+                    divE[k].style.display = "none";
+                }
+                for (var j = 0; j < divD.length; j++) {
+                    divF[j].style.display = "block";
+                }
+
+                for (var k = 0; k < divE.length; k++) {
+                    divG[k].style.display = "none";
+                }
             };
         }
 
         // モーダルウィンドウの外側がクリックされた時の処理
         window.onclick = function(event) {
-            var divA = document.getElementById("main_before");
-            var divB = document.getElementById("add_before_button");
-            var divC = document.getElementById("add_after");
-            var divD = document.getElementById("edit_before_button");
-            var divE = document.getElementById("edit_after");
             for (var i = 0; i < modals.length; i++) {
                 if (event.target == modals[i]) {
                     modals[i].style.display = "none"; // 対応するモーダルを非表示にする
-                    divA.style.display = "block";
-                    divB.style.display = "block";
-                    divC.style.display = "none";
-                    divD.style.display = "block";
-                    divE.style.display = "none";
+                    for (var i = 0; i < divA.length; i++) {
+                        divA[i].style.display = "block";
+                    }
+
+                    for (var j = 0; j < divB.length; j++) {
+                        divB[j].style.display = "block";
+                    }
+
+                    for (var k = 0; k < divC.length; k++) {
+                        divC[k].style.display = "none";
+                    }
+                    for (var j = 0; j < divD.length; j++) {
+                        divD[j].style.display = "block";
+                    }
+
+                    for (var k = 0; k < divE.length; k++) {
+                        divE[k].style.display = "none";
+                    }
+                    for (var j = 0; j < divD.length; j++) {
+                        divF[j].style.display = "block";
+                    }
+
+                    for (var k = 0; k < divE.length; k++) {
+                        divG[k].style.display = "none";
+                    }
                 }
             }
         };
 
         function AddMember() {
-            var divA = document.getElementById("main_before");
-            var divB = document.getElementById("add_before_button");
-            var divC = document.getElementById("add_after");
+            var divA = document.getElementsByClassName("main_before");
+            var divB = document.getElementsByClassName("add_before_button");
+            var divC = document.getElementsByClassName("add_after");
 
-            divA.style.display = "none";
-            divB.style.display = "none";
-            divC.style.display = "block";
+            for (var i = 0; i < divA.length; i++) {
+                divA[i].style.display = "none";
+            }
+
+            for (var j = 0; j < divB.length; j++) {
+                divB[j].style.display = "none";
+            }
+
+            for (var k = 0; k < divC.length; k++) {
+                divC[k].style.display = "block";
+            }
         }
 
-        function EditMember() {
-            var divA = document.getElementById("main_before");
-            var divB = document.getElementById("edit_before_button");
-            var divC = document.getElementById("edit_after");
 
-            divA.style.display = "none";
-            divB.style.display = "none";
-            divC.style.display = "block";
+        function EditMember() {
+            var divA = document.getElementsByClassName("main_before");
+            var divB = document.getElementsByClassName("edit_before_button");
+            var divC = document.getElementsByClassName("edit_after");
+            var divE = document.getElementsByClassName("delete_before_button");
+            for (var i = 0; i < divA.length; i++) {
+                divA[i].style.display = "none";
+            }
+
+            for (var j = 0; j < divB.length; j++) {
+                divB[j].style.display = "none";
+            }
+
+            for (var k = 0; k < divC.length; k++) {
+                divC[k].style.display = "block";
+            }
+            for (var k = 0; k < divE.length; k++) {
+                divE[k].style.display = "none";
+            }
+        }
+
+        function DeleteMember() {
+            var divA = document.getElementsByClassName("main_before");
+            var divB = document.getElementsByClassName("delete_before_button");
+            var divC = document.getElementsByClassName("delete_after");
+            var divE = document.getElementsByClassName("edit_before_button");
+
+            for (var i = 0; i < divA.length; i++) {
+                divA[i].style.display = "none";
+            }
+
+            for (var j = 0; j < divB.length; j++) {
+                divB[j].style.display = "none";
+            }
+
+            for (var k = 0; k < divC.length; k++) {
+                divC[k].style.display = "block";
+            }
+            for (var k = 0; k < divE.length; k++) {
+                divE[k].style.display = "none";
+            }
+        }
+
+        function NoDelete() {
+            var divA = document.getElementsByClassName("main_before");
+            var divB = document.getElementsByClassName("delete_before_button");
+            var divC = document.getElementsByClassName("delete_after");
+
+            for (var i = 0; i < divA.length; i++) {
+                divA[i].style.display = "block";
+            }
+
+            for (var j = 0; j < divB.length; j++) {
+                divB[j].style.display = "block";
+            }
+
+            for (var k = 0; k < divC.length; k++) {
+                divC[k].style.display = "none";
+            }
         }
     </script>
     <style>
