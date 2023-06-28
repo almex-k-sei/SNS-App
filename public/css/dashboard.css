@@ -1,0 +1,86 @@
+body {
+    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
+    background-repeat: repeat;
+    background-size: contain;
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    line-height: 2rem;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.dashboard_container {
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    width: 50%;
+    padding: 30px;
+    font-size: 20px;
+}
+
+
+.dashboard_container form input {
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dashboard_container form input[type="submit"] {
+    width: 100px;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #b2ffb2;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dashboard_container form input[type="submit"] {
+    display: inline-block;
+    background: #b2ffb2;
+    color: #444;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border-bottom: 2px solid #444;
+    position: relative;
+    bottom: 0;
+}
+
+.dashboard_container input[type="submit"]:hover {
+    opacity: .4;
+}
+
+.dashboard_container input[type="submit"]:active {
+    border: 0;
+    bottom: -2px;
+}
+
+.dashboard_container button[type="submit"] {
+    margin-left: 20px;
+    background-color: #b2ffb2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+}
+
+
+
+.dashboard_container button[type="submit"]:hover {
+    opacity: .4;
+}
+
+.dashboard_container form div.completion {
+    text-align: center;
+}
+
+a.underline {
+    color :red;
+}

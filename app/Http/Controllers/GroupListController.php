@@ -60,7 +60,7 @@ class GroupListController extends Controller
         $talkrooms_table->name = $request->name;
 
         if (isset($request->image)) {
-            $talkrooms_table->image = $request->image->store('gruopdata', 'public');
+            $talkrooms_table->image = $request->image->store('groupdata', 'public');
         }
         /* データベースにレコードを追加する */
         $talkrooms_table->type = 'group';

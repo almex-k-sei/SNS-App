@@ -7,7 +7,7 @@ use App\Http\Controllers\UserListController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessageListController;
-
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +38,23 @@ Route::middleware('auth')->group(function () {
 Route::get('/Home', [UserListController::class, 'index'])->middleware('auth');
 Route::post('/Home',[UserListController::class, 'edit'])->middleware('auth');
 
+//友達になりたい人を検索
+Route::get('search_friend',[UserListController::class,'search_index'])->middleware('auth');
+Route::post('search_friend',[UserListController::class,'search_friend'])->middleware('auth');
+
+//友達追加
+Route::post('/add_friend',[UserListController::class,'add_friend'])->middleware('auth');
+
 /* トーク画面
 トークルームIDが初回はpostでredierct時はget */
 Route::get('/Message', [MessageController::class, 'index'])->middleware('auth');
 Route::post('/Message', [MessageController::class, 'index'])->middleware('auth');
 /* メッセージの送信 */
 Route::post('/Message/send', [MessageController::class, 'send'])->middleware('auth');
+/* メモの追加 */
+Route::post('/Message/add_memo', [MessageController::class, 'add_memo'])->middleware('auth');
+/* メモの更新 */
+Route::post('/Message/update_memo', [MessageController::class, 'update_memo'])->middleware('auth');
 
 /* メッセージリスト画面 */
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
