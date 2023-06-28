@@ -1,11 +1,12 @@
+body{
+    background-color: white;
+}
 main{
     display:flex;
     justify-content: space-around;
     margin: 140px 20px 30px;
+    height: auto;
 }
-body{
-        background-color: white;
-    }
 /*自分のプロフィールについて*/
 .my_profile{
     width: 40%;
@@ -137,7 +138,6 @@ input[type="text"]#description {
 
 .friends_profile {
     width: 50%;
-    height: auto;
     max-width: 600px;
     background-color: #fff;
     border-radius: 25px;

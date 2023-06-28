@@ -60,7 +60,8 @@ class User extends Authenticatable
 
     /* friend機能 */
     public function follows(){
-        return $this->belongsToMany(self::class, "friends", "user_id", "friend_id");
+        return $this->belongsToMany(self::class, "friends", "user_id", "friend_id")
+        ->withPivot('friend_id','user_id');
     }
     public function followers(){
         return $this->belongsToMany(self::class, "friends", "friend_id", "user_id");
