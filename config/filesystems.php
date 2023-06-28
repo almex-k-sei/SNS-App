@@ -72,7 +72,7 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('filedata') => storage_path('app/public/filedata'),
-        public_path('gruopdata') => storage_path('app/public/gruopdata')
+        public_path('groupdata') => storage_path('app/public/groupdata')
     ],
 
 ];

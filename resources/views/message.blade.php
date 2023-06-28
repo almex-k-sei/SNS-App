@@ -13,6 +13,32 @@
         @else
             {{$talkroom->name}}
         @endif
+        <div class="memo">
+            <details>
+                <summary>M</summary>
+                @if ($memo == NULL)
+                    <form action="Message/add_memo" method="POST">
+                        <textarea name="content" cols="30" rows="10"></textarea>
+                        <input type="submit" value="メモを保存">
+                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        <input type="hidden" name="user_id" value={{$my_id}}>
+                        @csrf
+                    </form>
+                @else
+                    <form action="Message/update_memo" method="POST">
+                        <textarea name="content" cols="30" rows="10">{{$memo->content}}</textarea>
+                        <input type="submit" value="メモを保存">
+                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        <input type="hidden" name="user_id" value={{$my_id}}>
+                        @csrf
+                    </form>
+                @endif
+
+                {{-- エラーメッセージ --}}
+                {{ $errors->first('memo') }}
+            </details>
+        </div>
+        <div class="clear"></div>
     </h1>
 
     <div class="container">

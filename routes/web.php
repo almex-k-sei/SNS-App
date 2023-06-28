@@ -51,6 +51,10 @@ Route::get('/Message', [MessageController::class, 'index'])->middleware('auth');
 Route::post('/Message', [MessageController::class, 'index'])->middleware('auth');
 /* メッセージの送信 */
 Route::post('/Message/send', [MessageController::class, 'send'])->middleware('auth');
+/* メモの追加 */
+Route::post('/Message/add_memo', [MessageController::class, 'add_memo'])->middleware('auth');
+/* メモの更新 */
+Route::post('/Message/update_memo', [MessageController::class, 'update_memo'])->middleware('auth');
 
 /* メッセージリスト画面 */
 Route::get('/MessageList', [MessageListController::class, 'index'])->middleware('auth');
