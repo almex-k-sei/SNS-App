@@ -138,27 +138,16 @@
                                 <form action="" method="POST">
                                     <p>
                                         @foreach ($all_friends as $friend)
-                                        @php
-                                            $isMember = false;
-                                        @endphp
-                                        @foreach ($group->user as $member)
-                                            @if($member->id == $friend->id)
-                                                @php
-                                                    $isMember = true;
-                                                @endphp
-                                                @break
-                                            @endif
+                                            @unless ($group->user->contains('id', $friend->id))
+                                                <p>
+                                                    <label for="friend_{{ $friend->id }}">
+                                                        <input type="checkbox" name="members[]"
+                                                            value="{{ $friend->id }}">
+                                                        {{ $friend->profile->name }}
+                                                    </label>
+                                                </p>
+                                            @endunless
                                         @endforeach
-
-                                        @if(!$isMember)
-                                            <p>
-                                                <label for="friend_{{ $friend->id }}">
-                                                    <input type="checkbox" name="members[]" value="{{ $friend->id }}">
-                                                    {{ $friend->profile->name }}
-                                                </label>
-                                            </p>
-                                        @endif
-                                    @endforeach
                                     </p>
                                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
