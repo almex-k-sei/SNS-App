@@ -31,12 +31,12 @@ main{
 }
 
 .my_editable_profile input[type="submit"] {
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);;
     margin-top: 20px;
 }
 
 .my_editable_profile input.submit{
-    background: #b2ffb2;
+    background: rgb(3,200,96);;
     margin: 10px;
 }
 

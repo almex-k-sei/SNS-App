@@ -141,13 +141,13 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    outline: 3px solid #b2ffb2;
+    outline: 3px solid rgb(3,200,96);
 }
 
 input[type="submit"] {
     padding: 10px 20px;
     margin-left: 10px;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);
     border: none;
     font-weight: bold;
     border-radius: 80px;

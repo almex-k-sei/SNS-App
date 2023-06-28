@@ -29,7 +29,7 @@
                 </table>
                 <details>
                     <summary>プロフィール画像を編集</summary>
-                    URL<input type="url"  id="url" name="url">
+                    URL<input type="url"  id="url" name="画像をアップロード">
                 </details>
                 <input type="submit" id="submit"value="編集">
             </form>
@@ -37,7 +37,7 @@
         </div>
         <!--友達に追加されたときの通知機能および追加ボタン-->
         <div class="notification">
-            <p>{{$}}に友達追加されました</p>
+            <p>に友達追加されました</p>
             <form action="" method="post">
                 <input type="submit" value="追加">
             </form>

@@ -39,7 +39,7 @@
  }
 
  .list_contents_container::-webkit-scrollbar-thumb{
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);
     border-radius: 25px;
  }
 

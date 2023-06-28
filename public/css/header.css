@@ -37,9 +37,9 @@ p {
 
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: #b2ffb2;
+    background-color:rgb(3,200,96);
     position: fixed;
     top: 0;
     left: 0;
@@ -86,4 +86,15 @@ button.logout {
 
 button.logout:hover {
     opacity: .4;
+}
+
+.header_right{
+    margin-right:60px;
+}
+/*ロゴ*/
+#logo{
+    width:200px;
+    height:200px;
+    margin-left:100px;
+    margin-top:20px;
 }
