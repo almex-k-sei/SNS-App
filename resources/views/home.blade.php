@@ -35,6 +35,13 @@
             </form>
 
         </div>
+        <!--友達に追加されたときの通知機能および追加ボタン-->
+        <div class="notification">
+            <p>{{$}}に友達追加されました</p>
+            <form action="" method="post">
+                <input type="submit" value="追加">
+            </form>
+        </div>
 
         <!--友達のプロフィール -->
         <div class="friends_profile">
