@@ -43,7 +43,7 @@ main{
 .my_editable_profile input:focus{
     background: #fff;
 }
-.my_editable_profile input[type="url"] {
+.my_editable_profile input[type="file"] {
     background: #fff;
     margin-left: 5px;
 }

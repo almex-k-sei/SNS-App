@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
+    background-image: linear-gradient(270deg, #FFFF00 0%,#FFFF00 100%);
     background-repeat: repeat;
     background-size: contain;
     font-family: 'Rubik', sans-serif;
@@ -47,6 +47,7 @@ header {
     height: 100px;
     z-index: 100;
     padding: 0 20px;
+    box-shadow:0px 5px 0px 0px rgb(3, g, blue);
 }
 
 .service_title{
