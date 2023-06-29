@@ -8,7 +8,8 @@ body {
     background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
     background-repeat: repeat;
     background-size: contain;
-    font-family: 'Rubik', sans-serif;
+    /* font-family: 'route_font', sans-serif; */
+    font-family: 'Kiwi Maru', serif;
     margin: 0;
     line-height: 2rem;
     font-size: 18px;
@@ -19,6 +20,11 @@ body {
 
 input {
     font-size: 18px;
+    font-family: 'Kiwi Maru', serif;
+}
+
+button {
+    font-family: 'Kiwi Maru', serif;
 }
 
 ul {
@@ -33,6 +39,10 @@ a {
 
 p {
     margin: 0;
+}
+
+.bold {
+    font-weight: bold;
 }
 
 header {

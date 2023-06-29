@@ -11,13 +11,18 @@
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     {{-- サイトアクセス時にresourceフォルダの中にあるブレードファイルをルートやcontrollerで
     読みに行かせる場合もlinkのパスはpublic内あるものとして記述する。 --}}
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="/css/home_main.css">
     <link rel="stylesheet" href="css/message_main.css">
     <link rel="stylesheet" href="css/message_list.css">
     <link rel="stylesheet" href="css/group_list.css">
-    <title>サービス名</title>
+
+    {{-- Googleフォント --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">    <title>Route::</title>
 </head>
 <body>
     <header>
