@@ -1,5 +1,6 @@
 @include('header')
-<div class="message_list_container">
+
+<div class="group_list_container">
 
     <div class="list_title_container">
         <div class="group_list_header">
@@ -136,7 +137,7 @@
         // トリガーボタンがクリックされた時の処理
         for (var i = 0; i < modalBtns.length; i++) {
             modalBtns[i].onclick = function() {
-                var modal = this.parentNode.nextElementSibling;
+                var modal = this.pa.nextElementSibling;
                 modal.style.display = "block"; // 対応するモーダルを表示する
             };
         }
