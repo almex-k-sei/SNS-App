@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/Home', [UserListController::class, 'index'])->middleware('auth');
 Route::post('/Home',[UserListController::class, 'edit'])->middleware('auth');
 
+Route::post('/accept_request',[UserListController::class, 'accept_request'])->middleware('auth');
+
 //友達になりたい人を検索
 Route::get('search_friend',[UserListController::class,'search_index'])->middleware('auth');
 Route::post('search_friend',[UserListController::class,'search_friend'])->middleware('auth');
