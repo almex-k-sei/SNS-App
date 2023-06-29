@@ -13,6 +13,29 @@ h1.talkroom_title {
     z-index: 100;
 }
 
+.button_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.reception {
+    font-weight: bold;
+}
+
+/* .on_button{
+
+}
+
+.off_button{
+
+} */
+
+.refresh {
+    float: left;
+}
+
 .back {
     float: left;
     margin-left: 20px;
@@ -141,13 +164,13 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    outline: 3px solid #b2ffb2;
+    outline: 3px solid rgb(3,200,96);
 }
 
 input[type="submit"] {
     padding: 10px 20px;
     margin-left: 10px;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);
     border: none;
     font-weight: bold;
     border-radius: 80px;

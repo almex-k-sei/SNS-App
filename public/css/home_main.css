@@ -17,31 +17,26 @@ main{
 }
 
 .my_profile #image{
-    max-width: 250px;
+    width: 100%;
+    max-width: 300px;
     border-radius: 50%;
 }
-
 .my_editable_profile{
     text-align: center;
     margin-bottom: 10px;
 }
-
 .my_editable_profile input{
     width: 300px;
     padding: 10px;
 }
 
-.my_editable_profile input:focus {
-    background: #fff;
-}
-
 .my_editable_profile input[type="submit"] {
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);;
     margin-top: 20px;
 }
 
 .my_editable_profile input.submit{
-    background: #b2ffb2;
+    background: rgb(3,200,96);;
     margin: 10px;
 }
 
@@ -61,11 +56,6 @@ main{
     background-color: transparent;
 }
 
-.my_editable_profile #name:focus{
-    background: #fff;
-}
-
-
 .my_editable_profile #birthday{
     text-align: center;
 }
@@ -74,11 +64,13 @@ main{
     display: inline-block;
     position: relative;
     margin: 50px auto 0;
+    /* padding: 15px; */
     background: #fff;
     border-radius: 30px;
 }
 .my_editable_profile #url{
     text-align: center;
+    /* background-color: transparent; */
 }
 
 
@@ -117,35 +109,11 @@ input[type="text"]#description {
 
 /*友達のプロフィールについて*/
 .friends_list {
-    padding: 20px;
+    padding: 30px;
     overflow-y: scroll;
     text-overflow: ellipsis;
     height: 400px;
-    background-color: #fff;
-    border-radius: 0 0 10px 10px;
 }
-
- .friends_list::-webkit-scrollbar{
-    width: 10px;
- }
-
- .friends_list::-webkit-scrollbar-track{
-    background-color: #ccc;
-    border-radius: 25px;
- }
-
- .friends_list::-webkit-scrollbar-thumb{
-    background-color: #b2ffb2;
-    border-radius: 25px;
- }
-
-
-
-
-
-
-
-
 
 .friends_list details {
     border: 2px solid #9fa09e;
@@ -171,6 +139,7 @@ input[type="text"]#description {
 .friends_profile {
     width: 50%;
     max-width: 600px;
+    background-color: #fff;
     border-radius: 25px;
 }
 
@@ -179,8 +148,6 @@ input[type="text"]#description {
     justify-content: space-around;
     align-items: center;
     border-bottom: 2px solid #9fa09e;
-    background-color: #fff;
-    border-radius: 10px 10px 0 0;
 }
 
 .friends_profile > div {

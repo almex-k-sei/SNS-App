@@ -4,17 +4,11 @@ html {
     padding: 0;
 }
 
-@font-face {
-    font-family: "route_font";
-    src: url("../css/fonts/Corporate-Logo-Rounded-Bold-ver3.otf") format("opentype");
-  }
-
 body {
-    background-color: #bb4bff;
-background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
+    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
     background-repeat: repeat;
     background-size: contain;
-    font-family: "route_font", sans-serif;
+    font-family: 'Rubik', sans-serif;
     margin: 0;
     line-height: 2rem;
     font-size: 18px;
@@ -23,19 +17,8 @@ background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
     box-sizing: border-box;
 }
 
-img {
-    height: 100%;
-    width: 100%;
-}
-
 input {
     font-size: 18px;
-    border-radius: 10px;
-    font-family: "route_font", sans-serif;
-}
-
-button {
-    font-family: "route_font", sans-serif;
 }
 
 ul {
@@ -54,9 +37,9 @@ p {
 
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: #b2ffb2;
+    background-color:rgb(3,200,96);
     position: fixed;
     top: 0;
     left: 0;
@@ -103,4 +86,15 @@ button.logout {
 
 button.logout:hover {
     opacity: .4;
+}
+
+.header_right{
+    margin-right:60px;
+}
+/*ロゴ*/
+#logo{
+    width:200px;
+    height:200px;
+    margin-left:100px;
+    margin-top:20px;
 }

@@ -22,7 +22,9 @@
 <body>
     <header>
         <div class="header_left">
-            <p class="service_title">サービス名</p>
+            <!--ロゴ画像-->
+            <img id="logo" src="unnamed.png" alt="ロゴ画像">
+
         </div>
         {{-- <div class="header_right">
             <a href="">
@@ -30,17 +32,18 @@
         </div>
         <div class="header_left">
             <!--ロゴ画像-->
-            <img src="" alt="">
+            <img src="unnamed.png" alt="ロゴ画像">
         </div> --}}
         <div class="header_right">
             <!--ログアウト-->
             {{Auth::user()->name}}
             <form action="{{route('logout')}}" method="post">
                 <button class="logout" type="submit">
-                    <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 </button>
             @csrf
             </form>
+
     </header>
 <!-- </body>
 </html> -->

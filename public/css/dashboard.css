@@ -1,14 +1,8 @@
-@font-face {
-    font-family: "route_font";
-    src: url("../css/fonts/RiiPopkkR.otf") format("opentype");
-  }
-
 body {
-    background-color: #bb4bff;
-background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
+    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
     background-repeat: repeat;
     background-size: contain;
-    font-family: "route_font", sans-serif;
+    font-family: 'Rubik', sans-serif;
     margin: 0;
     line-height: 2rem;
     font-size: 18px;
@@ -40,7 +34,7 @@ background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
     width: 100px;
     display: inline-block;
     margin: 0 auto;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -48,7 +42,7 @@ background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
 
 .dashboard_container form input[type="submit"] {
     display: inline-block;
-    background: #b2ffb2;
+    background: rgb(3,200,96);;
     color: #444;
     font-weight: bold;
     text-decoration: none;
@@ -70,7 +64,7 @@ background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
 
 .dashboard_container button[type="submit"] {
     margin-left: 20px;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;

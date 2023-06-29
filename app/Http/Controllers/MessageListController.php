@@ -18,7 +18,9 @@ class MessageListController extends Controller
         /* ログインしているユーザーが所属しているトークルームの一覧を取得（最後のメッセージ順に並び替え） */
         $user_id = Auth::id();
         $talkrooms = Talkroom::leftJoin('messages', 'talkrooms.id', '=', 'messages.talkroom_id')
+                    ->join('talkroom_user', 'talkrooms.id', '=', 'talkroom_user.talkroom_id')
                     ->select('talkrooms.*', DB::raw('COALESCE(MAX(messages.created_at), talkrooms.created_at) AS sort_date'))
+                    ->where('talkroom_user.user_id', $user_id) // ユーザーIDでフィルタリング
                     ->groupBy('talkrooms.id')
                     ->orderBy('sort_date', 'desc')
                     ->get();

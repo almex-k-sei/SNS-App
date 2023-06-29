@@ -1,19 +1,20 @@
 @include('header')
 
-<div class="group_list_container">
+<div class="message_list_container">
 
     <div class="list_title_container">
-            <h1 class="list_title">グループ一覧</h1>
-            {{-- 検索キーワードの送信 --}}
-            <form action="/GroupList" method="GET">
-                <label>
-                    検索キーワード
-                    <input type="text" name="keyword">
-                </label>
-                <input type="submit" value="検索">
-            </form>
-            <!-- モーダルウィンドウのトリガーボタン -->
-            <button class="modalBtn addBtn">グループを追加</button>
+
+        <h1 class="list_title">グループ一覧</h1>
+        {{-- 検索キーワードの送信 --}}
+        <form action="/GroupList" method="GET">
+            <label>
+                検索キーワード
+                <input type="text" name="keyword">
+            </label>
+            <input type="submit" value="検索">
+        </form>
+        <!-- モーダルウィンドウのトリガーボタン -->
+        <button class="modalBtn addBtn">グループを追加</button>
 
         <!-- モーダルウィンドウのコンテンツ -->
         <div class="modal">
