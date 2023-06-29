@@ -161,7 +161,7 @@
 
 @if ($refresh_flag == "ON")
     <div class="send_message_container">
-        受信中
+        <h3>受信中</h3>
     </div>
 @else
     <div class="send_message_container">
