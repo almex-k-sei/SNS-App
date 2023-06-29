@@ -166,28 +166,54 @@
 </div>
 @endforeach
 
-<div class="refresh">
-    <p>受信モード</p>
-    <form action="/Message" method="POST">
-        <input type="submit" name="refresh_flag" value=ON>
-        <input type="hidden" name="user_id" value={{$my_id}}>
-        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
-        @csrf
-    </form>
-    <form action="/Message" method="POST">
-        <input type="submit" name="refresh_flag" value=OFF>
-        <input type="hidden" name="user_id" value={{$my_id}}>
-        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
-        @csrf
-    </form>
-</div>
-
 @if ($refresh_flag == "ON")
     <div class="send_message_container">
-        <h3>受信中</h3>
+        <div class="refresh">
+            <div class="button_container">
+                <span class="reception"> <i class="fas fa-broadcast-tower fa-lg"></i> 受信モード</span>
+                <div class="on_button">
+                    <form action="/Message" method="POST">
+                        <input type="submit" name="refresh_flag" value=ON>
+                        <input type="hidden" name="user_id" value={{$my_id}}>
+                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        @csrf
+                    </form>
+                </div>
+                <div class="off_button">
+                    <form action="/Message" method="POST">
+                        <input type="submit" name="refresh_flag" value=OFF>
+                        <input type="hidden" name="user_id" value={{$my_id}}>
+                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
+        <span class="reception"><i class="fas fa-redo-alt fa-spin fa-lg"></i> 受信中</span>
     </div>
 @else
     <div class="send_message_container">
+        <div class="refresh">
+            <div class="button_container">
+                <span class="reception"> <i class="fas fa-broadcast-tower fa-lg"></i> 受信モード</span>
+                <div class="on_button">
+                    <form action="/Message" method="POST">
+                        <input type="submit" name="refresh_flag" value=ON>
+                        <input type="hidden" name="user_id" value={{$my_id}}>
+                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        @csrf
+                    </form>
+                </div>
+                <div class="off_button">
+                    <form action="/Message" method="POST">
+                        <input type="submit" name="refresh_flag" value=OFF>
+                        <input type="hidden" name="user_id" value={{$my_id}}>
+                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        @csrf
+                    </form>
+                </div>
+            </div>
+        </div>
         <form class="send_message" action="/Message/send" method="POST" enctype="multipart/form-data">
             <input type="text" name="content">
             <input type="hidden" name="user_id" value={{$my_id}}>

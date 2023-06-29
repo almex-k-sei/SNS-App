@@ -13,6 +13,29 @@ h1.talkroom_title {
     z-index: 100;
 }
 
+.button_container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.reception {
+    font-weight: bold;
+}
+
+/* .on_button{
+
+}
+
+.off_button{
+
+} */
+
+.refresh {
+    float: left;
+}
+
 .back {
     float: left;
     margin-left: 20px;
