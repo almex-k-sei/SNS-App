@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/Home', [UserListController::class, 'index'])->middleware('auth');
 Route::post('/Home',[UserListController::class, 'edit'])->middleware('auth');
 
+Route::post('/accept_request',[UserListController::class, 'accept_request'])->middleware('auth');
+
 //友達になりたい人を検索
 Route::get('search_friend',[UserListController::class,'search_index'])->middleware('auth');
 Route::post('search_friend',[UserListController::class,'search_friend'])->middleware('auth');
@@ -69,5 +71,10 @@ Route::post('/GroupList/add', [GroupListController::class, 'add'])->middleware('
 Route::post('/GroupList/quit', [GroupListController::class, 'quit'])->middleware('auth');
 
 Route::post('/GroupList/delete', [GroupListController::class, 'delete'])->middleware('auth');
+
+Route::post('/GroupList/edit', [GroupListController::class, 'edit'])->middleware('auth');
+
+Route::post('/GroupList/add_member', [GroupListController::class, 'add_member'])->middleware('auth');
+
 
 require __DIR__.'/auth.php';

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use App\Models\Talkroom;
+use Illuminate\Support\Facades\DB;
 
 
 class MessageListController extends Controller
@@ -14,10 +15,15 @@ class MessageListController extends Controller
     /* メッセージの一覧（トークルーム一覧）画面を表示する */
     public function index(Request $request)
     {
-        /* ログインしているユーザーが所属しているトークルームの一覧を取得 */
+        /* ログインしているユーザーが所属しているトークルームの一覧を取得（最後のメッセージ順に並び替え） */
         $user_id = Auth::id();
-        $user = User::where('id', $user_id)->first();
-        $talkrooms = $user->talkroom;
+        $talkrooms = Talkroom::leftJoin('messages', 'talkrooms.id', '=', 'messages.talkroom_id')
+                    ->join('talkroom_user', 'talkrooms.id', '=', 'talkroom_user.talkroom_id')
+                    ->select('talkrooms.*', DB::raw('COALESCE(MAX(messages.created_at), talkrooms.created_at) AS sort_date'))
+                    ->where('talkroom_user.user_id', $user_id) // ユーザーIDでフィルタリング
+                    ->groupBy('talkrooms.id')
+                    ->orderBy('sort_date', 'desc')
+                    ->get();
 
         /* キーワードを取得 */
         $keyword = $request->input('keyword');
@@ -36,7 +42,7 @@ class MessageListController extends Controller
         $user = User::where('id', $request->user_id)->first();
         $talkroom_id = 0;
         foreach ($user->talkroom as $talkroom){
-            if($talkroom->user->contains('id', $request->friend_id)){
+            if($talkroom->user->contains('id', $request->friend_id) && $talkroom->type !== 'group'){
                 $talkroom_id = $talkroom->id;
                 break;
             }
@@ -59,7 +65,6 @@ class MessageListController extends Controller
             $talkroom_id = $talkroom_table->id;
         }
 
-
-        return redirect('/Message')->withInput(['id' => $talkroom_id]);
+        return redirect('/Message')->withInput(['talkroom_id' => $talkroom_id]);
     }
 }
