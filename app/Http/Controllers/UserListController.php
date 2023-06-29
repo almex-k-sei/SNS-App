@@ -45,9 +45,9 @@ class UserListController extends Controller
     {
         //友達候補検索機能
         //usersテーブルから全情報を抜き出し、email と合致するfriend候補を出す
-        $users = User::all();
+        // $users = User::all();
         $friend_email = $request->input('friend_email');
-        $friend = $users->where('email', '=', "$friend_email")
+        $friend = User::where('email', '=', "$friend_email")
             ->first();
         $user_id = Auth::id();
         $user = User::find($user_id);

@@ -31,6 +31,7 @@
                     </div>
                     <div class="modal_content_container">
                         <label>メンバー</label><br>
+                        <div class="display: flex; flex-direction:column;">
                             @foreach ($all_friends as $friend)
                                 <span>
                                     <label for="friend_{{ $friend->id }}">
@@ -39,6 +40,7 @@
                                     </label>
                                 </span>
                             @endforeach
+                        </div>
                         <br>
                         <input type="submit" value="追加">
                     </div>
@@ -90,7 +92,8 @@
                             {{-- メンバー編集ボタンを押すと表示される内容 --}}
                             <div class='edit_after hidden'>
                                 <h2>グループの編集</h2>
-                                <form class="edit_group" action="/GroupList/edit" method="POST" enctype="multipart/form-data">
+                                <form class="edit_group" action="/GroupList/edit" method="POST"
+                                    enctype="multipart/form-data">
                                     <!-- モーダルウィンドウの中身 -->
                                     <div class="modal_content_container">
                                         <label>グループ名</label><br>
@@ -104,19 +107,22 @@
                                     </div>
                                     <div class="modal_content_container">
                                         <label>メンバー</label><br>
-                                        @foreach ($all_friends as $friend)
-                                            <span>
-                                                <label for="friend_{{ $friend->id }}">
-                                                    <input type="checkbox" name="members[]"
-                                                        value="{{ $friend->id }}"
-                                                        @foreach ($group->user as $member)
+                                        <div class="display: flex; flex-direction: column; height: 300px;">]
+
+                                            @foreach ($all_friends as $friend)
+                                                <span>
+                                                    <label for="friend_{{ $friend->id }}">
+                                                        <input type="checkbox" name="members[]"
+                                                            value="{{ $friend->id }}"
+                                                            @foreach ($group->user as $member)
                                                         @if ($member->id == $friend->id)
                                                         checked
                                                         @endif @endforeach>
-                                                    {{ $friend->profile->name }}
-                                                </label>
-                                            </span>
-                                        @endforeach
+                                                        {{ $friend->profile->name }}
+                                                    </label>
+                                                </span>
+                                            @endforeach
+                                        </div>
                                         <input type="hidden" name="group_id" value="{{ $group->id }}">
                                         <p><input type="submit" value="更新"></p>
                                     </div>
@@ -161,17 +167,17 @@
 
                             {{-- グループの作成者かそうでないかを判断 --}}
                             @if (Auth::id() == $group->administrator_id)
-                            <div class="modal_button_container">
-                                {{-- メンバーの編集ボタン --}}
-                                <div class='edit_before_button'>
-                                    <button onclick="EditMember()">グループの編集</button>
-                                </div>
+                                <div class="modal_button_container">
+                                    {{-- メンバーの編集ボタン --}}
+                                    <div class='edit_before_button'>
+                                        <button onclick="EditMember()">グループの編集</button>
+                                    </div>
 
-                                {{-- グループの削除ボタン --}}
-                                <div class='delete_before_button'>
-                                    <button onclick="DeleteMember()">グループの削除</button>
+                                    {{-- グループの削除ボタン --}}
+                                    <div class='delete_before_button'>
+                                        <button onclick="DeleteMember()">グループの削除</button>
+                                    </div>
                                 </div>
-                            </div>
                             @else
                                 {{-- メンバーを追加ボタン --}}
                                 <div class='add_before_button'>
