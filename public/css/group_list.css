@@ -1,3 +1,8 @@
+.hidden {
+    display: none;
+}
+
+
 .addBtn {
     width: 130px;
 }
@@ -27,6 +32,18 @@
     width: 80%;
 }
 
+.modal-content .main_before form{
+    margin-top: 10px;
+}
+
+.modal-content h2 {
+    margin-bottom: 10px;
+}
+
+.modal-content form.edit_group p {
+    margin-bottom: 20px;
+}
+
 /* 閉じるボタン */
 .close {
     position: absolute;
@@ -43,4 +60,16 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.edit_before_button  button{
+    /* display: inline-block; */
+    background: rgb(3,200,96);
+    border-radius: 5px;
+}
+
+.delete_before_button button {
+    /* display: inline-block; */
+    background: rgb(3,200,96);
+    border-radius: 5px;
 }

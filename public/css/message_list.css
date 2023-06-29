@@ -8,8 +8,9 @@
     padding: 10px;
 }
 
-.list_title_container {
-    border-bottom: 3px solid #9fa09e;
+.message_list_container img {
+    width: 60px;
+    height: 60px;
 }
 
 .list_title_container > form {
