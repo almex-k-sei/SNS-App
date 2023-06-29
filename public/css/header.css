@@ -66,8 +66,9 @@ i.fa-sign-out-alt {
     color: #333;
 }
 button{
-background-color: transparent;
-border: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 i {
