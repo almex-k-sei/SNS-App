@@ -90,7 +90,7 @@
                             {{-- メンバー編集ボタンを押すと表示される内容 --}}
                             <div class='edit_after hidden'>
                                 <h2>グループの編集</h2>
-                                <form action="/GroupList/edit" method="POST" enctype="multipart/form-data">
+                                <form class="edit_group" action="/GroupList/edit" method="POST" enctype="multipart/form-data">
                                     <!-- モーダルウィンドウの中身 -->
                                     <p><label>
                                             グループ名
@@ -186,40 +186,6 @@
 
     @include('footer')
 
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .selectbox-wrapper {
-            position: relative;
-            width: 200px;
-            margin: 0 auto;
-            /* 中央に配置するための設定 */
-        }
-
-        .selectbox-wrapper select[multiple] {
-            width: 100%;
-            height: 200px;
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f7f7f7;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            overflow-y: auto;
-        }
-
-        .selectbox-wrapper select[multiple] option {
-            padding: 5px;
-        }
-
-        .selectbox-wrapper select[multiple] option:checked {
-            background-color: #337ab7;
-            color: #fff;
-        }
-    </style>
 
     <script>
         'use strict';
