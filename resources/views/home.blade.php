@@ -29,7 +29,12 @@
             </table>
             <details>
                 <summary>プロフィール画像を編集</summary>
-                URL<input type="file" id="url" name="url">
+                <label class= "file" for="submit">
+                <input type="file" id="url" name="url" >
+                <!-- onchange="$('#fake_text_box').val($(this).val())" -->
+                <!-- <input type="text" id="file_upload" value="ファイル選択" onClick="$('#file').click();"> -->
+                </label>
+                <!-- <input type="text" id="fake_text_box" value="" size="35" readonly onClick="$('#file').click();"> -->
             </details>
             <input type="submit" id="submit"value="編集">
         </form>

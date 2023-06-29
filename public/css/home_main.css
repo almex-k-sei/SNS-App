@@ -46,7 +46,12 @@ main{
 .my_editable_profile input[type="file"] {
     background: #fff;
     margin-left: 5px;
+    /* display:none; */
 }
+/* ファイルボタンを変更するには結構面倒っぽかったので一旦放置*/
+/* label .file{
+} */
+
 .my_editable_profile input[type="text"] {
     border: none;
 }
