@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Talkroom;
+use App\Models\Message;
 use App\Models\User;
+use App\Models\Memo;
 use Illuminate\Console\View\Components\Task;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -96,8 +98,18 @@ class GroupListController extends Controller
     public function delete(Request $request)
     {
 
-        $talkrooms_table = Talkroom::find( $request->group_id );
+        $messages_table = Message::where("talkroom_id", "=", $request->group_id )->get();
+        $messages_table->each(function ($message) {
+            $message->delete();
+        });
 
+        $memos_table = Memo::where("talkroom_id", "=", $request->group_id )->get();
+        $memos_table->each(function ($memo) {
+            $memo->delete();
+        });
+
+        $talkrooms_table = Talkroom::find( $request->group_id );
+        $talkrooms_table->user()->detach();
         $talkrooms_table->delete();
 
         return redirect('/GroupList');
