@@ -75,8 +75,12 @@ class UserListController extends Controller
     {
         $id = Auth::id();
         $user = User::where("id", "=", "$id")->first();
-        $friend_id = $request->input("friend_id");
-        $user->follows()->attach($friend_id);
+        if($request->input("results") == "すでに友達です" || $request->input("results") == "見つかりませんでした"){
+        }elseif($request->input("friend_id")){
+            $friend_id = $request->input("friend_id");
+            $user->follows()->attach($friend_id);
+        }
+
         return redirect('Home');
     }
 

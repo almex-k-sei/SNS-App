@@ -5,7 +5,7 @@
 <body>
     <div class="search_friends_container">
         <h2>友達追加</h2>
-        
+
         <!--戻るボタン-->
         <div class="back">
         <a href="/Home"><i class="fas fa-backward"></i></a>
@@ -24,6 +24,7 @@
             @csrf
             <input type="submit" name="add_friend" value="追加">
             <input type="hidden" name="friend_id" value="{{$friend_id}}">
+            <input type="hidden" name="results" value="{{$results->name}}">
         </form>
     </div>
     @include('footer')
