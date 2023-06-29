@@ -55,8 +55,12 @@ class UserListController extends Controller
             foreach ($user->follows as $value) {
                 //friendsテーブルのuser_id == Auth::id()　且つ　friendsテーブルのfriend_id == $friend_idのとき　→友達である
                 if ($value->pivot->friend_id == $friend_id) {
-                    $results->image = "https://icon-pit.com/wp-content/uploads/2018/10/question_mark_icon_1034.png";
+                    $results->image = $value->profile->image;
                     $results->name = "すでに友達です";
+                }
+                if($user_id == $friend_id){
+                    $results->image = $user->profile->image;
+                    $results->name = "自分自身です";
                 }
             }
             if ($results == (object)"") {
