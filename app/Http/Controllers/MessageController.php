@@ -24,6 +24,11 @@ class MessageController extends Controller
             $talkroom_id = $request->talkroom_id;
         }
 
+        /* URLで直接/Messageを入力されたときは、トークルームリストへ */
+        if( $talkroom_id == NULL){
+            return redirect('/MessageList');
+        }
+
         /* ログインしているユーザーのIDを取得
         会話するトークルームのIDを取得
         そのトークルームのメッセージを取得 */

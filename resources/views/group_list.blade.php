@@ -31,13 +31,14 @@
                         </label></p>
                     <p><label>
                             メンバー
+                            <br>
                             @foreach ($all_friends as $friend)
-                                <p>
+                                <span>
                                     <label for="friend_{{ $friend->id }}">
                                         <input type="checkbox" name="members[]" value="{{ $friend->id }}">
                                         {{ $friend->profile->name }}
                                     </label>
-                                </p>
+                                </span>
                             @endforeach
                         </label></p>
                     <p><input type="submit" value="追加"></p>
@@ -76,7 +77,7 @@
                                 </form>
                                 <h2>メンバー</h2>
                                 @foreach ($group->user as $member)
-                                    <p>{{ $member->profile->name }}</p>
+                                    <span style="margin-right: 10px">{{ $member->profile->name }}</span>
                                 @endforeach
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
@@ -89,7 +90,7 @@
                             {{-- メンバー編集ボタンを押すと表示される内容 --}}
                             <div class='edit_after hidden'>
                                 <h2>グループの編集</h2>
-                                <form action="/GroupList/edit" method="POST" enctype="multipart/form-data">
+                                <form class="edit_group" action="/GroupList/edit" method="POST" enctype="multipart/form-data">
                                     <!-- モーダルウィンドウの中身 -->
                                     <p><label>
                                             グループ名
@@ -103,17 +104,17 @@
                                     <p><label>
                                             メンバー
                                             @foreach ($all_friends as $friend)
-                                                <p>
-                                                    <label for="friend_{{ $friend->id }}">
-                                                        <input type="checkbox" name="members[]"
-                                                            value="{{ $friend->id }}"
-                                                            @foreach ($group->user as $member)
-                                                            @if ($member->id == $friend->id)
-                                                            checked
-                                                            @endif @endforeach>
-                                                        {{ $friend->profile->name }}
-                                                    </label>
-                                                </p>
+                                               <span>
+                                                   <label for="friend_{{ $friend->id }}">
+                                                       <input type="checkbox" name="members[]"
+                                                           value="{{ $friend->id }}"
+                                                           @foreach ($group->user as $member)
+                                                           @if ($member->id == $friend->id)
+                                                           checked
+                                                           @endif @endforeach>
+                                                       {{ $friend->profile->name }}
+                                                   </label>
+                                               </span>
                                             @endforeach
                                         </label></p>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -140,13 +141,13 @@
                                     <p>
                                         @foreach ($all_friends as $friend)
                                             @unless ($group->user->contains('id', $friend->id))
-                                                <p>
+                                                <span>
                                                     <label for="friend_{{ $friend->id }}">
                                                         <input type="checkbox" name="members[]"
                                                             value="{{ $friend->id }}">
                                                         {{ $friend->profile->name }}
                                                     </label>
-                                                </p>
+                                                </span>
                                             @endunless
                                         @endforeach
                                     </p>
@@ -185,40 +186,6 @@
 
     @include('footer')
 
-    <style>
-        .hidden {
-            display: none;
-        }
-
-        .selectbox-wrapper {
-            position: relative;
-            width: 200px;
-            margin: 0 auto;
-            /* 中央に配置するための設定 */
-        }
-
-        .selectbox-wrapper select[multiple] {
-            width: 100%;
-            height: 200px;
-            font-size: 16px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f7f7f7;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            overflow-y: auto;
-        }
-
-        .selectbox-wrapper select[multiple] option {
-            padding: 5px;
-        }
-
-        .selectbox-wrapper select[multiple] option:checked {
-            background-color: #337ab7;
-            color: #fff;
-        }
-    </style>
 
     <script>
         'use strict';
