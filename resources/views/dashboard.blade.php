@@ -21,7 +21,7 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         {{ __("プロフィールを登録しましょう！") }}
                     </div>
-                    <form action="" method="post">
+                    <form action="" method="post" enctype="multipart/form-data">
                             名前<br><input type="text" name="name" placaholder="名前">
                             プロフィール画像<br><input type="file" name="image" placeholder="プロフィール画像">
                             誕生日<br><input type="date" name="birth" placeholder="誕生日">

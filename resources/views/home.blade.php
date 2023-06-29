@@ -5,7 +5,7 @@
     <div class="my_profile">
         <!--自分のプロフィール画像-->
         <img src="{{ $profiles[0]->image }}" alt="" id="image">
-        <form class="my_editable_profile" action="" method="post">
+        <form class="my_editable_profile" action="" method="post" enctype="multipart/form-data">
             @csrf
             <table>
                 <tr>
@@ -29,7 +29,12 @@
             </table>
             <details>
                 <summary>プロフィール画像を編集</summary>
-                URL<input type="url" id="url" name="url">
+                <label class= "file" for="submit">
+                <input type="file" id="url" name="url" >
+                <!-- onchange="$('#fake_text_box').val($(this).val())" -->
+                <!-- <input type="text" id="file_upload" value="ファイル選択" onClick="$('#file').click();"> -->
+                </label>
+                <!-- <input type="text" id="fake_text_box" value="" size="35" readonly onClick="$('#file').click();"> -->
             </details>
             <input type="submit" id="submit"value="編集">
         </form>

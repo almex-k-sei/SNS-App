@@ -45,12 +45,12 @@
     </div>
     @if ($talkroom->name == "")
         @foreach ($talkroom->user as $user)
-            @if ($user->id != $my_id)
-            <i class="fas fa-user"></i> {{$user->profile->name}}
+            @if ($user->id != $my_id) 
+            <div id="talkroom_name"> <i class="fas fa-user"></i>{{$user->profile->name}}</div>
             @endif
         @endforeach
     @else
-        <i class="fas fa-users"></i> {{$talkroom->name}}
+        <div id="talkroom_name"> <i class="fas fa-users"></i> {{$talkroom->name}}</div>
     @endif
     <div class="memo">
         <details>
@@ -58,7 +58,7 @@
             @if ($memo == NULL)
                 <form action="Message/add_memo" method="POST">
                     <textarea name="content" cols="30" rows="10"></textarea>
-                    <input type="submit" value="メモを保存">
+                    <input type="submit" id="memo_submit"value="メモを保存">
                     <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
                     <input type="hidden" name="user_id" value={{$my_id}}>
                     @csrf
@@ -66,7 +66,7 @@
             @else
                 <form action="Message/update_memo" method="POST">
                     <textarea name="content" cols="30" rows="10">{{$memo->content}}</textarea>
-                    <input type="submit" value="メモを保存">
+                    <input type="submit"id="memo_submit" value="メモを保存">
                     <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
                     <input type="hidden" name="user_id" value={{$my_id}}>
                     @csrf

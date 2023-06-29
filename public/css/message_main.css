@@ -179,3 +179,25 @@ input[type="submit"] {
 input[type="submit"]:hover {
     opacity: 0.6;
 }
+
+/*メモ機能の気持ち悪い動き解消*/
+.memo summary {
+    display: block;
+    text-align: right;
+}
+
+.memo form {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding:30px,10px;
+}
+
+#talkroom_name{
+    position:absolute;
+    margin-left:45%;
+
+}
+#memo_submit{
+    margin-top:5px;
+}
