@@ -5,7 +5,7 @@
     <div class="my_profile">
         <!--自分のプロフィール画像-->
         <img src="{{ $profiles[0]->image }}" alt="" id="image">
-        <form class="my_editable_profile" action="" method="post">
+        <form class="my_editable_profile" action="" method="post" enctype="multipart/form-data">
             @csrf
             <table>
                 <tr>
@@ -29,7 +29,7 @@
             </table>
             <details>
                 <summary>プロフィール画像を編集</summary>
-                URL<input type="url" id="url" name="url">
+                URL<input type="file" id="url" name="url">
             </details>
             <input type="submit" id="submit"value="編集">
         </form>
