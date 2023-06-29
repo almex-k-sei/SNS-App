@@ -21,7 +21,7 @@ a {
 }
 
 .welcome_container a:hover {
-    color: #b2ffb2;
+    color: rgb(3,200,96);
 }
 
 .welcome_button_container {
@@ -33,7 +33,7 @@ a {
 .welcome_button_container > div {
     display: inline-block;
     margin: 0 30px;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);
     padding: 10px 20px;
     border-radius: 5px;
     border-bottom: 2px solid #333;

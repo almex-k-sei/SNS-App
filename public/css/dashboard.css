@@ -34,7 +34,7 @@ body {
     width: 100px;
     display: inline-block;
     margin: 0 auto;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);;
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -42,7 +42,7 @@ body {
 
 .dashboard_container form input[type="submit"] {
     display: inline-block;
-    background: #b2ffb2;
+    background: rgb(3,200,96);;
     color: #444;
     font-weight: bold;
     text-decoration: none;
@@ -64,7 +64,7 @@ body {
 
 .dashboard_container button[type="submit"] {
     margin-left: 20px;
-    background-color: #b2ffb2;
+    background-color: rgb(3,200,96);;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
