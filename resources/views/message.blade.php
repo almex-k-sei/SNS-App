@@ -95,7 +95,26 @@
                     {{$message->user->profile->name}}
                     <img src="{{$message->user->profile->image}}" width="50px" height="50px">
                     <div class="time_bottom left">
-                        <p>{{$message->content}}</p>
+                        <p>{{-- メッセージが格納されているか判別 --}}
+                            @if(isset($message->content))
+                                {{$message->content}}
+                                <br>
+                            @endif
+                            {{-- ファイルデータが格納されているか判別 --}}
+                            @if(isset($message->filepath))
+                                {{-- ファイルの形式を判別する　--}}
+                                @if(explode('/',$message->filetype)[0] == "image")
+                                    <img src="{{$message->filepath}}" width="200px" height="200px">
+                                @elseif (explode('/',$message->filetype)[0] == "audio")
+                                    <audio controls src="{{$message->filepath}}"  type="{{$message->filetype}}"></audio>
+                                @elseif (explode('/',$message->filetype)[0] == "video")
+                                    <video src="{{$message->filepath}}" type="{{$message->filetype}}" width="200px" height="200px"
+                                        autoplay muted loop></video>
+                                @endif
+                                <br>
+                                <a href="{{$message->filepath}}" download="{{$message->filename}}"><i class="fas fa-file-download"></i></a>
+                            @endif
+                        </p>
                         {{-- 送信時間 --}}
                         {{$hm}}
                     </div>
