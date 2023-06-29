@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Console\View\Components\Task;
+use Illuminate\Support\Str;
 
 class UserListController extends Controller
 {
@@ -103,8 +105,8 @@ class UserListController extends Controller
         if ($request->input("birthday") !== null) {
             $user->birth = $request->input("birthday");
         }
-        if ($request->input("url") !== null) {
-            $user->image = $request->input("url");
+        if ($request->url !== null) {
+            $user->image = $request->url->store('profiledata', 'public');
         }
         $user->save();
         return redirect('Home');
