@@ -49,11 +49,7 @@ class UserController extends Controller
         $results=Profile::where('user_id','=',$user_id)
         ->get();
         }
-        return view('/home',compact('keyword','profiles','friends',"results"));
-
-        return view('/home',compact('keyword','profiles','friends'));
-
-        return view('/home');
+        return view('/home',compact('keyword','profiles','friends',"results","user"));
     }
 
     //友達検索→追加処理
