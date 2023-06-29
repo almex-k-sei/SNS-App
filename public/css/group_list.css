@@ -1,3 +1,39 @@
+.group_list_container {
+    width: 70%;
+    margin: 140px auto 50px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 25px;
+    border: 2px solid #9fa09e;
+    padding: 10px;
+}
+
+.group_list_container .list_contents_container{
+    height: 250px;
+ }
+
+
+.group_list_container img {
+    width: 60px;
+    height: 60px;
+}
+
+.group_list_container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    margin: 10px auto;
+    border: 2px solid #9fa09e;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.group_list_container button:hover {
+    background: #9fa09e;
+    transition: .4s;
+}
+
 .hidden {
     display: none;
 }
@@ -30,18 +66,37 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    text-align: left;
 }
 
-.modal-content .main_before form{
-    margin-top: 10px;
+.modal_content_container {
+    margin-bottom: 50px;
+}
+
+.modal_content_container  img{
+    border: 1px solid #333;
+    width: 100px;
+    height: 100px;
+}
+
+.modal_content_container > label {
+    font-weight: bold;
+}
+
+.modal_content_container input {
+    text-align: left;
+}
+
+.modal_content_container input[type="file"] {
+    margin-left: 10px;
 }
 
 .modal-content h2 {
     margin-bottom: 10px;
 }
 
-.modal-content form.edit_group p {
-    margin-bottom: 20px;
+.modal-content input.move_talk {
+    margin: 30px 0;
 }
 
 /* 閉じるボタン */
@@ -62,14 +117,45 @@
     cursor: pointer;
 }
 
+.modal_button_container {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 20px;
+}
+
+.edit_before_button {
+    margin: 10px 0;
+    display: inline-block;
+    width: 40%;
+}
+
+.delete_before_button {
+    margin: 10px 0;
+    display: inline-block;
+    width: 40%;
+}
+
 .edit_before_button  button{
-    /* display: inline-block; */
     background: rgb(3,200,96);
     border-radius: 5px;
+    margin: 0;
 }
 
 .delete_before_button button {
-    /* display: inline-block; */
     background: rgb(3,200,96);
     border-radius: 5px;
+    margin: 0;
+}
+
+input.no {
+    background-color: tomato;
+    padding: 10px;
+    font-weight: bold;
+}
+
+input.yes[type="submit"] {
+    background-color: skyblue;
+    padding: 10px 20px;
+    margin-right: 20px;
+
 }

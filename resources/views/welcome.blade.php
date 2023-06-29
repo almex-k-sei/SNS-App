@@ -16,6 +16,12 @@
         </style>
         {{-- cssファイルの読み込み --}}
         <link rel="stylesheet" href="css/welcome.css">
+
+        {{-- Googleフォント --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">    <title>Route::</title>
+
     </head>
     <!--ログイン-->
     <body class="antialiased">
