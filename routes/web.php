@@ -76,4 +76,5 @@ Route::post('/GroupList/edit', [GroupListController::class, 'edit'])->middleware
 
 Route::post('/GroupList/add_member', [GroupListController::class, 'add_member'])->middleware('auth');
 
+
 require __DIR__.'/auth.php';

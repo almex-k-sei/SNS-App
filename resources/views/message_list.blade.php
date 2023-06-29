@@ -24,12 +24,12 @@
                                 <h2>
                                     @foreach ($talkroom->user as $user)
                                         @if ($user->id != $user_id)
-                                            {{$user->name}}　
+                                        <i class="fas fa-user"></i> {{$user->profile->name}}
                                         @endif
                                     @endforeach
                                 </h2>
                             @else
-                                <h2>{{$talkroom->name}}</h2>
+                                <h2><i class="fas fa-users"></i> {{$talkroom->name}}</h2>
                             @endif
                             @if ($talkroom->message->last() !== NULL)
                                 <?php
