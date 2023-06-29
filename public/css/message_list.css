@@ -16,7 +16,7 @@
 }
 
 .list_title_container > form {
-    padding-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 .list_title {
@@ -26,6 +26,7 @@
 }
 
 .list_contents_container{
+    border-top: 2px solid #9fa09e;
     padding: 30px;
     overflow-y: scroll;
     text-overflow: ellipsis;

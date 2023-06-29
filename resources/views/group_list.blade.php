@@ -3,7 +3,6 @@
 <div class="group_list_container">
 
     <div class="list_title_container">
-        <div class="group_list_header">
             <h1 class="list_title">グループ一覧</h1>
             {{-- 検索キーワードの送信 --}}
             <form action="/GroupList" method="GET">
@@ -15,7 +14,6 @@
             </form>
             <!-- モーダルウィンドウのトリガーボタン -->
             <button class="modalBtn addBtn">グループを追加</button>
-        </div>
 
         <!-- モーダルウィンドウのコンテンツ -->
         <div class="modal">
@@ -32,13 +30,14 @@
                         </label></p>
                     <p><label>
                             メンバー
+                            <br>
                             @foreach ($all_friends as $friend)
-                                <p>
+                                <span>
                                     <label for="friend_{{ $friend->id }}">
                                         <input type="checkbox" name="members[]" value="{{ $friend->id }}">
                                         {{ $friend->profile->name }}
                                     </label>
-                                </p>
+                                </span>
                             @endforeach
                         </label></p>
                     <p><input type="submit" value="追加"></p>
@@ -77,7 +76,7 @@
                                 </form>
                                 <h2>メンバー</h2>
                                 @foreach ($group->user as $member)
-                                    <p>{{ $member->profile->name }}</p>
+                                    <span style="margin-right: 10px">{{ $member->profile->name }}</span>
                                 @endforeach
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
@@ -104,17 +103,17 @@
                                     <p><label>
                                             メンバー
                                             @foreach ($all_friends as $friend)
-                                                <p>
-                                                    <label for="friend_{{ $friend->id }}">
-                                                        <input type="checkbox" name="members[]"
-                                                            value="{{ $friend->id }}"
-                                                            @foreach ($group->user as $member)
-                                                            @if ($member->id == $friend->id)
-                                                            checked
-                                                            @endif @endforeach>
-                                                        {{ $friend->profile->name }}
-                                                    </label>
-                                                </p>
+                                               <span>
+                                                   <label for="friend_{{ $friend->id }}">
+                                                       <input type="checkbox" name="members[]"
+                                                           value="{{ $friend->id }}"
+                                                           @foreach ($group->user as $member)
+                                                           @if ($member->id == $friend->id)
+                                                           checked
+                                                           @endif @endforeach>
+                                                       {{ $friend->profile->name }}
+                                                   </label>
+                                               </span>
                                             @endforeach
                                         </label></p>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
@@ -141,13 +140,13 @@
                                     <p>
                                         @foreach ($all_friends as $friend)
                                             @unless ($group->user->contains('id', $friend->id))
-                                                <p>
+                                                <span>
                                                     <label for="friend_{{ $friend->id }}">
                                                         <input type="checkbox" name="members[]"
                                                             value="{{ $friend->id }}">
                                                         {{ $friend->profile->name }}
                                                     </label>
-                                                </p>
+                                                </span>
                                             @endunless
                                         @endforeach
                                     </p>
@@ -243,7 +242,7 @@
         // トリガーボタンがクリックされた時の処理
         for (var i = 0; i < modalBtns.length; i++) {
             modalBtns[i].onclick = function() {
-                var modal = this.pa.nextElementSibling;
+                var modal = this.nextElementSibling;
                 modal.style.display = "block"; // 対応するモーダルを表示する
             };
         }

@@ -3,17 +3,15 @@
     <div class="message_list_container">
 
         <div class="list_title_container">
-            <div class="group_list_header">
-                <h1 class="list_title">トークルーム一覧</h1>
-                {{-- 検索キーワードの送信 --}}
-                <form action="/MessageList" method="GET">
-                    <label>
-                        検索キーワード
-                        <input type="text" name="keyword" value="{{ $keyword }}">
-                    </label>
-                    <input type="submit" value="検索">
-                </form>
-            </div>
+            <h1 class="list_title">トークルーム一覧</h1>
+            {{-- 検索キーワードの送信 --}}
+            <form action="/MessageList" method="GET">
+                <label>
+                    検索キーワード
+                    <input type="text" name="keyword" value="{{ $keyword }}">
+                </label>
+                <input type="submit" value="検索">
+            </form>
         </div>
 
         <div class="list_contents_container">
