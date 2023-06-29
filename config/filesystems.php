@@ -72,7 +72,9 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('filedata') => storage_path('app/public/filedata'),
-        public_path('groupdata') => storage_path('app/public/groupdata')
+        public_path('groupdata') => storage_path('app/public/groupdata'),
+        public_path('profiledate') => storage_path('app/public/profiledate'),
+        public_path('profiledata') => storage_path('app/public/profiledata')
     ],
 
 ];

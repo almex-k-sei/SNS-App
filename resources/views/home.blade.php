@@ -5,7 +5,7 @@
     <div class="my_profile">
         <!--自分のプロフィール画像-->
         <img src="{{ $profiles[0]->image }}" alt="" id="image">
-        <form class="my_editable_profile" action="" method="post">
+        <form class="my_editable_profile" action="" method="post" enctype="multipart/form-data">
             @csrf
             <table>
                 <tr>

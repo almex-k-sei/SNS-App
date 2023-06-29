@@ -115,6 +115,20 @@ input[type="text"]#description {
     height: 400px;
 }
 
+.friends_list::-webkit-scrollbar{
+    width: 10px;
+ }
+
+ .friends_list::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 25px;
+ }
+
+ .friends_list::-webkit-scrollbar-thumb{
+    background-color: rgb(3,200,96);
+    border-radius: 25px;
+ }
+
 .friends_list details {
     border: 2px solid #9fa09e;
     border-radius: 25px;
@@ -141,6 +155,8 @@ input[type="text"]#description {
     max-width: 600px;
     background-color: #fff;
     border-radius: 25px;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
 }
 
 .friends_header {
@@ -186,13 +202,6 @@ summary{
  input{
     border:none;
 }
-
-/* button{
-    border:none;
-    width:30px;
-    height:30px;
-    border-radius: 50%;
-} */
 
 
 /*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！
