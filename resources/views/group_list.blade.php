@@ -1,20 +1,21 @@
 @include('header')
 
-<div class="message_list_container">
+<div class="group_list_container">
 
     <div class="list_title_container">
-
-        <h1 class="list_title">グループ一覧</h1>
-        {{-- 検索キーワードの送信 --}}
-        <form action="/GroupList" method="GET">
-            <label>
-                検索キーワード
-                <input type="text" name="keyword">
-            </label>
-            <input type="submit" value="検索">
-        </form>
-        <!-- モーダルウィンドウのトリガーボタン -->
-        <button class="modalBtn addBtn">グループを追加</button>
+        <div class="group_list_header">
+            <h1 class="list_title">グループ一覧</h1>
+            {{-- 検索キーワードの送信 --}}
+            <form action="/GroupList" method="GET">
+                <label>
+                    検索キーワード
+                    <input type="text" name="keyword">
+                </label>
+                <input type="submit" value="検索">
+            </form>
+            <!-- モーダルウィンドウのトリガーボタン -->
+            <button class="modalBtn addBtn">グループを追加</button>
+        </div>
 
         <!-- モーダルウィンドウのコンテンツ -->
         <div class="modal">
@@ -242,7 +243,7 @@
         // トリガーボタンがクリックされた時の処理
         for (var i = 0; i < modalBtns.length; i++) {
             modalBtns[i].onclick = function() {
-                var modal = this.nextElementSibling;
+                var modal = this.pa.nextElementSibling;
                 modal.style.display = "block"; // 対応するモーダルを表示する
             };
         }

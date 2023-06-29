@@ -1,38 +1,39 @@
 <!--    ログイン後一番最初に飛ぶホーム画面。画面設定3または4のイメージ-->
-@include('header')
-<main>
-    <!--自分のプロフィール -->
-    <div class="my_profile">
-        <!--自分のプロフィール画像-->
-        <img src="{{ $profiles[0]->image }}" alt="" id="image">
-        <form class="my_editable_profile" action="" method="post">
-            @csrf
-            <table>
-                <tr>
-                    <td>
-                        <input type="text" id="name" name="name" placeholder="{{ $profiles[0]->name }}">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="description_container">
-                            <input type="text" id="description" name="description"
-                                placeholder="{{ $profiles[0]->description }}">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" id="birthday"name="birthday" placeholder="{{ $profiles[0]->birth }}">
-                    </td>
-                </tr>
-            </table>
-            <details>
-                <summary>プロフィール画像を編集</summary>
-                URL<input type="url" id="url" name="url">
-            </details>
-            <input type="submit" id="submit"value="編集">
-        </form>
+    @include('header')
+    <main>
+        <!--自分のプロフィール -->
+        <div class="my_profile">
+            <!--自分のプロフィール画像-->
+            <img src="{{$profiles[0]->image}}" alt="" id="image">
+            <form class = "my_editable_profile" action="" method="post">
+                @csrf
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" id="name" name="name" placeholder="{{$profiles[0]->name}}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="description_container">
+                               <input type="text"  id="description" name="description"  placeholder="{{$profiles[0]->description}}">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                誕生日<input type="text" id="birthday"name="birthday" placeholder="{{$profiles[0]->birth}}">
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <details>
+                    <summary>プロフィール画像を編集</summary>
+                    URL<input type="url"  id="url" name="url">
+                </details>
+                <input type="submit" id="submit"value="編集">
+            </form>
 
     </div>
     <!--友達に追加されたときの通知機能および追加ボタン-->
