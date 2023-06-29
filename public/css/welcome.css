@@ -1,12 +1,5 @@
-@font-face {
-    font-family: "route_font";
-    src: url("../css/fonts/RiiPopkkR.otf") format("opentype");
-  }
-
 body {
-    background-color: #bb4bff;
-background-image: linear-gradient(270deg, #bb4bff 0%, #fffa3a 100%);
-    font-family: "route_font", sans-serif;
+    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
 }
 
 a {
