@@ -37,10 +37,11 @@
             {{Auth::user()->name}}
             <form action="{{route('logout')}}" method="post">
                 <button class="logout" type="submit">
-                    <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-sign-out-alt"></i>
                 </button>
             @csrf
             </form>
+
     </header>
 <!-- </body>
 </html> -->
