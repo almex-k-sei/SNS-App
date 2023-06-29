@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::table('talkrooms', function (Blueprint $table) {
             $table->foreignId('talkroom_id')->comment('トークルームの識別ID')
-            ->nullable()
-            ->default(null)
-            ->constrained('talkrooms')
-            ->cascadeOnDelete();
+                ->nullable()
+                ->default(null)
+                ->constrained('talkrooms')
+                ->cascadeOnDelete();
         });
     }
 
@@ -26,10 +26,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('talkrooms', function (Blueprint $table) {
-            $table->foreignId('talkroom_id')->comment('トークルームの識別ID')
-            ->nullable()
-            ->default(null)
-            ->constrained('talkrooms');
+            $table->dropForeign(['talkroom_id']);
+            $table->dropColumn('talkroom_id');
         });
     }
 };
