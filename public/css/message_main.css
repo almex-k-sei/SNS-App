@@ -13,6 +13,10 @@ h1.talkroom_title {
     z-index: 100;
 }
 
+/* html {
+    visibility: hidden;
+} */
+
 .button_container {
     display: flex;
     justify-content: left;
@@ -24,13 +28,11 @@ h1.talkroom_title {
     font-weight: bold;
 }
 
-/* .on_button{
-
+.content_container {
+    display: block;
+    text-align: right;
+    float: right;
 }
-
-.off_button{
-
-} */
 
 .refresh {
     float: left;
@@ -56,6 +58,7 @@ h1.talkroom_title {
     height: auto;
     margin-bottom: 80px;
     margin-top: 200px;
+    visibility: hidden;
 }
 
 .message_container {
@@ -153,6 +156,8 @@ p.datetime {
 }
 
 form.send_message {
+    display: flex;
+    justify-content: space-around;
     margin: 0 auto;
 }
 
@@ -164,13 +169,13 @@ input[type="text"] {
 }
 
 input[type="text"]:focus {
-    outline: 3px solid rgb(3,200,96);
+    outline: 3px solid rgb(3, 200, 96);
 }
 
 input[type="submit"] {
     padding: 10px 20px;
     margin-left: 10px;
-    background-color: rgb(3,200,96);
+    background-color: rgb(3, 200, 96);
     border: none;
     font-weight: bold;
     border-radius: 80px;
@@ -190,14 +195,14 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding:30px,10px;
+    padding: 30px, 10px;
 }
 
-#talkroom_name{
-    position:absolute;
-    margin-left:45%;
+#talkroom_name {
+    position: absolute;
+    margin-left: 45%;
+}
+#memo_submit {
+    margin-top: 5px;
+}
 
-}
-#memo_submit{
-    margin-top:5px;
-}

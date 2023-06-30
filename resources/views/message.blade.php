@@ -33,7 +33,7 @@
             form.appendChild(refreshFlag);
             document.body.appendChild(form);
             form.submit();
-            }, 3000); // 3秒後にリダイレクト
+            }, 2000); // 3秒後にリダイレクト
 
         </script>
     </head>
@@ -45,7 +45,7 @@
     </div>
     @if ($talkroom->name == "")
         @foreach ($talkroom->user as $user)
-            @if ($user->id != $my_id) 
+            @if ($user->id != $my_id)
             <div id="talkroom_name"> <i class="fas fa-user"></i>{{$user->profile->name}}</div>
             @endif
         @endforeach
@@ -215,10 +215,17 @@
             </div>
         </div>
         <form class="send_message" action="/Message/send" method="POST" enctype="multipart/form-data">
-            <input type="text" name="content">
-            <input type="hidden" name="user_id" value={{$my_id}}>
-            <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
-            <input type="file" name="file" class="upload_file">
+            <div class="content_container">
+                <details>
+                    <summary> <i class="fas fa-image fa-lg"></i></summary>
+                    <input type="file" name="file" class="upload_file">
+                </details>
+            </div>
+            <div>
+                <input type="text" name="content">
+                <input type="hidden" name="user_id" value={{$my_id}}>
+                <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
+            </div>
             <input type="submit" value="送る">
             @csrf
         </form>
@@ -230,17 +237,11 @@
 @include('footer')
 
 <script>
+
     window.onload = function() {
-        // ページの高さを取得
-        var pageHeight = document.body.scrollHeight;
+        window.scrollTo(0, document.body.scrollHeight);
+        document.documentElement.style.visibility = 'visible';
+        document.querySelector('.container').style.visibility = 'visible';
+    };
 
-        // ビューポートの高さを取得
-        var viewportHeight = window.innerHeight || document.documentElement.clientHeight || document.body
-            .clientHeight;
-
-    // ページの高さがビューポートの高さよりも大きい場合にのみスクロール
-    if (pageHeight > viewportHeight) {
-        window.scrollTo(0, pageHeight);
-    }
-};
 </script>

@@ -38,6 +38,8 @@
             </details>
             <input type="submit" id="submit"value="編集">
         </form>
+        <p>{{ $errors->first('url') }}</p>
+
 
         <!--友達に追加されたときの通知機能および追加ボタン-->
 
