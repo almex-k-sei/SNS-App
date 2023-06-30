@@ -1,5 +1,11 @@
 <head>
     <link rel="stylesheet" href="css/login.css">
+
+    {{-- Googleフォント --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">    <title>Route::</title>
+
 </head>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -15,8 +21,8 @@
                 {{-- <x-input-label for="email" :value="__('メールアドレス')" /> --}}
                 <label for="email" value="メールアドレス"><p>メールアドレス</p>
                 <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
             </div>
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
             <!-- Password -->
             <div class="mt-4">
@@ -25,8 +31,8 @@
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
             <!-- Remember Me -->
             <div class="block mt-4">

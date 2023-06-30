@@ -1,5 +1,5 @@
 body{
-    background-color:whitesmoke;
+    /* background-color: white; */
 }
 main{
     display:flex;
@@ -154,7 +154,6 @@ input[type="text"]#description {
     font-size: 30px;
 }
 
-
 .friends_profile {
     width: 50%;
     max-width: 600px;
@@ -207,7 +206,6 @@ summary{
  input{
     border:none;
 }
-
 
 /*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！
  .my_profile #image{
@@ -324,3 +322,16 @@ font-size: 20px;
     cursor: pointer;
 }
 
+/* 友達追加されたときの表示 */
+.added_as_friend {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -16,6 +16,8 @@
         </style>
         {{-- cssファイルの読み込み --}}
         <link rel="stylesheet" href="css/welcome.css">
+
+
     </head>
     <!--ログイン-->
     <body class="antialiased">

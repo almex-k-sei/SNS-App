@@ -28,7 +28,7 @@
                 </tr>
             </table>
             <details>
-                <summary>プロフィール画像を編集</summary>
+                <summary>プロフィール画像を編集する</summary>
                 <label class= "file" for="submit">
                 <input type="file" id="url" name="url" >
                 <!-- onchange="$('#fake_text_box').val($(this).val())" -->
@@ -38,22 +38,31 @@
             </details>
             <input type="submit" id="submit"value="編集">
         </form>
+        <p>{{ $errors->first('url') }}</p>
+
+
+        <!--友達に追加されたときの通知機能および追加ボタン-->
+
+            @foreach ($user->followers as $follower)
+                @unless ($user->follows->contains('id', $follower->id))
+                <div class="added_as_friend">
+                    <div class="notification">
+                        <p>{{$follower->profile->name }}に友達追加されました</p>
+                        <form action="/accept_request" method="post">
+                            <input type="hidden" name="id" value="{{$follower->id}}">
+                            <input type="submit" name="submit" value="追加">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+                @endunless
+            @endforeach
 
     </div>
-    <!--友達に追加されたときの通知機能および追加ボタン-->
 
-    @foreach ($user->followers as $follower)
-        @unless ($user->follows->contains('id', $follower->id))
-            <div class="notification">
-                <p>{{$follower->profile->name }}に友達追加されました</p>
-                <form action="/accept_request" method="post">
-                    <input type="hidden" name="id" value="{{$follower->id}}">
-                    <input type="submit" name="submit" value="追加">
-                    @csrf
-                </form>
-            </div>
-        @endunless
-    @endforeach
+
+
+
 
 
     <!--友達のプロフィール -->
@@ -83,7 +92,6 @@
                     </div> --}}
                 <form action="search_friend">
                     <input type="submit" value="友達追加">
-                    {{-- <i class="fas fa-user-plus"></i> --}}
                 </form>
             </div>
             <!--friends_header-->

@@ -1,6 +1,6 @@
 @include('header')
 
-<div class="message_list_container">
+<div class="group_list_container">
 
     <div class="list_title_container">
 
@@ -21,27 +21,29 @@
             <div class="modal-content">
                 <form action="/GroupList/add" method="POST" enctype="multipart/form-data">
                     <!-- モーダルウィンドウの中身 -->
-                    <p><label>
-                            グループ名
-                            <input type="text" name="name">
-                        </label></p>
-                    <p><label>
-                            画像
-                            <input type="file" name="image">
-                        </label></p>
-                    <p><label>
-                            メンバー
-                            <br>
+                    <div class="modal_content_container">
+                        <label>グループ名</label><br>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="modal_content_container">
+                        <label>画像</label><br>
+                        <input type="file" name="image">
+                    </div>
+                    <div class="modal_content_container">
+                        <label>メンバー</label><br>
+                        <div class="member_list_scroll">
                             @foreach ($all_friends as $friend)
-                                <span>
+                                <p>
                                     <label for="friend_{{ $friend->id }}">
                                         <input type="checkbox" name="members[]" value="{{ $friend->id }}">
                                         {{ $friend->profile->name }}
                                     </label>
-                                </span>
+                                </p>
                             @endforeach
-                        </label></p>
-                    <p><input type="submit" value="追加"></p>
+                        </div>
+                        <br>
+                        <input type="submit" value="追加">
+                    </div>
                     @csrf
                 </form>
                 <span class="close">&times;</span>
@@ -76,13 +78,15 @@
                                     @csrf
                                 </form>
                                 <h2>メンバー</h2>
-                                @foreach ($group->user as $member)
-                                    <span style="margin-right: 10px">{{ $member->profile->name }}</span>
-                                @endforeach
+                                <div class="member_list_scroll">
+                                    @foreach ($group->user as $member)
+                                        <p>{{ $member->profile->name }}</p>
+                                    @endforeach
+                                </div>
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
                                     <input type="hidden" name="talkroom_id" value="{{ $group->id }}">
-                                    <input type="submit" value="トークへ移動">
+                                    <input class="move_talk" type="submit" value="トークへ移動">
                                     @csrf
                                 </form>
                             </div>
@@ -92,33 +96,36 @@
                                 <h2>グループの編集</h2>
                                 <form class="edit_group" action="/GroupList/edit" method="POST" enctype="multipart/form-data">
                                     <!-- モーダルウィンドウの中身 -->
-                                    <p><label>
-                                            グループ名
-                                            <input type="text" name="name" value="{{ $group->name }}">
-                                        </label></p>
-                                    <p><label>
-                                            現在の画像
-                                            <p><img src="{{ $group->image }}" width="100px" height="100px"></p>
-                                            <p>画像<input type="file" name="image"></p>
-                                        </label></p>
-                                    <p><label>
-                                            メンバー
+                                    <div class="modal_content_container">
+                                        <label>グループ名</label><br>
+                                        <input type="text" name="name" value="{{ $group->name }}">
+                                    </div>
+                                    <div class="modal_content_container">
+                                        <label>現在の画像</label><br>
+                                        <img src="{{ $group->image }}" width="100px" height="100px"><br>
+                                        <span class="bold">画像を変更</span><br>
+                                        <input type="file" name="image">
+                                    </div>
+                                    <div class="modal_content_container">
+                                        <label>メンバー</label><br>
+                                        <div class="member_list_scroll">
                                             @foreach ($all_friends as $friend)
-                                               <span>
-                                                   <label for="friend_{{ $friend->id }}">
-                                                       <input type="checkbox" name="members[]"
-                                                           value="{{ $friend->id }}"
-                                                           @foreach ($group->user as $member)
-                                                           @if ($member->id == $friend->id)
-                                                           checked
-                                                           @endif @endforeach>
-                                                       {{ $friend->profile->name }}
-                                                   </label>
-                                               </span>
+                                                <p>
+                                                    <label for="friend_{{ $friend->id }}">
+                                                        <input type="checkbox" name="members[]"
+                                                            value="{{ $friend->id }}"
+                                                            @foreach ($group->user as $member)
+                                                            @if ($member->id == $friend->id)
+                                                            checked
+                                                            @endif @endforeach>
+                                                        {{ $friend->profile->name }}
+                                                    </label>
+                                                </p>
                                             @endforeach
-                                        </label></p>
-                                    <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                    <p><input type="submit" value="更新"></p>
+                                        </div>
+                                        <input type="hidden" name="group_id" value="{{ $group->id }}">
+                                        <p><input type="submit" value="更新"></p>
+                                    </div>
                                     @csrf
                                 </form>
                             </div>
@@ -128,8 +135,8 @@
                                 <h2>本当に削除しますか？</h2>
                                 <form action="/GroupList/delete" method="POST">
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
-                                    <input type="submit" value="はい">
-                                    <input type="button" onclick="NoDelete()" value="いいえ">
+                                    <input type="submit" class="yes" value="はい">
+                                    <input type="button" class="no" onclick="NoDelete()" value="いいえ">
                                     @csrf
                                 </form>
                             </div>
@@ -138,19 +145,21 @@
                             <div class='add_after hidden'>
                                 <h2>メンバー追加</h2>
                                 <form action="/GroupList/add_member" method="POST">
-                                    <p>
-                                        @foreach ($all_friends as $friend)
-                                            @unless ($group->user->contains('id', $friend->id))
-                                                <span>
-                                                    <label for="friend_{{ $friend->id }}">
-                                                        <input type="checkbox" name="members[]"
-                                                            value="{{ $friend->id }}">
-                                                        {{ $friend->profile->name }}
-                                                    </label>
-                                                </span>
-                                            @endunless
-                                        @endforeach
-                                    </p>
+                                    <div class="member_list_scroll">
+                                        <p>
+                                            @foreach ($all_friends as $friend)
+                                                @unless ($group->user->contains('id', $friend->id))
+                                                    <span>
+                                                        <label for="friend_{{ $friend->id }}">
+                                                            <input type="checkbox" name="members[]"
+                                                                value="{{ $friend->id }}">
+                                                            {{ $friend->profile->name }}
+                                                        </label>
+                                                    </span>
+                                                @endunless
+                                            @endforeach
+                                        </p>
+                                    </div>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <p><input type="submit" value="追加"></p>
                                     @csrf
@@ -160,15 +169,19 @@
 
                             {{-- グループの作成者かそうでないかを判断 --}}
                             @if (Auth::id() == $group->administrator_id)
+                            <div class="modal_button_container">
                                 {{-- メンバーの編集ボタン --}}
                                 <div class='edit_before_button'>
-                                    <button onclick="EditMember()">グループの編集</button>
+                                    <input type="button" class="edit_group" onclick="EditMember()" value="グループの編集">
+                                    {{-- <button onclick="EditMember()">グループの編集</button> --}}
                                 </div>
 
                                 {{-- グループの削除ボタン --}}
                                 <div class='delete_before_button'>
-                                    <button onclick="DeleteMember()">グループの削除</button>
+                                    <input type="button" class="delete_group" onclick="DeleteMember()"value="グループの削除">
+                                    {{-- <button onclick="DeleteMember()">グループの削除</button> --}}
                                 </div>
+                            </div>
                             @else
                                 {{-- メンバーを追加ボタン --}}
                                 <div class='add_before_button'>
@@ -349,6 +362,7 @@
             var divA = document.getElementsByClassName("main_before");
             var divB = document.getElementsByClassName("delete_before_button");
             var divC = document.getElementsByClassName("delete_after");
+            var divD = document.getElementsByClassName("edit_before_button");
 
             for (var i = 0; i < divA.length; i++) {
                 divA[i].style.display = "block";
@@ -360,6 +374,9 @@
 
             for (var k = 0; k < divC.length; k++) {
                 divC[k].style.display = "none";
+            }
+            for (var j = 0; j < divD.length; j++) {
+                divD[j].style.display = "block";
             }
         }
     </script>

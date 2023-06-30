@@ -3,12 +3,16 @@ body {
     background-attachment:fixed;
     background-repeat: repeat;
     background-size: contain;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Kiwi Maru', serif;
     line-height: 2rem;
     font-size: 18px;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+button {
+    font-family: 'Kiwi Maru', serif;
 }
 
 .login_container {

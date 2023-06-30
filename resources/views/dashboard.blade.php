@@ -1,5 +1,11 @@
     <head>
         <link rel="stylesheet" href="css/dashboard.css">
+
+        {{-- Googleフォント --}}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">    <title>Route::</title>
+
     </head>
 
     <x-slot name="header">
@@ -18,6 +24,7 @@
                     <form action="" method="post" enctype="multipart/form-data">
                             名前<br><input type="text" name="name" placaholder="名前">
                             プロフィール画像<br><input type="file" name="image" placeholder="プロフィール画像">
+                            <p>{{ $errors->first('image') }}</p>
                             誕生日<br><input type="date" name="birth" placeholder="誕生日">
                             ひとこと<br><input type="text" name="description" placeholder="ひとこと">
                             <div class="completion">
