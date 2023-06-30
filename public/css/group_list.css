@@ -8,10 +8,9 @@
     padding: 10px;
 }
 
-.group_list_container .list_contents_container{
+.group_list_container .list_contents_container {
     height: 250px;
- }
-
+}
 
 .group_list_container img {
     width: 60px;
@@ -31,13 +30,12 @@
 
 .group_list_container button:hover {
     background: #9fa09e;
-    transition: .4s;
+    transition: 0.4s;
 }
 
 .hidden {
     display: none;
 }
-
 
 .addBtn {
     width: 130px;
@@ -80,7 +78,7 @@
     padding: 10px;
 }
 
-.modal_content_container  img{
+.modal_content_container img {
     border: 1px solid #333;
     width: 100px;
     height: 100px;
@@ -142,14 +140,14 @@
     width: 40%;
 }
 
-.edit_before_button  button{
-    background: rgb(3,200,96);
+.edit_before_button button {
+    background: rgb(3, 200, 96);
     border-radius: 5px;
     margin: 0;
 }
 
 .delete_before_button button {
-    background: rgb(3,200,96);
+    background: rgb(3, 200, 96);
     border-radius: 5px;
     margin: 0;
 }
@@ -164,5 +162,12 @@ input.yes[type="submit"] {
     background-color: skyblue;
     padding: 10px 20px;
     margin-right: 20px;
+}
 
+.add_before_button button {
+    background: rgb(3, 200, 96);
+}
+
+.add_after input[type="submit"] {
+    margin-top: 10px;
 }

@@ -33,7 +33,7 @@
             form.appendChild(refreshFlag);
             document.body.appendChild(form);
             form.submit();
-            }, 2000); // 3秒後にリダイレクト
+            }, 5000); // 3秒後にリダイレクト
 
         </script>
     </head>

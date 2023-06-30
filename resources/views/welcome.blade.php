@@ -33,13 +33,23 @@
                         <div>
                             @auth
                                 <p>こんにちは、{{Auth::user()->name}}さん</p>
-                                <a href="{{ url('/Home') }}">ホームへ</a>
+                                <form action="{{ url('/Home') }}">
+                                    <button class="button">ホームへ
+                                    </button>
+                                </form>
                             @else
-                                <a href="{{ route('login') }}" >ログイン</a>
+                                <form action="{{ route('login') }}">
+                                    <button class="button">
+                                    ログイン
+                                    </button></form>
                         </div>
                         <div>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}">新規登録</a>
+                                    <form action="{{ route('register') }}">
+                                        <button class="button">
+                                        新規登録
+                                        </button>
+                                    </form>
                                 @endif
                             @endauth
                         </div>
