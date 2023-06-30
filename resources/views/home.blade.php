@@ -92,7 +92,6 @@
                     </div> --}}
                 <form action="search_friend">
                     <input type="submit" value="友達追加">
-                    {{-- <i class="fas fa-user-plus"></i> --}}
                 </form>
             </div>
             <!--friends_header-->
