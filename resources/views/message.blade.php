@@ -1,40 +1,40 @@
 @include('header')
 
-@if ($refresh_flag == "ON")
+@if ($refresh_flag == 'ON')
+
     <head>
         <script>
             setTimeout(function() {
-            // フォームを生成してPOSTリクエストを送信
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = '';
+                // フォームを生成してPOSTリクエストを送信
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '';
 
-            // CSRFトークンをhiddenフィールドとして追加
-            var csrfToken = document.createElement('input');
-            csrfToken.type = 'hidden';
-            csrfToken.name = '_token';
-            csrfToken.value = '{{ csrf_token() }}'; // CSRFトークンを指定
+                // CSRFトークンをhiddenフィールドとして追加
+                var csrfToken = document.createElement('input');
+                csrfToken.type = 'hidden';
+                csrfToken.name = '_token';
+                csrfToken.value = '{{ csrf_token() }}'; // CSRFトークンを指定
 
-            // トークルームIDをhiddenフィールドとして追加
-            var talkroomId = document.createElement('input');
-            talkroomId.type = 'hidden';
-            talkroomId.name = 'talkroom_id';
-            talkroomId.value = '{{ $talkroom->id }}'; // トークルームIDを指定
+                // トークルームIDをhiddenフィールドとして追加
+                var talkroomId = document.createElement('input');
+                talkroomId.type = 'hidden';
+                talkroomId.name = 'talkroom_id';
+                talkroomId.value = '{{ $talkroom->id }}'; // トークルームIDを指定
 
-            // リフレッシュflagをhiddenフィールドとして追加
-            var refreshFlag = document.createElement('input');
-            refreshFlag.type = 'hidden';
-            refreshFlag.name = 'refresh_flag';
-            refreshFlag.value = '{{ $refresh_flag }}'; // リフレッシュflagを指定
+                // リフレッシュflagをhiddenフィールドとして追加
+                var refreshFlag = document.createElement('input');
+                refreshFlag.type = 'hidden';
+                refreshFlag.name = 'refresh_flag';
+                refreshFlag.value = '{{ $refresh_flag }}'; // リフレッシュflagを指定
 
-            // フォームにhiddenフィールドを追加して送信
-            form.appendChild(csrfToken);
-            form.appendChild(talkroomId);
-            form.appendChild(refreshFlag);
-            document.body.appendChild(form);
-            form.submit();
+                // フォームにhiddenフィールドを追加して送信
+                form.appendChild(csrfToken);
+                form.appendChild(talkroomId);
+                form.appendChild(refreshFlag);
+                document.body.appendChild(form);
+                form.submit();
             }, 2000); // 3秒後にリダイレクト
-
         </script>
     </head>
 @endif
@@ -43,32 +43,32 @@
     <div class="back">
         <a href="/MessageList"><i class="fas fa-backward"></i></a>
     </div>
-    @if ($talkroom->name == "")
+    @if ($talkroom->name == '')
         @foreach ($talkroom->user as $user)
             @if ($user->id != $my_id)
-            <div id="talkroom_name"> <i class="fas fa-user"></i>{{$user->profile->name}}</div>
+                <div id="talkroom_name"> <i class="fas fa-user"></i>{{ $user->profile->name }}</div>
             @endif
         @endforeach
     @else
-        <div id="talkroom_name"> <i class="fas fa-users"></i> {{$talkroom->name}}</div>
+        <div id="talkroom_name"> <i class="fas fa-users"></i> {{ $talkroom->name }}</div>
     @endif
     <div class="memo">
         <details>
             <summary><i class="far fa-sticky-note"></i></summary>
-            @if ($memo == NULL)
+            @if ($memo == null)
                 <form action="Message/add_memo" method="POST">
                     <textarea name="content" cols="30" rows="10"></textarea>
                     <input type="submit" id="memo_submit"value="メモを保存">
-                    <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
-                    <input type="hidden" name="user_id" value={{$my_id}}>
+                    <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}>
+                    <input type="hidden" name="user_id" value={{ $my_id }}>
                     @csrf
                 </form>
             @else
                 <form action="Message/update_memo" method="POST">
-                    <textarea name="content" cols="30" rows="10">{{$memo->content}}</textarea>
+                    <textarea name="content" cols="30" rows="10">{{ $memo->content }}</textarea>
                     <input type="submit"id="memo_submit" value="メモを保存">
-                    <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
-                    <input type="hidden" name="user_id" value={{$my_id}}>
+                    <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}>
+                    <input type="hidden" name="user_id" value={{ $my_id }}>
                     @csrf
                 </form>
             @endif
@@ -166,7 +166,7 @@
 </div>
 @endforeach
 
-@if ($refresh_flag == "ON")
+@if ($refresh_flag == 'ON')
     <div class="send_message_container">
         <div class="refresh">
             <div class="button_container">
@@ -174,16 +174,16 @@
                 <div class="on_button">
                     <form action="/Message" method="POST">
                         <input type="submit" name="refresh_flag" value=ON>
-                        <input type="hidden" name="user_id" value={{$my_id}}>
-                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        <input type="hidden" name="user_id" value={{ $my_id }}>
+                        <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}>
                         @csrf
                     </form>
                 </div>
                 <div class="off_button">
                     <form action="/Message" method="POST">
                         <input type="submit" name="refresh_flag" value=OFF>
-                        <input type="hidden" name="user_id" value={{$my_id}}>
-                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        <input type="hidden" name="user_id" value={{ $my_id }}>
+                        <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}>
                         @csrf
                     </form>
                 </div>
@@ -199,16 +199,16 @@
                 <div class="on_button">
                     <form action="/Message" method="POST">
                         <input type="submit" name="refresh_flag" value=ON>
-                        <input type="hidden" name="user_id" value={{$my_id}}>
-                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        <input type="hidden" name="user_id" value={{ $my_id }}>
+                        <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}>
                         @csrf
                     </form>
                 </div>
                 <div class="off_button">
                     <form action="/Message" method="POST">
                         <input type="submit" name="refresh_flag" value=OFF>
-                        <input type="hidden" name="user_id" value={{$my_id}}>
-                        <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
+                        <input type="hidden" name="user_id" value={{ $my_id }}>
+                        <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}>
                         @csrf
                     </form>
                 </div>
@@ -220,12 +220,11 @@
                     <summary> <i class="fas fa-image fa-lg"></i></summary>
                     <input type="file" name="file" class="upload_file">
                 </details>
-                {{-- <a href="file://localhost:8081"><i class="fas fa-image fa-lg"></i></a> --}}
             </div>
             <div>
                 <input type="text" name="content">
-                <input type="hidden" name="user_id" value={{$my_id}}>
-                <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
+                <input type="hidden" name="user_id" value={{ $my_id }}>
+                <input type="hidden" name="talkroom_id" value={{ $talkroom->id }}><!-- 現在会話しているトークルームのIDを保持 --->
             </div>
             <input type="submit" value="送る">
             @csrf
@@ -238,11 +237,9 @@
 @include('footer')
 
 <script>
-
     window.onload = function() {
         window.scrollTo(0, document.body.scrollHeight);
         document.documentElement.style.visibility = 'visible';
         document.querySelector('.container').style.visibility = 'visible';
     };
-
 </script>
