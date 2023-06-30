@@ -172,12 +172,14 @@
                             <div class="modal_button_container">
                                 {{-- メンバーの編集ボタン --}}
                                 <div class='edit_before_button'>
-                                    <button onclick="EditMember()">グループの編集</button>
+                                    <input type="button" class="edit_group" onclick="EditMember()" value="グループの編集">
+                                    {{-- <button onclick="EditMember()">グループの編集</button> --}}
                                 </div>
 
                                 {{-- グループの削除ボタン --}}
                                 <div class='delete_before_button'>
-                                    <button onclick="DeleteMember()">グループの削除</button>
+                                    <input type="button" class="delete_group" onclick="DeleteMember()"value="グループの削除">
+                                    {{-- <button onclick="DeleteMember()">グループの削除</button> --}}
                                 </div>
                             </div>
                             @else
