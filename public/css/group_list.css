@@ -59,17 +59,21 @@
 
 /* モーダルウィンドウのコンテンツ */
 .modal-content {
-    position: relative;
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #888;
     width: 80%;
     text-align: left;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 100;
 }
 
 .modal_content_container {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .member_list_scroll {
@@ -77,6 +81,7 @@
     height: 200px;
     border: 3px solid #9fa09e;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 .modal_content_container img {
@@ -129,10 +134,14 @@
     margin-bottom: 20px;
 }
 
+.modal_button_container input:hover {
+    opacity: 0.4;
+}
+
 .edit_before_button {
     margin: 10px 0;
     display: inline-block;
-    width: 40%;
+    width: 200px;
 }
 
 .delete_before_button {
@@ -157,6 +166,11 @@ input.no {
     background-color: tomato;
     padding: 10px;
     font-weight: bold;
+    border-radius: 25px;
+}
+
+input.no:hover {
+    opacity: 0.4;
 }
 
 input.yes[type="submit"] {
@@ -169,6 +183,18 @@ input.yes[type="submit"] {
     background: rgb(3, 200, 96);
 }
 
+input.edit_group {
+    background-color: rgb(3, 200, 96);
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
 .add_after input[type="submit"] {
     margin-top: 10px;
+}
+
+input.delete_group {
+    background-color: rgb(3, 200, 96);
+    border-radius: 25px;
+    padding: 10px 20px;
 }

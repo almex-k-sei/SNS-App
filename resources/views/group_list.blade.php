@@ -172,12 +172,14 @@
                             <div class="modal_button_container">
                                 {{-- メンバーの編集ボタン --}}
                                 <div class='edit_before_button'>
-                                    <button onclick="EditMember()">グループの編集</button>
+                                    <input type="button" class="edit_group" onclick="EditMember()" value="グループの編集">
+                                    {{-- <button onclick="EditMember()">グループの編集</button> --}}
                                 </div>
 
                                 {{-- グループの削除ボタン --}}
                                 <div class='delete_before_button'>
-                                    <button onclick="DeleteMember()">グループの削除</button>
+                                    <input type="button" class="delete_group" onclick="DeleteMember()"value="グループの削除">
+                                    {{-- <button onclick="DeleteMember()">グループの削除</button> --}}
                                 </div>
                             </div>
                             @else
@@ -360,6 +362,7 @@
             var divA = document.getElementsByClassName("main_before");
             var divB = document.getElementsByClassName("delete_before_button");
             var divC = document.getElementsByClassName("delete_after");
+            var divD = document.getElementsByClassName("edit_before_button");
 
             for (var i = 0; i < divA.length; i++) {
                 divA[i].style.display = "block";
@@ -371,6 +374,9 @@
 
             for (var k = 0; k < divC.length; k++) {
                 divC[k].style.display = "none";
+            }
+            for (var j = 0; j < divD.length; j++) {
+                divD[j].style.display = "block";
             }
         }
     </script>
