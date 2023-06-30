@@ -90,6 +90,7 @@
             <!--友達を追加するボタン　-->
 
 
+</div>
         </div>
         <!-- 友達一覧-->
         <div class="friends_list">

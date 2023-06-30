@@ -25,15 +25,26 @@
                 <div class="welcome_button_container">
                     @if (Route::has('login'))
                         <div>
-                            @auth
+                            @auth 
                                 <p>こんにちは、{{Auth::user()->name}}さん</p>
-                                <a href="{{ url('/Home') }}">ホームへ</a>
+                                <form action="{{ url('/Home') }}">
+                                    <button class="button">ホームへ
+                                    </button>
+                                    </form>
+
                             @else
-                                <a href="{{ route('login') }}" >ログイン</a>
+                                <form action="{{ route('login') }}">
+                                    <button class="button">
+                                    ログイン
+                                    </button></form>
                         </div>
                         <div>
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}">新規登録</a>
+                                    <form action="{{ route('register') }}">
+                                        <button class="button">
+                                        新規登録
+                                        </button>
+                                    </form>
                                 @endif
                             @endauth
                         </div>
@@ -41,7 +52,11 @@
                 </div>
             </div>
         </div>
-
+        <div class="bg_test">
+    <!-- <div class="bg_test-text">
+       <img src="5310036b32a5c04f454cfed8d1d6af76.jpg" alt="">
+    </div> -->
+</div>
             {{-- <div class="max-w-7xl mx-auto p-6 lg:p-8">
                 <div class="flex justify-center">
                     <svg viewBox="0 0 62 65" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto bg-gray-100 dark:bg-gray-900">
