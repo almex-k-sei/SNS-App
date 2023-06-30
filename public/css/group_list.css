@@ -60,17 +60,21 @@
 
 /* モーダルウィンドウのコンテンツ */
 .modal-content {
-    position: relative;
     background-color: #fefefe;
     margin: 15% auto;
-    padding: 20px;
+    padding: 15px;
     border: 1px solid #888;
     width: 80%;
     text-align: left;
+    position: fixed;
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 100;
 }
 
 .modal_content_container {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .member_list_scroll {
@@ -78,6 +82,7 @@
     height: 200px;
     border: 3px solid #9fa09e;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .modal_content_container  img{
