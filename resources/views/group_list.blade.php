@@ -362,6 +362,7 @@
             var divA = document.getElementsByClassName("main_before");
             var divB = document.getElementsByClassName("delete_before_button");
             var divC = document.getElementsByClassName("delete_after");
+            var divD = document.getElementsByClassName("edit_before_button");
 
             for (var i = 0; i < divA.length; i++) {
                 divA[i].style.display = "block";
@@ -373,6 +374,9 @@
 
             for (var k = 0; k < divC.length; k++) {
                 divC[k].style.display = "none";
+            }
+            for (var j = 0; j < divD.length; j++) {
+                divD[j].style.display = "block";
             }
         }
     </script>
