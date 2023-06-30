@@ -14,9 +14,11 @@ class UserController extends Controller
     //新規登録時にプロフィール追加+usersテーブルとprofilesテーブルを結び付ける
     public function create(Request $request){
         $request->validate([
+            'name' => 'required|max:10',
             'image' => 'image'
             ],
             [
+                'name.required' => '名前を入力してください',
                 'image.image' => '画像ファイルを指定してください'
             ]);
 
