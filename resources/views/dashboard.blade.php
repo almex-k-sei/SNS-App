@@ -24,6 +24,7 @@
                     <form action="" method="post" enctype="multipart/form-data">
                             名前<br><input type="text" name="name" placaholder="名前">
                             プロフィール画像<br><input type="file" name="image" placeholder="プロフィール画像">
+                            <p>{{ $errors->first('image') }}</p>
                             誕生日<br><input type="date" name="birth" placeholder="誕生日">
                             ひとこと<br><input type="text" name="description" placeholder="ひとこと">
                             <div class="completion">

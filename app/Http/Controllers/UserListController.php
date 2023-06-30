@@ -99,6 +99,14 @@ class UserListController extends Controller
 
     public function edit(Request $request)
     {
+        $request->validate(
+            [
+                'url' => 'image'
+            ],
+            [
+                'url.image' => '画像ファイルを指定してください'
+            ]
+        );
         $user_id = Auth::id();
         $user = Profile::where('user_id', '=', $user_id)->first();
         if ($request->input("name") !== null) {

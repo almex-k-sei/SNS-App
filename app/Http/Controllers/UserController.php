@@ -15,6 +15,9 @@ class UserController extends Controller
     public function create(Request $request){
         $request->validate([
             'image' => 'image'
+            ],
+            [
+                'image.image' => '画像ファイルを指定してください'
             ]);
 
         $new_profile = new Profile();
