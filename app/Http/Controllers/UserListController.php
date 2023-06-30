@@ -54,22 +54,24 @@ class UserListController extends Controller
         $results = (object)"";
         if ($friend !== null) { //合致する人がいたら
             $friend_id = $friend->id;
+            //友達を検索
             foreach ($user->follows as $value) {
                 //friendsテーブルのuser_id == Auth::id()　且つ　friendsテーブルのfriend_id == $friend_idのとき　→友達である
                 if ($value->pivot->friend_id == $friend_id) {
                     $results->image = $value->profile->image;
                     $results->name = "すでに友達です";
                 }
-                if($user_id == $friend_id){
-                    $results->image = $user->profile->image;
-                    $results->name = "自分自身です";
-                }
             }
+            //自分かどうか判断
+            if ($user_id == $friend_id) {
+                $results->image = $user->profile->image;
+                $results->name = "自分自身です";
+            }
+            //新規登録
             if ($results == (object)"") {
                 $results = Profile::where("user_id", "=", "$friend_id")->first();
             }
         } else {
-            $results = (object)"";
             $results->image = "https://icon-pit.com/wp-content/uploads/2018/10/question_mark_icon_1034.png";
             $results->name = "見つかりませんでした";
             $friend_id = "0";
@@ -81,13 +83,16 @@ class UserListController extends Controller
     {
         $id = Auth::id();
         $user = User::where("id", "=", "$id")->first();
-        if($request->input("results") == "すでに友達です" || $request->input("results") == "見つかりませんでした"){
-        }elseif($request->input("friend_id")){
+        if (
+            $request->input("results") == "すでに友達です" || $request->input("results") == "見つかりませんでした" ||
+            $request->input("results") == "自分自身です" || $request->input("results") == "友達を追加しましょう!"
+        ) {
+            return redirect('search_friend');
+        } elseif ($request->input("friend_id")) {
             $friend_id = $request->input("friend_id");
             $user->follows()->attach($friend_id);
+            return redirect('Home');
         }
-
-        return redirect('Home');
     }
 
 
