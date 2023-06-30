@@ -41,13 +41,13 @@
                                 ?>
                                 @if($talkroom->message->last()->content == NULL)
                                     <p>{{$mdhm}}<br>
-                                        コンテンツが送信されました</p>
+                                        <i class="fas fa-image fa-sm"></i> コンテンツの送信</p>
                                 @else
                                     <p>{{$mdhm}}<br>
                                         {{$talkroom->message->last()->content}}</p>
                                 @endif
                             @else
-                                <p>New Talkroom!</p>
+                                <p style="color: red;">New Talkroom!</p>
                             @endif
                             <input type="hidden" name="talkroom_id" value={{$talkroom->id}}>
                         </button>
