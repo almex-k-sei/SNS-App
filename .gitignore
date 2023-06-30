@@ -19,3 +19,5 @@ yarn-error.log
 /.vscode
 /public/filedata
 /public/groupdata
+/public/profiledata
+/public/profiledate
