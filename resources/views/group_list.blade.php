@@ -31,14 +31,16 @@
                     </div>
                     <div class="modal_content_container">
                         <label>メンバー</label><br>
+                        <div class="member_list_scroll">
                             @foreach ($all_friends as $friend)
-                                <span>
+                                <p>
                                     <label for="friend_{{ $friend->id }}">
                                         <input type="checkbox" name="members[]" value="{{ $friend->id }}">
                                         {{ $friend->profile->name }}
                                     </label>
-                                </span>
+                                </p>
                             @endforeach
+                        </div>
                         <br>
                         <input type="submit" value="追加">
                     </div>
@@ -76,9 +78,11 @@
                                     @csrf
                                 </form>
                                 <h2>メンバー</h2>
-                                @foreach ($group->user as $member)
-                                    <span style="margin-right: 10px">{{ $member->profile->name }}</span>
-                                @endforeach
+                                <div class="member_list_scroll">
+                                    @foreach ($group->user as $member)
+                                        <p>{{ $member->profile->name }}</p>
+                                    @endforeach
+                                </div>
                                 {{-- トークへ移動ボタン --}}
                                 <form action="/Message" method="POST">
                                     <input type="hidden" name="talkroom_id" value="{{ $group->id }}">
@@ -104,19 +108,21 @@
                                     </div>
                                     <div class="modal_content_container">
                                         <label>メンバー</label><br>
-                                        @foreach ($all_friends as $friend)
-                                            <span>
-                                                <label for="friend_{{ $friend->id }}">
-                                                    <input type="checkbox" name="members[]"
-                                                        value="{{ $friend->id }}"
-                                                        @foreach ($group->user as $member)
-                                                        @if ($member->id == $friend->id)
-                                                        checked
-                                                        @endif @endforeach>
-                                                    {{ $friend->profile->name }}
-                                                </label>
-                                            </span>
-                                        @endforeach
+                                        <div class="member_list_scroll">
+                                            @foreach ($all_friends as $friend)
+                                                <p>
+                                                    <label for="friend_{{ $friend->id }}">
+                                                        <input type="checkbox" name="members[]"
+                                                            value="{{ $friend->id }}"
+                                                            @foreach ($group->user as $member)
+                                                            @if ($member->id == $friend->id)
+                                                            checked
+                                                            @endif @endforeach>
+                                                        {{ $friend->profile->name }}
+                                                    </label>
+                                                </p>
+                                            @endforeach
+                                        </div>
                                         <input type="hidden" name="group_id" value="{{ $group->id }}">
                                         <p><input type="submit" value="更新"></p>
                                     </div>
@@ -139,19 +145,21 @@
                             <div class='add_after hidden'>
                                 <h2>メンバー追加</h2>
                                 <form action="/GroupList/add_member" method="POST">
-                                    <p>
-                                        @foreach ($all_friends as $friend)
-                                            @unless ($group->user->contains('id', $friend->id))
-                                                <span>
-                                                    <label for="friend_{{ $friend->id }}">
-                                                        <input type="checkbox" name="members[]"
-                                                            value="{{ $friend->id }}">
-                                                        {{ $friend->profile->name }}
-                                                    </label>
-                                                </span>
-                                            @endunless
-                                        @endforeach
-                                    </p>
+                                    <div class="member_list_scroll">
+                                        <p>
+                                            @foreach ($all_friends as $friend)
+                                                @unless ($group->user->contains('id', $friend->id))
+                                                    <span>
+                                                        <label for="friend_{{ $friend->id }}">
+                                                            <input type="checkbox" name="members[]"
+                                                                value="{{ $friend->id }}">
+                                                            {{ $friend->profile->name }}
+                                                        </label>
+                                                    </span>
+                                                @endunless
+                                            @endforeach
+                                        </p>
+                                    </div>
                                     <input type="hidden" name="group_id" value="{{ $group->id }}">
                                     <p><input type="submit" value="追加"></p>
                                     @csrf
