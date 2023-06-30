@@ -1,3 +1,8 @@
+button {
+    font-family: "Kiwi Maru", serif;
+    font-weight: bold;
+}
+
 .group_list_container {
     width: 70%;
     margin: 140px auto 50px;
@@ -8,12 +13,12 @@
     padding: 10px;
 }
 
-.group_list_container .list_contents_container{
+.group_list_container .list_contents_container {
     height: 250px;
- }
-
+}
 
 .group_list_container img {
+    border-radius: 50%;
     width: 60px;
     height: 60px;
 }
@@ -31,13 +36,12 @@
 
 .group_list_container button:hover {
     background: #9fa09e;
-    transition: .4s;
+    transition: 0.4s;
 }
 
 .hidden {
     display: none;
 }
-
 
 .addBtn {
     width: 130px;
@@ -85,7 +89,7 @@
     margin-bottom: 10px;
 }
 
-.modal_content_container  img{
+.modal_content_container img {
     border: 1px solid #333;
     width: 100px;
     height: 100px;
@@ -136,7 +140,7 @@
 }
 
 .modal_button_container input:hover {
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .edit_before_button {
@@ -151,14 +155,14 @@
     width: 40%;
 }
 
-.edit_before_button  button{
-    background: rgb(3,200,96);
+.edit_before_button button {
+    background: rgb(3, 200, 96);
     border-radius: 5px;
     margin: 0;
 }
 
 .delete_before_button button {
-    background: rgb(3,200,96);
+    background: rgb(3, 200, 96);
     border-radius: 5px;
     margin: 0;
 }
@@ -171,7 +175,7 @@ input.no {
 }
 
 input.no:hover {
-    opacity: .4;
+    opacity: 0.4;
 }
 
 input.yes[type="submit"] {
@@ -180,14 +184,22 @@ input.yes[type="submit"] {
     margin-right: 20px;
 }
 
+.add_before_button button {
+    background: rgb(3, 200, 96);
+}
+
 input.edit_group {
-    background-color: rgb(3,200,96);
+    background-color: rgb(3, 200, 96);
     border-radius: 25px;
     padding: 10px 20px;
 }
 
+.add_after input[type="submit"] {
+    margin-top: 10px;
+}
+
 input.delete_group {
-    background-color: rgb(3,200,96);
+    background-color: rgb(3, 200, 96);
     border-radius: 25px;
     padding: 10px 20px;
 }

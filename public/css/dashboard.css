@@ -1,8 +1,14 @@
 body {
-    background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%);
-    background-repeat: repeat;
+    background: linear-gradient(
+        15deg,
+        #66bbff 0%,
+        #ddffff 50%,
+        #ddffff 51%,
+        #66bbff 100%
+    );
+    background-attachment: fixed;
     background-size: contain;
-    font-family: 'Kiwi Maru', serif;
+    font-family: "Kiwi Maru", serif;
     margin: 0;
     line-height: 2rem;
     font-size: 18px;
@@ -16,13 +22,12 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: #fff;
     width: 50%;
     padding: 30px;
     font-size: 20px;
 }
-
 
 .dashboard_container form input {
     padding: 5px;
@@ -34,7 +39,7 @@ body {
     width: 100px;
     display: inline-block;
     margin: 0 auto;
-    background-color: rgb(3,200,96);;
+    background-color: rgb(3, 200, 96);
     border: none;
     padding: 10px;
     border-radius: 5px;
@@ -42,7 +47,7 @@ body {
 
 .dashboard_container form input[type="submit"] {
     display: inline-block;
-    background: rgb(3,200,96);;
+    background: rgb(3, 200, 96);
     color: #444;
     font-weight: bold;
     text-decoration: none;
@@ -54,7 +59,7 @@ body {
 }
 
 .dashboard_container input[type="submit"]:hover {
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .dashboard_container input[type="submit"]:active {
@@ -64,17 +69,15 @@ body {
 
 .dashboard_container button[type="submit"] {
     margin-left: 20px;
-    background-color: rgb(3,200,96);;
+    background-color: rgb(3, 200, 96);
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 20px;
 }
 
-
-
 .dashboard_container button[type="submit"]:hover {
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .dashboard_container form div.completion {
@@ -82,5 +85,5 @@ body {
 }
 
 a.underline {
-    color :red;
+    color: red;
 }

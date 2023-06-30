@@ -11,6 +11,7 @@
                 <tr>
                     <td>
                         <input type="text" id="name" name="name" placeholder="{{ $profiles[0]->name }}">
+                        {{-- <textarea name="name" id="name" cols="30" rows="2">{{ $profiles[0]->name }}</textarea> --}}
                     </td>
                 </tr>
                 <tr>

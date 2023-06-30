@@ -33,7 +33,7 @@
             form.appendChild(refreshFlag);
             document.body.appendChild(form);
             form.submit();
-            }, 2000); // 3秒後にリダイレクト
+            }, 5000); // 3秒後にリダイレクト
 
         </script>
     </head>
@@ -215,17 +215,10 @@
             </div>
         </div>
         <form class="send_message" action="/Message/send" method="POST" enctype="multipart/form-data">
-            <div class="content_container">
-                <details>
-                    <summary> <i class="fas fa-image fa-lg"></i></summary>
-                    <input type="file" name="file" class="upload_file">
-                </details>
-            </div>
-            <div>
-                <input type="text" name="content">
-                <input type="hidden" name="user_id" value={{$my_id}}>
-                <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
-            </div>
+            <input type="text" name="content">
+            <input type="hidden" name="user_id" value={{$my_id}}>
+            <input type="hidden" name="talkroom_id" value={{$talkroom->id}}><!-- 現在会話しているトークルームのIDを保持 --->
+            <input type="file" name="file" class="upload_file">
             <input type="submit" value="送る">
             @csrf
         </form>

@@ -1,14 +1,14 @@
-body{
+/* body {
     /* background-color: white; */
-}
-main{
-    display:flex;
+/* } */
+main {
+    display: flex;
     justify-content: space-around;
     margin: 140px 20px 30px;
     height: auto;
 }
 /*自分のプロフィールについて*/
-.my_profile{
+.my_profile {
     width: 40%;
     display: flex;
     flex-direction: column;
@@ -16,31 +16,31 @@ main{
     text-align: center;
 }
 
-.my_profile #image{
-    width: 100%;
-    max-width: 300px;
+.my_profile #image {
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
 }
-.my_editable_profile{
+.my_editable_profile {
     text-align: center;
     margin-bottom: 10px;
 }
-.my_editable_profile input{
+.my_editable_profile input {
     width: 300px;
     padding: 10px;
 }
 
 .my_editable_profile input[type="submit"] {
-    background-color: rgb(3,200,96);;
+    background-color: rgb(3, 200, 96);
     margin-top: 20px;
 }
 
-.my_editable_profile input.submit{
-    background: rgb(3,200,96);;
+.my_editable_profile input.submit {
+    background: rgb(3, 200, 96);
     margin: 10px;
 }
 
-.my_editable_profile input:focus{
+.my_editable_profile input:focus {
     background: #fff;
 }
 .my_editable_profile input[type="file"] {
@@ -55,13 +55,14 @@ main{
 .my_editable_profile input[type="text"] {
     border: none;
 }
-.my_editable_profile #name{
+.my_editable_profile #name {
     font-size: xx-large;
     text-align: center;
     background-color: transparent;
+    width: auto;
 }
 
-.my_editable_profile #birthday{
+.my_editable_profile #birthday {
     text-align: center;
 }
 
@@ -73,13 +74,12 @@ main{
     background: #fff;
     border-radius: 30px;
 }
-.my_editable_profile #url{
+.my_editable_profile #url {
     text-align: center;
     /* background-color: transparent; */
 }
 
-
-.description_container::before{
+.description_container::before {
     content: "";
     position: absolute;
     left: 100px;
@@ -107,9 +107,8 @@ input[type="text"]#description {
     text-align: center;
 }
 
-
-::placeholder{
-    color:black;
+::placeholder {
+    color: black;
 }
 
 /*友達のプロフィールについて*/
@@ -120,19 +119,19 @@ input[type="text"]#description {
     height: 400px;
 }
 
-.friends_list::-webkit-scrollbar{
+.friends_list::-webkit-scrollbar {
     width: 10px;
- }
+}
 
- .friends_list::-webkit-scrollbar-track{
+.friends_list::-webkit-scrollbar-track {
     background-color: #ccc;
     border-radius: 25px;
- }
+}
 
- .friends_list::-webkit-scrollbar-thumb{
-    background-color: rgb(3,200,96);
+.friends_list::-webkit-scrollbar-thumb {
+    background-color: rgb(3, 200, 96);
     border-radius: 25px;
- }
+}
 
 .friends_list details {
     border: 2px solid #9fa09e;
@@ -143,6 +142,9 @@ input[type="text"]#description {
 
 .friends_list details img {
     margin-top: 10px;
+    border-radius: 50%;
+    width: 100px;
+    height: 50px;
 }
 
 .search_friends input[type="text"] {
@@ -178,33 +180,33 @@ input[type="text"]#description {
     font-size: 30px;
 }
 
-.friends_profile #image{
-    width:100%;
+.friends_profile #image {
+    width: 100%;
     max-width: 50px;
     border-radius: 50%;
-    background-color: white;;
+    background-color: white;
 }
-.friends_profile #name{
+.friends_profile #name {
     /* font-size: xx-large; */
-    width:100px;
+    width: 100px;
     margin-left: 30px;
     width: 120px;
 }
 
-.friends_profile #talk{
-    width:100px;
+.friends_profile #talk {
+    width: 100px;
     margin-left: 30px;
 }
 
-summary{
+summary {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 /*form要素の部品のダサさを消す*/
- input{
-    border:none;
+input {
+    border: none;
 }
 
 /*スライド用のCSS未適応版スクショを撮るときに必要なCSSですので残して！！！！！！！！！
@@ -310,7 +312,7 @@ font-size: 20px;
     right: 0;
     color: #aaa;
     float: right; */
-    /* font-size: 28px;
+/* font-size: 28px;
     font-weight: bold;
 >>>>>>> origin/main
 } */

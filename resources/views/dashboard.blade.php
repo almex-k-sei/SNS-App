@@ -23,6 +23,7 @@
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
                             名前<br><input type="text" name="name" placaholder="名前">
+                            <p>{{ $errors->first('name') }}</p>
                             プロフィール画像<br><input type="file" name="image" placeholder="プロフィール画像">
                             <p>{{ $errors->first('image') }}</p>
                             誕生日<br><input type="date" name="birth" placeholder="誕生日">
