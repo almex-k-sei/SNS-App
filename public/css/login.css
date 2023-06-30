@@ -10,6 +10,10 @@ body {
     box-sizing: border-box;
 }
 
+button {
+    font-family: 'Kiwi Maru', serif;
+}
+
 .login_container {
     border-radius: 25px;
     position: absolute;

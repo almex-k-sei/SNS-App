@@ -45,14 +45,13 @@ class GroupListController extends Controller
             [
             'name' => 'required|max:30',
             'image' => 'image',
-            'members' => 'required|min:1|max:1000',
+            'members' => 'required|max:100',
             ],
             [
                 'name.required' => 'グループ名を入力してください',
                 'name.max' => 'グループ名の文字数が多すぎます',
                 'image.image' => '画像ファイルを指定してください',
                 'members.required' => '最低でも1人は選択してください',
-                'members.min' => '最低でも1人は選択してください',
                 'members.max' => '人数が多すぎます'
             ]
         );
