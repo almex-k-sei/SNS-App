@@ -220,6 +220,7 @@
                     <summary> <i class="fas fa-image fa-lg"></i></summary>
                     <input type="file" name="file" class="upload_file">
                 </details>
+                {{-- <a href="file://localhost:8081"><i class="fas fa-image fa-lg"></i></a> --}}
             </div>
             <div>
                 <input type="text" name="content">
