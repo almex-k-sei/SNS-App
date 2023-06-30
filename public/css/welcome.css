@@ -1,14 +1,13 @@
 body {
     font-family: 'Kiwi Maru', serif;
-    /* background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%); */
-    background-color: yellow;
 }
+    /* background-image: linear-gradient(270deg, #FFDEE9 0%, #B5FFFC 100%); */
+    /* background-color:#99FFFF; */
 
-a {
+ /* {
     color: #333;
     text-decoration: none;
-}
-
+} */
 .welcome_container {
     text-align: center;
     border-radius: 25px;
@@ -16,7 +15,7 @@ a {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color:yellow;
+    background-color:transparent;
     width: 50%;
     padding: 30px;
     font-size: 24px;
@@ -29,14 +28,14 @@ a {
 .welcome_button_container {
     display: flex;
     justify-content: center;
-    margin: 50px auto 30px;
+    margin: 30px auto 10px;
 }
-
+/* 
 .welcome_button_container > div {
     display: inline-block;
     margin: 0 30px;
     background-color: rgb(3,200,96);
-    padding: 10px 20px;
+    padding: 0px 0px;
     border-radius: 5px;
     border-bottom: 2px solid #333;
     position: relative;
@@ -55,4 +54,38 @@ a {
 .welcome_button_container > div:active {
     border: 0;
     bottom: -2px;
+}*/ 
+.button{
+    background-color: rgb(3,200,96);
+    padding-bottom:20px;
+    border:none;
+    width:100px;
+    height:30px;
+    border-radius:18%;
+    padding-top: 5px;
+    margin-right: 5px;
+}
+button:hover{
+    opacity: .4;
+    color: #333;
+
+}
+
+.bg_test{
+    background-size: 300px;
+}
+.bg_test img{
+    margin-top:30px;
+    margin-left:0px;
+    position:relative;
+    width:105%;
+    min-height:80vh;
+    background: url("5310036b32a5c04f454cfed8d1d6af76.jpg") center / cover;
+    z-index: -1;
+} 
+
+body{
+    background: linear-gradient(15deg, #66BBFF  0%,#DDFFFF 50%,#DDFFFF  51%,#66BBFF  100%);
+    background-attachment:fixed;
+    font-family:'Kiwi Maru','serif';
 }
