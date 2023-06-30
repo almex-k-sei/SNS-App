@@ -28,11 +28,11 @@ h1.talkroom_title {
     font-weight: bold;
 }
 
-.content_container {
+/* .content_container {
     display: block;
     text-align: right;
     float: right;
-}
+} */
 
 .refresh {
     float: left;
@@ -66,6 +66,7 @@ h1.talkroom_title {
 }
 
 .message_container img {
+    border-radius: 50%;
     width: 100px;
     height: 100px;
 }
@@ -156,8 +157,8 @@ p.datetime {
 }
 
 form.send_message {
-    display: flex;
-    justify-content: space-around;
+    /* display: flex; */
+    /* justify-content: space-around; */
     margin: 0 auto;
 }
 
